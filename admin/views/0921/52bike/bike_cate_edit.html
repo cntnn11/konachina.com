@@ -1,0 +1,58 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>车型类别</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li><a href="{%$smarty.const.BASEURL%}bike/bikeCateList">车型类别列表</a></li>
+				<li class="current"><a>添加/编辑车型类别</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form class="stdform" action="{%$smarty.const.BASEURL%}bike/doEditBikeCate" method="post">
+				<p>
+					<label>车型名称：</label>
+					<span class="field">
+						<input type='text' name="model_name" id="model_name" value="{%$info.model_name%}" class="smallinput" />
+					</span>
+				</p>
+				<p>
+					<label>车型描述：</label>
+					<span class="field">
+						<textarea class="smallinput" name="description" id="description" cols="80" rows="5">{%$info.description%}</textarea>
+					</span>
+				</p>
+				<p>
+					<label>排序：</label>
+					<span class="field">
+					<input class="smallinput" type="text" name="sort" id="sort" value="{%if $info.sort == ''%}1000{%else%}{%$info.sort%}{%/if%}" />
+						<br/><small>排序规则按照升序排序</small>
+					</span>
+				</p>
+				<p class="stdformbutton">
+					<input type="hidden" name="id" value="{%$info.id%}" />
+					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bike/doEditBikeCate');" value="提 交" />
+					&nbsp;&nbsp;
+					<input type="button" class="stdbtn" onclick="button_location('{%$smarty.const.BASEURL%}bike/bikeCateList')" value="返 回" />
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>

@@ -1,0 +1,24 @@
+<div class="topheader">
+	<div class="left">
+		<h1 class="logo">{%$admin.u_user%}</h1>
+		<span class="slogo"></span>
+		<br clear="all" />
+	</div>
+	
+	<div class="right">
+		<div class="userinfo">
+			<span>{%$admin.u_user%}</span>
+		</div>
+		
+		<div class="userinfodrop">
+			<div class="userdata">
+				<h4>{%$admin.u_user%}</h4>
+				<ul>
+					<!-- <li><a href="editprofile.html">编辑账户资料</a></li> -->
+					<li><a href="{%$smarty.const.BASEURL%}sysuser/uppwd">重设密码</a></li>
+					<li><a href="{%$smarty.const.BASEURL%}main/logout/">退出登录</a></li>
+				</ul>
+			</div><!--userdata-->
+		</div><!--userinfodrop-->
+	</div><!--right-->
+</div><!--topheader-->

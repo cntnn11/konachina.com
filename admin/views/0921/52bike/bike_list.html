@@ -1,0 +1,115 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li><a>单车列表</a></li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li class="current"><a href="{%$smarty.const.BASEURL%}bike/bikeList">单车列表</a></li>
+				<li><a href="{%$smarty.const.BASEURL%}bike/bikeEdit">添加/编辑单车</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form action="{%$smarty.const.BASEURL%}bike/bikeList" method="get">
+				<i>查询时间：</i>
+				<input type="text" name='dates' id='dates' value='{%$get.dates%}' class="width125" />
+				-&nbsp;&nbsp;<input type="text" name='datee' id='datee' value='{%$get.datee%}' class="width125" />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>单车名称：</i>
+				<input type='text' name='bikename' id='bikename' value='{%$get.bikename%}' class="width100" />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>单车年代：</i>
+				<select class="uniformselect" name='year' id='year'>
+					<option value=''>--选择--</option>
+					{%html_options options=$year_conf selected=$get.year%}
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>状态：</i>
+				<select class="uniformselect" name='flag' id='flag'>
+					<option value=''>全部</option>
+					{%html_options options=$flag_arr selected=$get.flag%}
+				</select>
+
+				<button class="radius3">点击查询</button>
+			</form>
+			<table cellpadding="0" cellspacing="0" border="0" class="margintop20 stdtable stdtablecb">
+				<colgroup>
+					<col class="con0" style="width: 4%" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+				</colgroup>
+				<thead>
+					<td colspan="11">
+						<span class="floatright">{%$page%}</span>
+					</td>
+					<tr>
+						<th class="head0" style="width: 4%;"><input class="check-all" type="checkbox" id="checkall" /></th>
+						<th class="head1">[年代][类别]名称</th>
+						<th class="head0">价格</th>
+						<th class="head1">简述</th>
+						<th class="head1">创建时间</th>
+						<th class="head0">操作</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="11">
+						<span class="floatleft">
+							<input type="button" class="stdbtn btn_orange" onclick="button_location('{%$smarty.const.BASEURL%}bike/bikeEdit')" value="添 加" />
+						</span>
+						<span class="floatright">{%$page%}</span>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+				<!-- 列表数据循环主体 -->
+				{%foreach item=row from=$lists%}
+				<tr>
+					<td><input name="sel_id[]" type="checkbox" value="{%$row.id%}" /></td>
+					<td>
+						[<font>{%$row.year%}</font>][<font>{%$cate_type[$row.type]%}</font>]<b><a href="{%bikesUrl($row.id)%}" target="_blank" alt="{%$row.name%}">{%$row.name%}</a></b>
+					</td>
+					<td>{%$row.price%}￥</td>
+					<td>{%$row.desc%}</td>
+					<td>{%$row.createdate%}</td>
+					<td>
+						 <a href="{%$smarty.const.BASEURL%}bike/bikeEdit/?id={%$row.id%}&get_params={%$get_params%}" title="Edit">编辑</a>&nbsp;
+						 <select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}bike/ajaxBikeChangeFlag' aid='{%$row.id%}' old="{%$row.flag%}">
+							{%html_options options=$flag_arr selected=$row.flag%}
+						</select>
+						<img class="flagtip{%$row.id%}" src="/admin/public/0921/images/loaders/loader2.gif?1013" style="display:none;" />
+					</td>
+				</tr>
+				{%foreachelse%}
+					<tr>
+						<td colspan="11" class="aligncenter">暂时没有数据</td>
+					</tr>
+				{%/foreach%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {  
+	jQuery('input:checkbox, select.uniformselect, input:file').uniform();
+	jQuery( "#dates" ).datepicker({dateFormat: 'yy-mm-dd'});
+	jQuery( "#datee" ).datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script>
+</body>
+</html>

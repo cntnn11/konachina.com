@@ -1,0 +1,38 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<div class="pageheader notab">
+			<h1 class="pagetitle">Hello! {%$admin.u_user%}</h1>
+			<span class="pagedesc"></span>
+		</div>
+
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<div class="one_half last">
+				<div class="widgetbox">
+					<div class="title"><h3>日历</h3></div>
+					<div class="widgetcontent">
+						<div id="datepicker"></div>
+					</div><!--widgetcontent-->
+				</div><!--widgetbox-->
+			</div><!--one_half last-->
+							
+		</div><!--contentwrapper-->
+		
+	</div><!-- centercontent -->
+	
+	
+</div><!--bodywrapper-->
+
+</body>
+	
+</html>

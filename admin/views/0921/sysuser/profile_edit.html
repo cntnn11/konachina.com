@@ -1,0 +1,36 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>系统管理</a></li>
+			<li>管理员操作</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li class="current"><a href="javascript:void('');">编辑资料</a></li>
+				<li><a href="javascript:button_location('{%$smarty.const.BASEURL%}sysuser/uppwd');">修改密码</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form class="stdform" action="{%$smarty.const.BASEURL%}sysuser/uppwd" method="post">
+				<fieldset>
+					<p class="stdformbutton">
+						<button class="button radius2" onclick="submitform('{%$smarty.const.BASEURL%}sysuser/uppwd">修改</button>&nbsp;&nbsp;
+					</p>
+				</fieldset>
+				<div class="clear"></div><!-- End .clear -->
+			</form>
+		</div>
+	</div>
+</div>
+</body>

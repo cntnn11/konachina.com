@@ -1,0 +1,72 @@
+{%include file="52kona/header.html"%}
+<div class="body_page">
+	<div class="body_bg"></div>
+	<div class="body_content">
+		<div class="content_title">
+			<span>单车新闻</span>
+			<hr/>
+		</div>
+		<div class="content_news">
+			<div class="news_lists">
+				<div class="post_detail">
+					<p class="date">{%$info.month%}<b>{%$info.day%}</b></p>
+					<h2 class="title">{%$info.title%}</h2>
+					<div class="entry">
+						{%if $info.focus_type == 1%}
+						<p class="focus">
+							<img src="{%$info.focus%}" width="580" />
+						</p>
+						{%elseif $info.focus_type == 2%}
+						<p class="focus">
+							<embed src="{%$info.focus%}" allowFullScreen="true" quality="high" width="580" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+						</p>
+						{%/if%}
+						{%$info.content%}
+					</div>
+					<p class="meta">
+						
+					</p>
+				</div>
+			</div>
+			<!-- end content -->
+			<!-- start sidebar -->
+			<div class="sidebar">
+				<ul>
+					<!-- <li id="categories">
+						<h2>日历</h2>
+					</li> -->
+					{%if $right_data['cate']%}
+					<li>
+						<h2>新闻分类</h2>
+						{%foreach item=cate_list from=$right_data['cate']%}
+						<ul>
+							<li><a href="{%newsCateUrl($cate_list['id'])%}">{%$cate_list['name']%}</a> ({%$cate_list['total']%})</li>
+						</ul>
+						{%/foreach%}
+					</li>
+					{%/if%}
+					{%if $right_data['other']%}
+					<li>
+						<h2>相关新闻</h2>
+						{%foreach item=other_list from=$right_data['other']%}
+						<ul>
+							<li><a href="{%newsUrl($other_list['id'])%}">{%$other_list['title']%}</a></li>
+						</ul>
+						{%/foreach%}
+					</li>
+					{%/if%}
+					<li class="sidebar_contactus">
+						<h2>联系我们</h2>
+						<p>北京52bike乐骑士自行车店是Kona科纳山地车中国大陆总代理，是北京专业山地车组装车店，最早专业经营自行车组装、单车装备的商家之一。</p>
+						<p><span>Mob:</span> 130-0107-7266</p>
+						<p><span>QQ:</span> 1833958</p>
+						<p><span>Tel:</span> 010-84074520</p>
+						<p><span>Mail:</span> geoff_lv@52bike.com</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

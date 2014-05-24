@@ -1,0 +1,48 @@
+{%include file="0921/header.html"%}
+<body class="loginpage">
+
+	<div class="loginbox">
+		<div class="loginboxinner">
+			
+			<div class="logo">
+				<h1>管理后台</h1>
+			</div><!--logo-->
+			
+			<br clear="all" /><br />
+			
+			<div class="nousername">
+				<div class="loginmsg">The password you entered is incorrect.</div>
+			</div><!--nousername-->
+			
+			<div class="nopassword">
+				<div class="loginmsg">The password you entered is incorrect.</div>
+				<div class="loginf">
+					<div class="thumb"><img alt="" src="{%$smarty.const.PUBDIRAMAN%}images/thumbs/avatar1.png" /></div>
+					<div class="userlogged">
+						<h4></h4>
+						<a href="index.html">Not <span></span>?</a> 
+					</div>
+				</div><!--loginf-->
+			</div><!--nopassword-->
+			
+			<form id="login" action="{%$smarty.const.BASEURL%}login" method="post">
+			   <div class="username">
+					<div class="usernameinner">
+						<input type="text" name="l[user]" id="username" />
+					</div>
+				</div>
+				
+				<div class="password">
+					<div class="passwordinner">
+						<input type="password" name="l[pwd]" id="password" />
+					</div>
+				</div>
+				<input type="submit" class="submit radius2" value="登 录" />
+			</form>
+			
+		</div><!--loginboxinner-->
+	</div><!--loginbox-->
+
+
+</body>
+</html>

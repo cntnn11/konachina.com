@@ -1,0 +1,25 @@
+<div class="vernav2 iconmenu">
+	<ul>
+		<li {%if $admin['c']=='bike' || $admin['c']=='bikenews'%}class="current"{%/if%}><a href="#52bike" class="52bike">52BIKE</a>
+			<span class="arrow"></span>
+			<ul id="52bike" {%if $admin['controller'] == 'bike'%}style="display:block;"{%/if%} >
+				<li {%if $admin['a']=='video'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/video">视频URL链接添加</a></li>
+				<li {%if $admin['a']=='bikeCateList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/bikeCateList">产品分类</a></li>
+				<li {%if $admin['a']=='bikeList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/bikeList">产品内容</a></li>
+				<li {%if $admin['a']=='imageList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/imageList">图片集</a></li>
+				<li {%if $admin['a']=='newsCate'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bikenews/newsCate">新闻类别</a></li>
+				<li {%if $admin['a']=='newsList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bikenews/newsList">新闻内容</a></li>
+				<li {%if $admin['a']=='shop'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/shop">经销商管理</a></li>
+			</ul>
+		</li>
+		<li {%if $admin['c'] == 'sysuser'%}class="current"{%/if%}><a href="#sysuser" class="sysuser">系统内容</a>
+			<span class="arrow"></span>
+			<ul id="sysuser">
+				<li {%if $admin['a'] == 'uppwd'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}sysuser/uppwd">管理员操作</a></li>
+			</ul>
+		</li>
+		<!-- <li><a href="filemanager.html" class="gallery">File Manager</a></li> -->
+	</ul>
+	<a class="togglemenu"></a>
+	<br /><br />
+</div>

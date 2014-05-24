@@ -1,0 +1,98 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>系统管理</a></li>
+			<li>管理员操作</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li class="current"><a href="javascript:void('');">修改密码</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage subcontent">
+			<form class="stdform" id="upwd_form">
+				<p>
+					<label>原密码：</label>
+					<span class="field"><input class="smallinput" type="password" name="pwd" id="pwd" /></span>
+				</p>
+				<p>
+					<label>新密码：</label>
+					<span class="field"><input class="smallinput" type="password" name="npwd" id="npwd" /></span>
+				</p>
+				<p>
+					<label>重复密码：</label>
+					<span class="field"><input class="smallinput" type="password" name="renpwd" id="renpwd" /></span>
+				</p>
+				<p class="stdformbutton">
+					<input type="button" class="stdbtn" name="checksub" onclick="checkupd()"  value="修改" />
+					<!-- onclick="checksub('{%$smarty.const.BASEURL%}sysuser/uppwd');" -->
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(function(){
+	jQuery('#upwd_form').validate({
+		debug: true,
+		rules: {
+			pwd: "required",
+			npwd: "required",
+			renpwd: {required: true,equalTo:'#npwd'},
+		},
+		messages: {
+			pwd: "请输入原始密码",
+			npwd: "请输入新密码",
+			renpwd: "两次输入密码必须一致",
+		}
+	});
+})
+function checkupd()
+{
+	jQuery('#upwd_form').valid();
+}
+/*function checksub(action)
+{
+	var p	= jQuery('#pwd').val();
+	var np	= jQuery('#npwd').val();
+	var yp	= jQuery('#repwd').val();
+	if(p != '')
+	{
+		if(np == yp && np != '' && yp != '')
+		{
+			jQuery.ajax({
+				type:'POST',
+				url:url,
+				data:'&id='+id+'&flag='+val+'&old='+old,
+				dataType:'json',
+				async: false,
+				success:function(msg){
+					if(msg.status == 'OK')
+					{
+						jQuery('.flagtip'+id).hide();
+					}
+				}
+			});
+			//ajaxDoUpdpwd
+		}
+	}
+	else
+	{
+		alert('新密码设置错误');
+		
+	}
+	return false;
+}*/
+</script>
+</body>

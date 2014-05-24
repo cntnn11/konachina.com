@@ -1,0 +1,37 @@
+{%include file="52kona/header.html"%}
+<div class="body_index">
+	<div class="body_index_back"></div>
+	<div class="body_index_font">
+		<h3>享受骑行</h3>
+		<h1>The KONA Long Sweet Ride</h1>
+	</div>
+</div>
+
+<div class="footer_index">
+	<div class="footer_back"></div>
+	<div class="video_index">
+		<ul>
+			{%if $video_list.url1%}
+			<li>
+				<embed src="{%$video_list.url1%}" allowFullScreen="true" quality="high" width="162" height="110" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			</li>
+			{%/if%}
+			{%if $video_list.url2%}
+			<li>
+				<embed src="{%$video_list.url2%}" allowFullScreen="true" quality="high" width="162" height="110" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			</li>
+			{%/if%}
+			{%if $video_list.url3%}
+			<li>
+				<embed src="{%$video_list.url3%}" allowFullScreen="true" quality="high" width="162" height="110" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			</li>
+			{%/if%}
+			<li class="video_font">
+				<h1>Videos:</h1>
+				<h3><a href="{%$video_list.url_index%}" target="_blank">more +</a></h3>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

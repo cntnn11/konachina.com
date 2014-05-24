@@ -1,0 +1,82 @@
+{%include file="52kona/header.html"%}
+<link rel="stylesheet" type="text/css" href="{%$smarty.const.PUBURL%}css/calendar_black.css">
+<div class="body_page">
+	<div class="body_bg"></div>
+	<div class="body_content">
+		<div class="content_title">
+			<span>单车新闻</span>
+			<hr/>
+		</div>
+		<div class="content_news">
+			<div class="news_lists">
+				{%foreach item=row from=$lists%}
+				<div class="post">
+					<p class="date">{%$row.month%}<b>{%$row.day%}</b></p>
+					<h2 class="title">{%$row.title%}</h2>
+					<div class="entry">
+						{%if $row.focus_type == 1%}
+						<p class="focus">
+							<img src="{%$row.focus%}" width="580" />
+						</p>
+						{%elseif $row.focus_type == 2%}
+						<p class="focus">
+							<embed src="{%$row.focus%}" allowFullScreen="true" quality="high" width="580" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+						</p>
+						{%/if%}
+						<p><a href="{%newsUrl($row['id'])%}" >{%$row.content%}</a></p></div>
+					<p class="meta">
+					</p>
+				</div>
+				<hr/>
+				{%/foreach%}
+				<div class="pagination">{%$page%}</div>
+			</div>
+			<!-- end content -->
+			<!-- start sidebar -->
+			{%if $right_data%}
+			<div class="sidebar">
+				<ul>
+					<!-- <li>
+						<form action="http://www.baidu.com/baidu">
+							<input type=text name=word >
+							<input type="submit" value="Baidu 搜索">
+							<input name=tn type=hidden value="bds">
+							<input name=cl type=hidden value="3">
+							<input name=ct type=hidden value="2097152">
+							<input name=si type=hidden value="www.konachina.com">
+						</form>
+					</li> -->
+					{%if $right_data['cate']%}
+					<li>
+						<h2>新闻分类</h2>
+						{%foreach item=cate_list from=$right_data['cate']%}
+						<ul>
+							<li><a href="{%newsCateUrl($cate_list['id'])%}">{%$cate_list['name']%}({%$cate_list['total']%})</a> </li>
+						</ul>
+						{%/foreach%}
+					</li>
+					{%/if%}
+					<li class="sidebar_contactus">
+						<h2>联系我们</h2>
+						<p>北京52bike乐骑士自行车店是Kona科纳山地车中国大陆总代理，是北京专业山地车组装车店，最早专业经营自行车组装、单车装备的商家之一。</p>
+						<p><span>Mob:</span> 130-0107-7266</p>
+						<p><span>QQ:</span> 1833958</p>
+						<p><span>Tel:</span> 010-84074520</p>
+						<p><span>Mail:</span> geoff_lv@52bike.com</p>
+					</li>
+					<!-- <li id="categories" class="calendar" style="width:240px;height:180px;"></li> -->
+				</ul>
+			</div>
+			{%/if%}
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{%$smarty.const.PUBURL%}js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="{%$smarty.const.PUBURL%}js/jquery.calendar.js"></script>
+<script type="text/javascript">
+	$('#categories').calendar({
+		current:new Date()
+	});
+</script>
+</body>
+</html>

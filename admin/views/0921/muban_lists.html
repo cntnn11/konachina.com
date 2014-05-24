@@ -1,0 +1,124 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a href="{%$smarty.const.BASEURL%}finance/financeList">个人收支管理</a></li>
+			<li>编辑财务收支信息</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li><a href="javascript:button_location('{%$smarty.const.BASEURL%}')">收支列表</a></li>
+				<li class="current"><a href="javascript:void('');">{%if $info.iae_id > 0%}添加{%else%}修改{%/if%}数据</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form action="{%$smarty.const.BASEURL%}finance/financeList" method="get">
+				<i>查询时间：</i>
+				<input type="text" name='dates' id='dates' value='{%$get.dates%}' class="width125" />
+				-&nbsp;&nbsp;<input type="text" name='datee' id='datee' value='{%$get.datee%}' class="width125" />
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>费用区间：</i>
+				<input type='text' name='minCost' id='minCost' value='{%$get.minCost%}' class="width100" />
+				-&nbsp;
+				<input type='text' name='maxCost' id='maxCost' value='{%$get.maxCost%}' class="width100" />
+				<br /><br />
+				<i>属性：</i>
+				<select class="uniformselect" name='attr' id='attr'>
+					<option value=''>全部</option>
+					{%html_options options=$de_attr selected=$get.attr%}
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>收支分类：</i>
+				<select class="uniformselect" name='iae_id' id='iae_id'>
+					<option value=''>全部</option>
+					{%html_options options=$cate_lists selected=$get.iae_id%}
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<i>状态：</i>
+				<select class="uniformselect" name='flag' id='flag'>
+					<option value=''>全部</option>
+					{%html_options options=$flag_arr selected=$get.flag%}
+				</select>
+
+				<button class="radius3">点击查询</button>
+			</form>
+			<table cellpadding="0" cellspacing="0" border="0" class="margintop20 stdtable stdtablecb">
+				<colgroup>
+					<col class="con0" style="width: 4%" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th class="head0 nosort" style="width: 4%;"><input type="checkbox" class="checkall" /></th>
+						<th class="head0">发生日期</th>
+						<th class="head1">分类</th>
+						<th class="head0">属性</th>
+						<th class="head1">金额</th>
+						<th class="head0">简短描述</th>
+						<th class="head1">添加时间</th>
+						<th class="head0">操作</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="8">
+						<span class="floatleft">
+							<button class="stdbtn btn_red" onclick="select_control('{%$smarty.const.BASEURL%}finance/del', '确定要执行批量删除吗？')">批量删除</button>
+							
+							<button class="stdbtn btn_orange" onclick="button_location('{%$smarty.const.BASEURL%}finance/financeEdit')">添 加</button>
+						</span>
+						<span class="floatright">{%$page%}</span>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+				<!-- 列表数据循环主体 -->
+				{%foreach item=row from=$lists%}
+					<tr>
+						<td><input name="sel_id[]" type="checkbox" value="{%$row.de_id%}" /></td>
+						<td>{%$row.de_date%}</td>
+						<td>{%$row.cate%}</td>
+						<td>{%$row.attr_info%}</td>
+						<td>{%$row.de_cost%}</td>
+						<td>{%$row.de_descript%}</td>
+						<td>{%$row.de_add_date%}</td>
+						<td>
+							<a href="{%$smarty.const.BASEURL%}finance/financeEdit/?id={%$row.de_id%}&get_params={%$get_params%}" title="Edit">编辑</a>&nbsp;
+
+							<select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}finance/ajaxChangeFinanceDetailFlag' aid='{%$row.de_id%}' old="{%$row.flag%}">
+								{%html_options options=$flag_arr selected=$row.flag%}
+							</select>
+							<img class="flagtip{%$row.de_id%}" src="/admin/public/0921/images/loaders/loader2.gif?1013" style="display:none;" />
+						</td>
+					</tr>
+				{%foreachelse%}
+					<tr>
+						<td colspan="8" class="aligncenter">暂时没有数据</td>
+					</tr>
+				{%/foreach%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {  
+	jQuery('input:checkbox, select.uniformselect, input:file').uniform();
+	jQuery( "#dates" ).datepicker({dateFormat: 'yy-mm-dd'});
+	jQuery( "#datee" ).datepicker({dateFormat: 'yy-mm-dd'});
+});
+</script>
+</body>

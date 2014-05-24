@@ -1,0 +1,113 @@
+{%include file="52kona/header.html"%}
+<div class="body_page">
+	<div class="body_bg"></div>
+	<div class="body_content">
+		<div class="content_title">
+			<span>联系我们</span>
+			<hr/>
+		</div>
+		<div class="content_contact">
+			<div class="small_logo"><img src="/public/img/52bike_logo.png"></div>
+			<div class="map_api">
+				<div style="width:455px;height:312px;border:#ccc solid 1px;" id="dituContent"></div>
+			</div>
+			<div class="contact_font">
+				<p class="name">
+					<font style="font-family:'微软雅黑'; font-size:36px;">吕翔 Geoff</font>
+					<font style="display:inline-block;"><wb:follow-button uid="2769500555" type="red_1" height="22px" >关注konachina</wb:follow-button></font>
+				</p>
+				<p><font>Mob: 130-0107-7266</font></p>
+				<p><font>QQ : 1833958</font></p>
+				<p><font>Tel: 010-84074520</font></p>
+				<p><font>Mail: geoff_lv@52bike.com</font></p>
+
+				<p class="mt25 line14b">北京52bike乐骑士自行车店是Kona科纳山地车中国大陆总代理，是北京专业山地车组装车店，最早专业经营自行车组装、单车装备的商家之一。</p>
+				<p class="line14b">经营Dahon大行、KHS、Birdy等高、中、低档折叠车；进口、国产等各类自行车配件，组装各种山地车、攀爬车、街市车。</p>
+				<p class="line14b">北京52bike乐骑士自行车店诚邀各地代理商，我们拥有雄厚的实力，专业的技术，以及良好的车友口碑。欢迎加入我们，一起将Kona这个品牌做强做大，让更多的车友体验到Kona山地车的快乐与激情。</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<script type="text/javascript">
+function initMap(){
+	createMap();
+	setMapEvent();
+	addMapControl();
+	addMarker();
+}
+function createMap(){
+	var map = new BMap.Map("dituContent");
+	var point = new BMap.Point(116.437178,39.946788);
+	map.centerAndZoom(point,17);
+	window.map = map;
+}
+function setMapEvent(){
+	map.enableDragging();
+	map.enableScrollWheelZoom();
+	map.disableDoubleClickZoom();
+	map.disableKeyboard();
+}
+function addMapControl(){
+var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+map.addControl(ctrl_nav);
+var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+map.addControl(ctrl_sca);
+}
+var markerArr = [{title:"52bike乐骑士自行车店",content:"Kona科纳山地车中国大陆总代理，是北京专业山地车组装车店，<br/>最早专业经营自行车组装、单车装备的商家之一",point:"116.437043|39.94665",isOpen:0,icon:{w:23,h:25,l:0,t:21,x:9,lb:12}}
+	 ];
+function addMarker(){
+	for(var i=0;i<markerArr.length;i++){
+		var json = markerArr[i];
+		var p0 = json.point.split("|")[0];
+		var p1 = json.point.split("|")[1];
+		var point = new BMap.Point(p0,p1);
+		var iconImg = createIcon(json.icon);
+		var marker = new BMap.Marker(point,{icon:iconImg});
+		var iw = createInfoWindow(i);
+		var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+		marker.setLabel(label);
+		map.addOverlay(marker);
+		label.setStyle({
+					borderColor:"#808080",
+					color:"#333",
+					cursor:"pointer"
+		});
+		
+		(function(){
+			var index = i;
+			var _iw = createInfoWindow(i);
+			var _marker = marker;
+			_marker.addEventListener("click",function(){
+				this.openInfoWindow(_iw);
+			});
+			_iw.addEventListener("open",function(){
+				_marker.getLabel().hide();
+			})
+			_iw.addEventListener("close",function(){
+				_marker.getLabel().show();
+			})
+			label.addEventListener("click",function(){
+				_marker.openInfoWindow(_iw);
+			})
+			if(!!json.isOpen){
+				label.hide();
+				_marker.openInfoWindow(_iw);
+			}
+		})()
+	}
+}
+function createInfoWindow(i){
+	var json = markerArr[i];
+	var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+	return iw;
+}
+function createIcon(json){
+	var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+	return icon;
+}
+initMap();
+</script>
+</body>
+</html>

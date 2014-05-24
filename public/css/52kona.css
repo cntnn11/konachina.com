@@ -1,0 +1,850 @@
+@charset "utf-8";
+/* CSS Document */
+/********************************      Basic Structure      ********************************/
+html { font-size: 100%; height: 100%; margin-bottom: 1px; font-family: console, '微软雅黑'!important; }
+/********************************      Elements styling      ********************************/
+h1, h2, h3, h4, h5, h6
+{
+ font-family: Arial, 'Vani', '微软雅黑';
+ color: #222;
+ font-weight: bold;
+}
+h1
+{
+ font-family: Arial, 'Vani', '微软雅黑'; font-size: 31px; font-weight: bold; color: #fff; 
+}
+h2
+{
+ font-size: 26px; padding: 0 0 10px 0; font-family: Arial, 'Vani', '微软雅黑'!important;
+}
+h3
+{
+ font-size: 17px; padding: 0 0 10px 0; font-family: Arial, 'Vani', '微软雅黑'!important;
+}
+h4
+{
+ font-size: 16px; padding: 0 0 5px 0; font-family: Arial, 'Vani', '微软雅黑'!important;
+}
+h5
+{
+ font-size: 14px; padding: 0 0 5px 0; font-family: Arial, 'Vani', '微软雅黑'!important;
+}
+h6
+{
+ font-size: 12px; padding: 0 0 5px 0; font-family: Arial, 'Vani', '微软雅黑'!important;
+}
+a
+{
+ color: #57a000; text-decoration: none;
+}
+/********************************      General Classes      ********************************/
+.clear
+{
+ clear: both;
+}
+.float-left
+{
+ float: left;
+}
+.float-right
+{
+ float: right;
+}
+.tleft
+{ text-align: left; }
+.tright
+{ text-align: right; }
+.hidden
+{
+ display: none;
+}
+.coRed
+{
+ color:red;
+}
+.coGreen
+{
+ color: green;
+}
+.pub_border_white
+{
+ border: #ffffff 1px solid;
+}
+.nomargin
+{
+ margin-right: 0px;
+}
+.noborder
+{
+ border: none;
+}
+.indent
+{ text-indent: 2em; }
+.ml20
+{ margin-left: 20px; }
+.ml25
+{ margin-left: 25px; }
+.mr20
+{ margin-right: 20px; }
+.mr25
+{ margin-right: 25px; }
+.mt20
+{ margin-top: 20px; }
+.mt25
+{ margin-top: 25px; }
+.mt30
+{ margin-top: 30px; }
+.line12b
+{ line-height: 120%; }
+.line14b
+{ line-height: 140%; }
+.line15b
+{ line-height: 150%; }
+/*************** Pagination ***************/
+.pagination
+{
+ margin-left: 10px;
+ margin-bottom: 20px;
+ line-height: 30px;
+ clear: both;
+}
+.pagination ul
+{
+ float: none;
+ display: table;
+}
+.pagination ul li
+{
+ float: left;
+ margin-right: 4px;
+}
+.pagination ul li:hover
+{
+ color: #FFF;
+ background: #690;
+}
+.pagination ul li:hover a
+{
+ color: #FFF;
+}
+.pagination ul li.thisclass
+{
+ color: #FFF;
+ padding: 0 10px;
+ border: 1px solid #690;
+ background: #690;
+ font-weight: bold;
+}
+.pagination ul li a
+{
+ float: left;
+ padding: 0 10px;
+ color: #607C27;
+ font-size: 14px;
+ font-weight: bold;
+ border: 1px solid #690;
+ text-decoration: none;
+}
+
+/*************** Body ***************/
+body
+{
+ font-family: Arial, 'Vani', '微软雅黑';
+ background-color: #000000;
+ background-size: 100% 100%;
+ -o-background-size: 100% 100%;
+ -moz-background-size: 100% 100%;
+ -webkit-background-size: 100% 100%;
+ width: 100%;
+ display: inline-block;
+ position: relative;
+ z-index: 1;
+}
+.bg_img
+{
+ position: fixed;
+ top: 0px;
+ bottom: 0px;
+ z-index: -99;
+}
+/********************************      header 头部css      ********************************/
+.header_page
+{
+ margin: 10px auto auto auto;
+ width: 1005px;
+ text-align: center;
+ display: block;
+}
+.header_logo
+{
+ margin-left:50px;
+ margin-top:10px;
+ text-align: left;
+}
+.header_nav
+{
+ float: right;
+ margin-left: 15px;
+ text-align: right;
+}
+.header_nav .header_weibo
+{
+ margin-top: 10px;
+ margin-right: 25px;
+}
+.header_nav .header_nav_ul
+{
+ text-align: left;
+ margin-top: 30px;
+}
+.header_nav .header_nav_ul li
+{
+ display: inline;
+ margin-right: 15px;
+}
+.header_nav .header_nav_ul li.nav_active
+{
+ text-decoration: underline;
+}
+.header_nav .header_nav_ul li a
+{
+ text-transform: capitalize;
+ text-align: center;
+ text-shadow: rgba(0,0,0,0.7) 1px 1px 4px;
+ color: #ffffff;
+ font-size: 22px;
+ line-height: 200%;
+}
+
+/********************************      index 首页样式 中部    ********************************/
+.body_index
+{
+ width: 100%;
+ margin-top: 25px;
+ text-align: center;
+ z-index: 99;
+}
+.body_index_back
+{
+ width: 50%;
+ height: 150px;
+ position: absolute;
+ left: 0px;
+ filter:alpha(opacity=75);
+ -moz-opacity:0.75;
+ opacity: 0.75;
+ z-index:-1;
+ background-color:#000000;
+}
+.body_index_font
+{
+ margin: 25px auto auto auto;
+ width: 1005px;
+ text-align: left;
+ padding-top: 30px;
+}
+.body_index_font h1
+{
+ margin-left: 70px;
+ font-size: 30px;
+ line-height: 200%;
+}
+.body_index_font h3
+{
+ margin-left: 70px;
+ font-size: 30px;
+ font-weight: normal;
+ color: #ff9900;
+}
+/********************************      index 首页样式 底部      ********************************/
+.footer_index
+{
+ width: 100%;
+ height: 200px;
+ position: fixed;
+ left: 0px;
+ bottom: 0px;
+ z-index: 1;
+ clear: both;
+}
+.footer_back
+{
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ left: 0px;
+ display: block;
+ background-color: #000000;
+ filter:alpha(opacity=50);
+ -moz-opacity:0.5;
+ opacity: 0.5;
+ z-index:-1;
+}
+.video_index
+{
+ width: 1005px;
+ margin: 0 auto;
+ text-align: right;
+}
+.video_index ul
+{
+ margin-top: 25px;
+}
+.video_index ul li
+{
+ float: right;
+ width: 162px;
+ height: 110px;
+ margin-right: 20px;
+ vertical-align: middle;
+ display: inline;
+}
+.video_font h1
+{
+ font-size:36px;
+ color: #ffffff;
+ font-weight: normal;
+}
+.video_font h3
+{
+ font-family: Vrinda;
+ font-size: 18px;
+ 
+}
+.video_font h3 a
+{
+ color: #ef8600;
+}
+/********************************页面样式 内容区********************************/
+.body_page
+{
+ width: 100%;
+ height: 100%;
+ display: inline-block;
+ margin-top: 25px;
+ position: relative;
+ z-index: 1;
+ overflow: visible;
+}
+.body_bg
+{
+ width: 100%;
+ height: 100%;
+ display: inline-block;
+ position: absolute;
+ top: 0px;
+ left: 0px;
+ background-color:#000000;
+ filter:alpha(opacity=50);
+ -moz-opacity:0.5;
+ opacity: 0.5;
+ z-index:-90;
+}
+.body_content, .bike_detail
+{
+ color: #ffffff;
+ width: 1005px;
+ height: 100%;
+ margin: 25px auto;
+ text-align: center;
+}
+.content_title
+{
+ width: 1005px;
+ margin: 25px auto;
+ text-align: left;
+}
+.content_title span
+{
+ font-family: "微软雅黑";
+ font-size:36px;
+ margin-left: 50px;
+ line-height: 100%;
+}
+.content_title h3
+{
+ font-family: "Lucida Console";
+ font-size: 16px;
+ color: #ef8600;
+ margin-right: 50px;
+ padding-top: 20px;
+}
+.content_title h3 a
+{
+ color: #717171;
+ font-weight: normal;
+ padding-left: 10px;
+ vertical-align: bottom;
+}
+.content_title h3 a.year_now
+{
+ color: #ef8600;
+ font-weight: bold;
+ text-decoration: underline;
+}
+.content_title hr
+{
+ width: 965px;
+ height: 4px;
+ background-color: #ffffff;
+ display: block;
+ filter:alpha(opacity=2);
+ -moz-opacity:2;
+ opacity: 0.2;
+ border: none;
+}
+/*************俱乐部内容区*************/
+.content_club
+{
+ /*width: 1005px;*/
+ width: 960px;
+ height: auto;
+ margin: 25px auto;
+ display: inline-block;
+}
+.content_club img
+{
+ width: 455px;
+ height: auto;
+ display: inline;
+}
+.content_club .club_intr
+{
+ float: right;
+ width: 44%;
+ height: auto;
+}
+.content_club .club_intr p
+{
+ margin-top: 5px;
+ text-indent: 2em;
+ font-size: 16px;
+ line-height: 150%;
+ margin-right: 40px;
+ text-align: left;
+}
+/*************联系我们*************/
+.content_contact
+{
+ width: 1005px;
+ margin: 0px auto;
+ text-align: left;
+ padding-left: 25px;
+}
+.small_logo
+{
+ width: 300px;
+ margin-top: 30px;
+}
+.map_api
+{
+ width: 100%;
+ margin-top: 20px;
+}
+.contact_font
+{
+ margin-top: 30px;
+}
+.contact_font p
+{
+ width: auto;
+ text-align: left;
+ font-family:Vrinda;
+ font-size:12px;
+ line-height：150%;
+ margin-bottom: 5px;
+}
+.contact_font p span,.contact_font p font
+{
+ margin-right: 5px;
+}
+.contact_font p.name
+{
+ line-height: 300%;
+ margin-bottom: 10px;
+}
+.contact_font label
+{
+ width: 80px;
+ height: 20px;
+ display: inline-block;
+ background-color: #ffffff;
+ filter:alpha(opacity=2);
+ -moz-opacity:2;
+ opacity: 0.2;
+}
+.contact_font .followus
+{
+ color: #ffffff;
+ margin-left: -60px;
+}
+/*************车店经销商*************/
+.content_dealers
+{
+ width: 860px;
+ margin: 5px auto;
+}
+.dealers_lists .dealers_img
+{
+ width: 180px;
+ margin: 10px;
+ float: left;
+}
+.dealers_lists .dealers_font_center
+{
+ width: 450px;
+ height: 140px;
+ margin-right: 0px;
+ margin: 10px;
+ float: left;
+ position: relative;
+ text-align: left;
+}
+.dealers_font_center h1
+{
+ font-family:'微软雅黑';
+ font-size:30px;
+ font-weight: normal;
+}
+.dealers_font_center font
+{
+ font-family:'Arial';
+ font-size:18px;
+ color:#ef8600;
+}
+.dealers_font_center p.cn_font
+{ font-family:'微软雅黑'; font-size:18px; position: absolute; bottom: 48px; left: 0px; }
+.dealers_font_center p.en_font
+{ font-family:'Arial'; font-size:18px; position: absolute; bottom: 18px; left: 0px; }
+.dealers_lists .dealers_right
+{ width: 180px; height: auto; margin: 92px 10px 0px 0px; float: right; text-align: left; font-family:'微软雅黑'; font-size:14px; display: inline-block; }
+.dealers_right span
+{
+ width: 60px;
+ display: inline-block;
+ text-align: right;
+ margin-right: 5px;
+}
+.dealers_lists li.border
+{
+ width: 100%;
+ height: 2px;
+ border: none;
+ background-color: #ffffff;
+ margin: 0px;
+ display: inline-block;
+ filter:alpha(opacity=2);
+ -moz-opacity:2;
+ opacity: 0.2;
+ clear: both;
+}
+/*************图集*************/
+.content_gallery
+{
+ width: 1005px;
+ height: auto;
+ margin: 5px auto;
+}
+.content_gallery ul
+{
+ width: 100%;
+ margin-left: 10px;
+}
+.content_gallery ul li
+{
+ float: left;
+ margin-right: 15px;
+ margin-bottom: 10px;
+ padding: 5px;
+ background-color: #ffffff;
+ cursor: pointer;
+}
+#gallery_bigimg
+{
+ width: 802px;
+ position: fixed;
+ top: 10%;
+ left: 25%;
+ z-index: 99;
+ padding: 5px;
+ background: #ffffff;
+}
+#gallery_bigimg span#tit_bigimg
+{
+ width: 100%;
+ height: 25px;
+ text-align: center;
+ float: right;
+}
+#gallery_bigimg span#close_bigimg
+{
+ width: 21px;
+ height: 21px;
+ background: url('/public/img/close.gif') no-repeat center;
+ cursor: pointer;
+ position: absolute;
+ right: 8px;
+ z-index: 2;
+}
+/*************车型列表*************/
+.content_bikes
+{
+ width: 1005px;
+ height: auto;
+ margin: 5px auto;
+}
+.bikes_bg
+{
+ width: 1005px;
+ height: auto;
+ padding: 5px;
+ display: inline-block;
+ position: relative;
+}
+.bikes_bg div.bg
+{
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ top: 0px;
+ left: 0px;
+ z-index: -1;
+ background-color: #9a8764;
+ filter:alpha(opacity=50);
+ -moz-opacity:50;
+ opacity: 0.5;
+}
+.bikes_bg h1
+{
+ background-color: #9a8764;
+ padding: 10px 0px 10px 10px;
+ font-family: Arial;
+ font-size: 24px;
+ font-weight: normal;
+ text-align: left;
+}
+.content_bikes ul.bikes_list
+{
+ width: 1000px;
+ padding: 10px 5px 10px 5px;
+ display: inline-block;
+}
+.content_bikes ul.bikes_list li
+{
+ float: left;
+ margin-right: 5px;
+ margin-top: 5px;
+ padding: 5px;
+ background-color: #ffffff;
+ text-align: center;
+}
+.content_bikes ul.bikes_list li a
+{
+ font-family: 'Vrinda';
+ font-size: 12px;
+ font-weight: bold;
+ color:#9a8764;
+}
+/*************车子详细信息*************/
+.bike_top
+{
+ margin-left: 30px;
+}
+.bike_top a.bike_img
+{
+ float: left;
+ width: 440px;
+ background-color: #ffffff;
+ display: table-cell;
+ text-align: center;
+ vertical-align: middle;
+}
+.bike_top .bike_img img
+{
+ width: 440px;
+}
+.bike_top .bike_top_intr
+{
+ float: right;
+ width: 460px;
+ text-align: left;
+}
+.bike_top_intr h1
+{
+ line-height: 160%;
+ font-weight: normal;
+ font-family: 'consolas';
+ font-size:40px;
+}
+.bike_top_intr h4
+{
+ font-family: 'consolas';
+ font-size:18px;
+ font-weight: normal;
+ color: #ffffff;
+ line-height: 160%;
+ padding-left: 40px;
+}
+.bike_top_intr h4 strong
+{
+ font-family: 'consolas';
+ font-size:20px;
+ color:#ef8600;
+ margin-right: 40px;
+ font-weight: bold;
+}
+.bike_top_intr .intr_focus
+{
+ width: 100%;
+ margin: 0px;
+ text-align: left;
+}
+.intr_focus li
+{
+ width: 100%;
+ height: auto;
+ line-height: 100%;
+ display: inline-block;
+ font-size: 16px;
+ display: inline-table;
+}
+.intr_focus li span
+{
+ width: 20%;
+ height: 100%;
+ display: inline-block;
+ vertical-align: top;
+}
+.intr_focus li font
+{
+ width: 79%;
+ display: inline-block;
+ line-height: 150%;
+}
+
+.bike_des
+{
+ margin-top: 20px;
+ margin-left: 30px;
+ padding: 10px;
+ position: relative;
+}
+.bike_des div.bike_des_bg
+{
+ width: 100%;
+ height: 100%;
+ position: absolute;
+ top: 0px;
+ left: 0px;
+ z-index: -1;
+ background-color: #919191;
+ filter:alpha(opacity=50);
+ -moz-opacity:50;
+ opacity: 0.5;
+}
+.bike_des img
+{
+ width: 45px;
+ height: auto;
+ margin-left: 10px;
+ margin-right: 10px;
+ float: left;
+}
+.bike_des .bike_des_info
+{
+ width: 92%;
+ display: inline-block;
+ float: right;
+ text-align: left;
+}
+.bike_des_info h1
+{
+ font-family:'微软雅黑';
+ font-size:22px;
+ font-weight:bold;
+ line-height: 45px;
+}
+.bike_des_info h1 a
+{
+ color: yellow;
+ text-decoration: underline;
+ font-size: 20px;
+ font-weight: normal;
+ padding-left: 20px;
+}
+.bike_des_info p.bike_content
+{
+ text-indent: 2em;
+ line-height: 150%;
+ font-family: '微软雅黑';
+ font-size: 16px;
+ letter-spacing: 1px
+}
+.bike_des .bike_pdf
+{
+ top: -25px;
+ right: 0px;
+ position: absolute;
+ font-family:'宋体';
+ font-size:12px;
+ color:#818181;
+ text-decoration: underline;
+ background: url('/public/img/ico_down.png') no-repeat;
+ padding-left: 20px;
+}
+/*************新闻*************/
+.content_news
+{ width: 1005px; height: auto; margin: 5px auto; text-align: left; }
+.content_news .news_lists
+{ float: left; width: 680px; padding-left: 20px; }
+.post, .post_detail
+{ margin-bottom: 10px; display: block; padding-bottom: 5px; padding-right: 5px; }
+.post:hover
+{ -moz-box-shadow: 3px 3px 4px #000; -webkit-box-shadow: 3px 3px 4px #000; box-shadow: 3px 3px 4px #000; opacity: 0.9; filter: alpha(opacity=90); -moz-opacity:0.9; }
+.post .date, .post_detail .date
+{ float: left; width: 79px; height: 79px; margin: 0; margin-left: 20px; padding-top: 9px; line-height: normal; text-transform: uppercase; text-align: center; font-size: 11px; font-weight: bold; color: #ef8600; }
+.post .date b, .post_detail .date b
+{ margin: 0; padding: 0; display: block; font-size: 32px; color: #ef8600; }
+.post .title, .post_detail .title
+{ margin: 0; padding: 5px 0 0 0; margin-left: 10px; padding-left: 10px; color: #ffffff; }
+.post .meta, .post_detail .meta
+{ margin: 0 0 10px 100px; padding: 3px 10px 5px 10px; /*background: #A3CFD9; border: 2px #CCE5EB solid;*/ line-height:normal; text-transform: uppercase; color: #000000; }
+.post .meta p
+{}
+.post .meta a
+{ color: #DA2128; }
+.post .entry, .post_detail .entry
+{ margin: 0; padding: 10px 0 20px 100px; text-indent: 2em; line-height: 150%; word-break:break-all; word-wrap:break-word; white-space:normal;}
+.post .entry .focus, .post_detail .entry
+{ text-indent: 0em; margin-bottom: 10px; width: 580px; float: left; }
+.post .entry p a
+{ color: #ffffff; font-size: 14px; }
+.post .entry p a:hover
+{ text-decoration: underline; }
+/*post_detail*/
+.post_detail .entry
+{ margin: 0; padding: 10px 0 20px 100px; line-height: 150%; word-break:break-all; word-wrap:break-word; white-space:normal;}
+
+/* Sidebar */
+.sidebar
+{ float: right; width: 240px; padding-top: 20px; margin-bottom: 20px; }
+.sidebar ul
+{ margin: 0; padding: 0; list-style: none; }
+.sidebar li
+{ margin-bottom: 30px; }
+.sidebar li ul
+{ border-bottom: 1px dashed #ffffff; }
+.sidebar li li
+{ margin: 0; padding: 4px 0 4px 0; font-size: 14px; }
+.sidebar li li a
+{ color: #ffffff; font-size: 14px; }
+.sidebar h2
+{ padding: 0; margin: 0 0 6px 0; font-size: 18px; font-weight: bold; color: #ffffff; }
+.sidebar a
+{ text-decoration: none; color: #ffffff; }
+.sidebar a:hover
+{ text-decoration: underline; color: #ef8600; }
+.sidebar_contactus p
+{ line-height: 150%; font-size: 14px; text-indent: 2em; }
+.sidebar_contactus p span
+{ width: 35px; display: inline; float: left; text-align: right; }

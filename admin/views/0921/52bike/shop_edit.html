@@ -1,0 +1,96 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>经销商管理</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li><a href="{%$smarty.const.BASEURL%}shop/newsList">经销商列表</a></li>
+				<li class="current"><a href="{%$smarty.const.BASEURL%}shop/newsEdit">添加/编辑经销商信息</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form class="stdform" action="{%$smarty.const.BASEURL%}shop/doEditNewsInfo" method="post" enctype="multipart/form-data">
+				<p>
+					<label>所属城市：</label>
+					<span class="field">
+						{%getCitySelect($info.provice_id, $info.city_id, $info.town_id)%}
+						<br/><small id="tip_city"></small>
+					</span>
+				</p>
+				<p>
+					<label>经销商名称：</label>
+					<span class="field">
+						<input class="smallinput" type="text" name="shop_name" id="shop_name" value="{%$info.shop_name%}" /><small id="tip_shop_name"></small>
+					</span>
+				</p>
+				<p>
+					<label>地址：</label>
+					<span class="field">
+						<input class="xsmallinput" type="text" name="address" id="address" value="{%$info.address%}" /><small id="tip_address"></small>
+					</span>
+				</p>
+				<p>
+					<label>别名：</label>
+					<span class="field">
+						<input class="xsmallinput" type="text" name="address_en" id="address_en" value="{%$info.address_en%}" /><small id="tip_address_en"></small>
+					</span>
+				</p>
+				<p>
+					<label>联系人信息：</label>
+					<span class="field">
+						姓名：<input class="xxxsmallinput" type="text" name="contacts" id="contacts" value="{%$info.contacts%}" />
+						座机（TEL）：<input class="xxxsmallinput" type="text" name="tel" id="tel" value="{%$info.tel%}" />
+						手机（MOBILE）：<input class="xxxsmallinput" type="text" name="mobile" id="mobile" value="{%$info.mobile%}" />
+						Q  Q：<input class="xxxsmallinput" type="text" name="qq" id="qq" value="{%$info.qq%}" />
+					</span>
+				</p>
+				<p>
+					<label>店铺图片</label>
+					<span class="field">
+						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload"></font>
+						<br/>
+						<br/><input class="smallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image%}" />
+						<br/><small>TIP:宽度180px，高度：125px;</small>
+						<br/>
+						<img id="file_view_fileToUpload" src="{%imageUrl({%$info.image%})%}" {%if $info.image eq ''%}style="display:none;"{%/if%} />
+					</span>
+				</p>
+				<p>
+					<label>排序：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="sortnum" id="sortnum" value="{%$info.sortnum%}" />
+						<br/><small>默认为0，按降序排序</small>
+					</span>
+				</p>
+				<p class="stdformbutton">
+					<input type="hidden" name="id" value="{%$info.id%}" />
+					<input type="hidden" name="get_params" value="{%$get_params%}" />
+					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bike/doEditNewsInfo');" value="提 交" />
+					&nbsp;&nbsp;
+					<input type="button" class="stdbtn" onclick="button_location('{%$smarty.const.BASEURL%}bike/shop?{%urlDeCodeForSmarty($get_params)%}')" value="返 回" />
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {  
+	jQuery('select.uniformselect, input:file').uniform();
+});
+</script>
+</body>
+</html>

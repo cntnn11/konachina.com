@@ -1,0 +1,145 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>单车列表</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li><a href="{%$smarty.const.BASEURL%}bike/bikeList">单车列表</a></li>
+				<li class="current"><a href="{%$smarty.const.BASEURL%}bike/bikeEdit">添加/编辑单车</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form class="stdform" action="{%$smarty.const.BASEURL%}bike/doEditBikeInfo" method="post">
+				<p>
+					<label>归属产品类别：</label>
+					<span class="field">
+						<select name="type" class="uniformselect">
+							{%html_options options=$cate_type selected=$info.type%}
+						</select>
+					</span>
+				</p>
+				<p>
+					<label>车型年代：</label>
+					<span class="field">
+						<select name="year" class="uniformselect">
+							{%html_options options=$year_conf selected=$info.year%}
+						</select>
+					</span>
+				</p>
+				<p>
+					<label>名称：</label>
+					<span class="field">
+						<input class="smallinput" type="text" name="info[b_name]" id="b_name" value="{%$info.name%}" />
+					</span>
+				</p>
+				<p>
+					<label>价格：</label>
+					<span class="field">
+						<input class="smallinput" type="text" name="info[price]" id="price" value="{%$info.price%}" />
+					</span>
+				</p>
+				<p>
+					<label>车型官网链接</label>
+					<span class="field">
+						<input class="smallinput" type="text" name="info[detail_url]" id="detail_url" value="{%$info.detail_url%}" />
+					</span>
+				</p>
+				<p>
+					<label>车型描述：</label>
+					<span class="field">
+						<textarea class="xmediuminput" style="height:200px;" type="text" name="info[desc]" id="desc">{%$info.desc%}</textarea>
+					</span>
+				</p>
+				<p>
+					<label>上传图片：</label>
+					<span class="field">
+						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload"></font>
+						<br/>
+						<br/><input class="smallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image_url%}" />
+						<br/><small>TIP:宽度440px，高度：300px;</small>
+						<br/>
+						<img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+					</span>
+				</p>
+				<p>
+					<label>优点一：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue1][tit]" id="virtue1_tit" value="{%$info.virtue1.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue1][desc]" id="virtue1_desc" value="{%$info.virtue1.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>优点二：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue2][tit]" id="virtue2_tit" value="{%$info.virtue2.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue2][desc]" id="virtue2_desc" value="{%$info.virtue2.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>优点三：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue3][tit]" id="virtue3_tit" value="{%$info.virtue3.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue3][desc]" id="virtue3_desc" value="{%$info.virtue3.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>优点四：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue4][tit]" id="virtue4_tit" value="{%$info.virtue4.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue4][desc]" id="virtue4_desc" value="{%$info.virtue4.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>优点五：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue5][tit]" id="virtue5_tit" value="{%$info.virtue5.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue5][desc]" id="virtue5_desc" value="{%$info.virtue5.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>优点六：</label>
+					<span class="field">
+						<input class="xxxsmallinput" type="text" name="info[virtue6][tit]" id="virtue5_tit" value="{%$info.virtue6.tit%}" /> - 
+						<input class="xmediuminput" type="text" name="info[virtue6][desc]" id="virtue5_desc" value="{%$info.virtue6.desc%}" />
+					</span>
+				</p>
+				<p>
+					<label>排序：</label>
+					<span class="field">
+						<input class="smallinput" type="text" name="info[sort]" id="sort" value="{%$info.sort%}" />
+						<br/><small>降序排序</small>
+					</span>
+				</p>
+
+				<p class="stdformbutton">
+					<input type="hidden" name="id" value="{%$info.id%}" />
+					<input type="hidden" name="get_params" value="{%$get_params%}" />
+					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bike/doEditBikeInfo');" value="提 交" />
+					&nbsp;&nbsp;
+					<input type="button" class="stdbtn" onclick="button_location('{%$smarty.const.BASEURL%}bike/bikeList?{%urlDeCodeForSmarty($get_params)%}')" value="返 回" />
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {  
+	jQuery('select.uniformselect, input:file').uniform();
+});
+</script>
+</body>
+</html>

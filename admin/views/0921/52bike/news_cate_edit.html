@@ -1,0 +1,65 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>新闻类别</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li><a href="{%$smarty.const.BASEURL%}bikenews/newsCate">新闻类别列表</a></li>
+				<li class="current"><a href="{%$smarty.const.BASEURL%}bikenews/newsCateEdit">添加/编辑新闻类别</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form class="stdform" action="{%$smarty.const.BASEURL%}bike/doEditNewsCate" method="post">
+				<p>
+					<label>类别名称：</label>
+					<span class="field">
+						<input type='text' name="model_name" id="model_name" value="{%$info.name%}" class="smallinput" />
+					</span>
+				</p>
+				<p>
+					<label>英文标题：</label>
+					<span class="field">
+						<input type='text' name="title" id="title" value="{%$info.title%}" class="smallinput" />
+						<br/><small>改标题用于网站链接、网站优化使用，保持唯一</small>
+					</span>
+				</p>
+				<p>
+					<label>类别描述：</label>
+					<span class="field">
+						<textarea class="smallinput" name="desc" id="desc" cols="80" rows="5">{%$info.desc%}</textarea>
+					</span>
+				</p>
+				<p>
+					<label>排序：</label>
+					<span class="field">
+					<input class="smallinput" type="text" name="sortnum" id="sortnum" value="{%$info.sortnum%}" />
+						<br/><small>排序规则按照倒序排序</small>
+					</span>
+				</p>
+				<p class="stdformbutton">
+					<input type="hidden" name="id" value="{%$info.id%}" />
+					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bikenews/doEditNewsCate');" value="提 交" />
+					&nbsp;&nbsp;
+					<input type="button" class="stdbtn" onclick="button_location('{%$smarty.const.BASEURL%}bikenews/newsCate')" value="返 回" />
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>

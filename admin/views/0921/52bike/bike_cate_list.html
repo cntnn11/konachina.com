@@ -1,0 +1,95 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>车型类别</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li class="current"><a href="{%$smarty.const.BASEURL%}bike/bikeCateList">车型类别列表</a></li>
+				<li><a href="{%$smarty.const.BASEURL%}bike/bikeCateEdit">添加/编辑车型类别</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<table cellpadding="0" cellspacing="0" border="0" class="margintop20 stdtable stdtablecb" id="tablemain">
+				<colgroup>
+					<col class="con0" style="width: 4%" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th class="head0 nosort" style="width: 4%;"><input type="checkbox" class="checkall" /></th>
+						<th class="head1">排序ID</th>
+						<th class="head0">类别名称</th>
+						<th class="head1">类别描述</th>
+						<th class="head0">添加时间</th>
+						<th class="head1 nosort">操作</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="7">
+						<span class="floatright">{%$page%}</span>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+				<!-- 列表数据循环主体 -->
+				{%foreach item=row from=$list%}
+					<tr>
+						<td>
+							<input name="sel_id[]" type="checkbox" value="{%$row.id%}" />
+							<input type='hidden' name='catid[]' value='{%$row.id%}' />
+						</td>
+						<td>{%$row.sort%}</td>
+						<td>{%$row.model_name%}</td>
+						<td>{%$row.description%}</td>
+						<td>{%$row.createdate%}</td>
+						<td>
+							<!-- Icons -->
+							<a href="{%$smarty.const.BASEURL%}bike/bikeCateEdit/?id={%$row.id%}" title="Edit">编辑</a>&nbsp;
+							<select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}bike/ajaxBikeCateChangeFlag' aid='{%$row.id%}' old="{%$row.flag%}">
+								{%html_options options=$flag_arr selected=$row.flag%}
+							</select>
+							<img class="flagtip{%$row.id%}" src="/admin/public/0921/images/loaders/loader2.gif?1013" style="display:none;" />
+						</td>
+					</tr>
+				{%foreachelse%}
+					<tr>
+						<td colspan="7" class="aligncenter">暂时没有数据</td>
+					</tr>
+				{%/foreach%}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	jQuery('#tablemain').dataTable({
+		"sPaginationType": "full_numbers",
+		"fnDrawCallback": function(oSettings) {
+			jQuery('input:checkbox,input:radio').uniform();
+		}
+	});
+	jQuery('input:checkbox').uniform();
+});
+</script>
+</body>
+

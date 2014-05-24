@@ -1,0 +1,31 @@
+{%include file="52kona/header.html"%}
+<div class="body_page">
+	<div class="body_bg">&nbsp;</div>
+	<div class="bike_detail">
+		<div class="bike_top">
+			<a class="bike_img" href="{%imageUrl($bike_info.image_url)%}" target="_blank"><img src="{%imageUrl($bike_info.image_url, 440)%}" title="{%$bike_info.name%}" width="440px" /></a>
+			<div class="bike_top_intr">
+				<h1>{%$bike_info.name%}</h1>
+				<h4>{%$bike_info.type%}&nbsp;&nbsp;&nbsp;&nbsp;{%$bike_info.year%}款&nbsp;&nbsp;&nbsp;&nbsp;
+					<strong>{%if $bike_info.price > 0%}￥{%$bike_info.price%}{%/if%}</strong></h4>
+				<ul class="intr_focus">
+					{%foreach item=virtue from=$bike_virtue%}
+					<li><span>{%$virtue.tit%}：</span><font>{%$virtue.desc%}</font></li>
+					{%/foreach%}
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="bike_des">
+			<div class="bike_des_bg"></div>
+			<img src="/public/img/logo_small.png" title="konachian.com">
+			<div class="bike_des_info">
+				<h1>车型介绍{%if $bike_info.detail_url%}<a href="{%$bike_info.detail_url%}" target="_blank">车型配置</a>{%/if%}</h1>
+				<p class="bike_content">{%$bike_info.desc%}</p>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

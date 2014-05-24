@@ -1,0 +1,35 @@
+{%include file="52kona/header.html"%}
+<div class="body_page">
+	<div class="body_bg"></div>
+	<div class="body_content">
+		<div class="content_title">
+			<span class="float-left">Kona车型</span>
+			<h3 class="float-right">
+				{%foreach item=date from=$year_arr%}
+					<a href="{%bikeListUrl($date)%}" {%if $date==$year%}class="year_now"{%/if%} >{%$date%}款车型 </a>
+				{%/foreach%}
+			</h3>
+			<div class="clear"></div>
+			<hr/>
+		</div>
+		{%foreach item=bike_lists key=type from=$lists%}
+		<div class="content_bikes">
+			<div class="bikes_bg">
+				<div class="bg"></div>
+				<h1>{%$bike_type[$type]%}</h1>
+				<ul class="bikes_list">
+					{%foreach item=info from=$bike_lists%}
+						<li>
+							<a href="{%bikesUrl($info.id)%}" target="_blank" alt="{%$info.name%}">
+								<img src="{%imageUrl($info.image_url, 150)%}" title="{%$info.name%}" width="150" height="92" /><br/>{%$info.name%}							
+							</a>
+						</li>
+					{%/foreach%}
+				</ul>
+			</div>
+		</div>
+		{%/foreach%}
+	</div>
+</div>
+</body>
+</html>

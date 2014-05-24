@@ -1,0 +1,19 @@
+@font-face {
+	font-family: 'Arial';
+	src: url('webfonts/arial.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+
+}
+@font-face {
+	font-family: 'Vani';
+	src: url('webfonts/Vani.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: '微软雅黑';
+	/*src: url('webfonts/msyh.ttf') format('truetype');*/
+	font-weight: normal;
+	font-style: normal;
+}
