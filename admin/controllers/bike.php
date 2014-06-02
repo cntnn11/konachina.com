@@ -380,41 +380,22 @@ class bike extends CI_Controller
 		}
 		if($_GET['shopname'])
 		{
-			$like['name']			= $_GET['shopname'];
+			$like['shop_name']			= $_GET['shopname'];
 			$get_params				.= '&shopname='.$_GET['shopname'];
 		}
-		if($_GET['provice_id'] > 0)
+
+		$shop_total	= $this->bike->getShopTotal($where, $like);
+		if( $shop_total )
 		{
-			$where['provice_id']		= $_GET['provice_id'];
-			$get_params				.= '&provice_id='.$_GET['provice_id'];
-		}
-		if($_GET['city_id'] > 0)
-		{
-			$where['city_id']		= $_GET['city_id'];
-			$get_params				.= '&city_id='.$_GET['city_id'];
-		}
-		if($_GET['town_id'] > 0)
-		{
-			$where['town_id']		= $_GET['town_id'];
-			$get_params				= '&town_id='.$_GET['town_id'];
+			$shop_lists		= $this->bike->getShopList($where, $like, $offset, $limit);
+			$this->page		= pageNew(BASEURL.'bike/shop/?'.$get_params, $total, $offset, $limit);
+			$this->lists	= $shop_lists;
 		}
 
-		//$bike_list	= $this->bike->getProductList($where, $like, $offset, $limit);
-		/*if(is_array($bike_list) && !empty($bike_list))
-		{
-			foreach ($bike_list as $key => $row)
-			{
-				$bike_list[$key]['desc']	= strsub($row['desc'], 0, 20, 'utf8', '...');
-			}
-		}
-		$bike_total			= $this->bike->getProductLikeTotal($where, $like);*/
-		$this->page			= pageNew(BASEURL.'bike/shop/?'.$get_params, $total, $offset, $limit);
-		$this->lists		= $shop_list;
 		$this->get			= $_GET;
 		$this->get_params	= urlencode($get_params);
-
-		$this->js_arr	= array('plugins/jquery.dataTables.min.js', 'plugins/jquery.uniform.min.js');
-		$this->display('0921/52bike/shop_list');
+		$this->js_arr		= array('plugins/jquery.dataTables.min.js', 'plugins/jquery.uniform.min.js');
+		$this->display( '0921/52bike/shop_list' );
 	}
 
 	/**
@@ -435,5 +416,58 @@ class bike extends CI_Controller
 		$this->info	= (array)$info;
 		$this->js_arr	= array('plugins/jquery.uniform.min.js', 'plugins/jquery.ajaxfileupload.js', 'plugins/jquery.validate.min.js');
 		$this->display('0921/52bike/shop_edit');
+	}
+
+	function doEditShopInfo()
+	{
+		$id			= _pv('id', 0);
+		$get_params	= _pv('get_params');
+
+		$data['shop_name']		= _pv('shop_name', '');
+		$data['city_name']		= _pv('city_name', '');
+		$data['postcode']		= _pv('postcode', 0);
+		$data['address']		= _pv('address');
+		$data['contacts']		= _pv('contacts');
+		$data['tel']			= _pv('tel', 0);
+		$data['mobile']			= _pv('mobile', 0);
+		$data['qq']				= _pv('qq', 0);
+		$data['image']			= _pv('upload_fileToUpload');
+		$data['sort']			= _pv('sort', 0);
+		$data['updatedate']		= date('Y-m-d H:i:s');
+
+		if($id > 0)
+		{
+			$rs	= $this->bike->updateShopInfoById( array('id'=>$id), $data );
+		}
+		else
+		{
+			$data['flag']		= 1;
+			$data['createdate']	= date('Y-m-d H:i:s');
+			$rs	= $this->bike->insertShopInfo( $data );
+		}
+
+		$get_params	= urldecode($get_params);
+		if($rs !== FALSE)
+		{
+			$id	= is_numeric($rs)&&$rs>0 ? $rs : $id;
+			redirect( BASEURL.'bike/shop?'.$get_params );
+		}
+		else
+		{
+			redirect( BASEURL.'bike/shopEdit?id='.$id.'&get_params='.$get_params );
+		}
+	}
+	function ajaxShopChangeFlag()
+	{
+		error_reporting(E_ALL);
+		$id		= $_POST['id'];
+		$flag	= $_POST['flag'];
+
+		if($id)
+		{
+			$this->bike->updateShopInfoById( $id, array('flag'=>(int)$flag) );
+			_ars('OK', TRUE);
+		}
+		_ars('NO', FALSE);
 	}
 }

@@ -267,7 +267,12 @@ class bike_model extends CI_Model
 	function getShopList($where = array(), $like = array(), $offset = 0, $limit = 25)
 	{
 		$this->table	= self::BIKESHOP_TABLE;
-		return $this->limit($offset, $limit)->like($like)->orderby(array('sort'=>'asc','createdate'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->like($like)->orderby(array('sort'=>'desc','createdate'=>'desc'))->getall('*', $where);
+	}
+	function getShopTotal($where = array(), $like = array(), $offset = 0, $limit = 25)
+	{
+		$this->table	= self::BIKESHOP_TABLE;
+		return $this->like($like)->countTable($where);
 	}
 	function getShopInfoById($id = 0, $field = '*')
 	{
@@ -283,7 +288,7 @@ class bike_model extends CI_Model
 		if(is_array($data) && !empty($data) && intval($id) > 0)
 		{
 			$this->table	= self::BIKESHOP_TABLE;
-			return $this->update($data, array('id'=>$id));
+			return $this->update( $data, array('id'=>$id) );
 		}
 		return FALSE;
 	}

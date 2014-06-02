@@ -13,7 +13,7 @@
 	<div class="centercontent">
 		<ul class="breadcrumbs">
 			<li><a>52BIKE</a></li>
-			<li><a>经销商列表</a></li>
+			<li>经销商管理</li>
 		</ul>
 		<div class="pageheader notab">
 			<ul class="hornav">
@@ -23,10 +23,10 @@
 		</div>
 		<div id="contentwrapper" class="contentwrapper widgetpage">
 			<form action="{%$smarty.const.BASEURL%}bike/shop" method="get">
-				<i>添加时间：</i>
+				<!-- <i>添加时间：</i>
 				<input type="text" name='dates' id='dates' value='{%$get.dates%}' class="width125" />
 				-&nbsp;&nbsp;<input type="text" name='datee' id='datee' value='{%$get.datee%}' class="width125" />
-				&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp; -->
 				<i>经销商名称：</i>
 				<input type='text' name='shopname' id='shopname' value='{%$get.shopname%}' class="width100" />
 				&nbsp;&nbsp;&nbsp;&nbsp;<i>状态：</i>
@@ -34,9 +34,6 @@
 					<option value=''>全部</option>
 					{%html_options options=$flag_arr selected=$get.flag%}
 				</select>
-				<br/>
-				<i>经销商地点：</i>
-				{%getCitySelect($get.provice_id, $get.city_id, $get.town_id)%}
 				<button class="radius3">点击查询</button>
 			</form>
 			<table cellpadding="0" cellspacing="0" border="0" class="margintop20 stdtable stdtablecb">
@@ -76,14 +73,14 @@
 				{%foreach item=row from=$lists%}
 				<tr>
 					<td><input name="sel_id[]" type="checkbox" value="{%$row.id%}" /></td>
-					<td>{%$row.name%}</td>
-					<td>{%$row.address%}</td>
+					<td>{%$row.shop_name%}</td>
+					<td>{%$row.city_name%}({%$row.postcode%}) - {%$row.address%}</td>
 					<td>{%$row.contacts%}</td>
-					<td>{%$row.desc%}</td>
+					<td>TEL: {%$row.tel%}<br/>MOBILE: {%$row.mobile%}<br/>QQ:{%$row.qq%}</td>
 					<td>{%$row.createdate%}</td>
 					<td>
 						 <a href="{%$smarty.const.BASEURL%}bike/shopEdit/?id={%$row.id%}&get_params={%$get_params%}" title="Edit">编辑</a>&nbsp;
-						 <select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}bike/ajaxBikeChangeFlag' aid='{%$row.id%}' old="{%$row.flag%}">
+						 <select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}bike/ajaxShopChangeFlag' aid='{%$row.id%}' old="{%$row.flag%}">
 							{%html_options options=$flag_arr selected=$row.flag%}
 						</select>
 						<img class="flagtip{%$row.id%}" src="/admin/public/0921/images/loaders/loader2.gif?1013" style="display:none;" />
