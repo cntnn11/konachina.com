@@ -5,7 +5,7 @@ class bike_model extends CI_Model
 	const PRODUCT_TABLE			= 'qy_bike';
 	const PRODUCTCATE_TABLE		= 'qy_product_cate';
 	const PRODUCTIMAGES_TABLE	= 'qy_product_images';
-	const VIDEO_INDEXURL_TABLE	= 'qy_video_indexurl';
+	const VIDEO_INDEXURL_TABLE	= 'qy_video_indexurl';	// 废弃不用，包括所属方法
 	const IMAGES_TABLE			= 'qy_images';
 	const BIKENEWSCATE_TABLE	= 'bike_news_cate';
 	const BIKENEWS_TABLE		= 'bike_news';

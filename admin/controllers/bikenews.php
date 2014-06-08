@@ -164,6 +164,7 @@ class bikenews extends CI_Controller
 		$data['author']		= _pv('author', 'admin');
 		$data['sortnum']	= _pv('sortnum', 0);
 		$data['content']	= htmlspecialchars(_pv('content', ''));
+		$data['group_month']= date('Y年n月');
 
 		if($id)
 		{
