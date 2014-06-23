@@ -233,7 +233,8 @@ function ajaxfileupload(obj)
 			},
 			error: function (data, status, e)
 			{
-				alert(e+"\n 请重新上传，图片是否太大，网络是否不好？");
+console.log(data, status, e);
+				jAlert(data+"\n 请重新上传，图片是否太大，网络是否不好？");
 			}
 		}
 	)

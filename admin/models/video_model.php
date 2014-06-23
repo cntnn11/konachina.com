@@ -10,7 +10,7 @@ class video_model extends CI_Model
 	function getVideoList($where = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::VIDEO_TABLE;
-		return $this->limit($offset, $limit)->getall('*', $where);
+		return $this->limit($offset, $limit)->orderby(array('id'=>'desc'))->getall('*', $where);
 	}
 	function getVideoTotal($where = array())
 	{
@@ -44,6 +44,23 @@ class video_model extends CI_Model
 	{
 		$this->table	= self::VIDEO_TABLE;
 		return $this->insert($data);
+	}
+
+	public function getVideoConf()
+	{
+		$this->table	= self::VIDEO_TABLE;
+		$where['flag >']	= 0;
+		$result	= $this->orderby(array('id'=>'desc'))->getall('*', $where);
+		if(is_array($result) && $result )
+		{
+			foreach ($result as $key => $value)
+			{
+				$data[$value['id']]['id']		= $value['id'];
+				$data[$value['id']]['title']	= $value['title'];
+				$data[$value['id']]['video_url']= $value['video_url'];
+			}
+		}
+		return (array)$data;
 	}
 }
 ?>

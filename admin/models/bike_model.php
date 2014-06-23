@@ -21,7 +21,7 @@ class bike_model extends CI_Model
 	/**
 	 *	@desc 获取车型分类列表
 	*/
-	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'asc')
+	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'desc')
 	{
 		$this->table	= self::PRODUCTCATE_TABLE;
 		return $this->orderby(array('createdate'=>$sort))->limit($offset, $limit)->getall('*', $where);
@@ -223,7 +223,7 @@ class bike_model extends CI_Model
 	function getNewsList($where = array(), $like = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::BIKENEWS_TABLE;
-		return $this->limit($offset, $limit)->like($like)->orderby(array('sortnum'=>'asc','createdate'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->like($like)->orderby(array('sortnum'=>'desc','id'=>'desc'))->getall('*', $where);
 	}
 	function getNewsTotal($where = array(), $like = array())
 	{

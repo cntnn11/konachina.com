@@ -35,6 +35,8 @@ class other extends CI_Controller
 			'bikeEdit'		=> '单车信息编辑',
 			'bikenwesEdit'	=> '单车新闻信息编辑',
 
+			'teamEdit'		=> '车手信息编辑',
+
 			'shopEdit'		=> '经销商信息编辑',
 		);
 		if(isset($arr[$tip_type]) && !empty($arr[$tip_type]))

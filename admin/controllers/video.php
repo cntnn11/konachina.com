@@ -78,4 +78,9 @@ class video extends CI_Controller
 		}
 		_ars('NO', FALSE);
 	}
+
+	function ajaxGetLikeVideo()
+	{
+		
+	}
 }

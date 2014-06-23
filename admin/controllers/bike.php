@@ -4,12 +4,13 @@ class bike extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->admin	= isAdminLogin();
+		$this->admin		= isAdminLogin();
 		$this->load->model('bike_model', 'bike');
-		$this->flag_arr	= $this->config->item('flag_arr');
+		$this->flag_arr		= $this->config->item('flag_arr');
+		$this->bike_tag		= $this->config->item('bike_tag');
 	}
 
-	function video()
+	/*function video()
 	{
 		if(isset($_POST['info']) && !empty($_POST['info']))
 		{
@@ -38,7 +39,7 @@ class bike extends CI_Controller
 		$data['url_index']	= trim(_pv('url_index'));
 		$this->bike->updateIndexVideoUrl($data);
 		redirect(BASEURL.'bike/video');
-	}
+	}*/
 
 
 	/**
@@ -237,52 +238,58 @@ class bike extends CI_Controller
 		if($id > 0)
 		{
 			$info	= $this->bike->getProductInfoFromId($id);
-			if(is_array($info) && !empty($info))
-			{
-				//循环处理亮点
-				for ($i = 0; $i <= 5; $i++)
-				{
-					$key	= 'virtue'.($i+1);
-					$info[$key]	= (array)json_decode($info[$key]);
-				}
-			}
 		}
+
+		$info['image_url']		= unserialize($info['image_url']);
+		$info['more_video']		= unserialize($info['more_video']);
+		$info['more_article']	= unserialize($info['more_article']);
+		$info['virtue']			= unserialize($info['virtue']);
 
 		$this->info	= (array)$info;
 		$this->cate_type	= $this->_getCateArr();
 		$this->year_conf	= $this->_getYearConf();
 		$this->get_params	= urlencode(_gv('get_params'));
 
-		$this->js_arr	= array('plugins/jquery.dataTables.min.js', 'plugins/jquery.uniform.min.js', 'plugins/jquery.ajaxfileupload.js');
+		$this->load->model('video_model', 'video');
+		$video_data				= $this->video->getVideoConf();
+		$this->video_data		= $video_data;
+		$this->video_data_json	= json_encode( $video_data );
+		$art_data_result		= $this->bike->getNewsList(array('flag >'=>0));
+		if( $art_data_result )
+		{
+			foreach ($art_data_result as $key => $value)
+			{
+				$art_data[$value['id']]['id']		= $value['id'];
+				$art_data[$value['id']]['title']	= $value['title'];
+			}
+		}
+		$this->art_data			= $art_data;
+		$this->art_data_json	= json_encode( (array)$art_data );
+
+		$this->js_arr	= array('plugins/jquery.dataTables.min.js', 'plugins/jquery.uniform.min.js',  'plugins/jquery.alerts.js', 'plugins/jquery.ajaxfileupload.js');
 		$this->display('0921/52bike/bike_edit');
 	}
 
 	function doEditBikeInfo()
 	{
-		$id		= _pv('id');
-		$info	= _pv('info');
-		$get_params	= _pv('get_params');
-		$data['type']	= _pv('type');
-		$data['year']	= _pv('year');
-		$data['image_url']	= _pv('upload_fileToUpload');
-		$data['pdf_url']	= _pv('pdf_url');
+		$id						= _pv('id');
+		$info					= _pv('info');
+		$get_params				= _pv('get_params');
+		$data['tag_id']			= $info['tag_id'];
+		$data['type']			= $info['type'];
+		$data['year']			= $info['year'];
+		$data['pdf_url']		= _pv('pdf_url');
 
-		$data['name']	= $info['b_name'];
-		$data['price']	= $info['price'];
-		$data['desc']	= $info['desc'];
-		$data['detail_url']	= $info['detail_url'];
-		$data['sort']	= empty($info['sort']) ? 0 : (int)$info['sort'];	//999999
+		$data['name']			= $info['b_name'];
+		$data['price']			= $info['price'];
+		$data['desc']			= $info['desc'];
+		$data['detail_url']		= $info['detail_url'];
+		$data['sort']			= (int)$info['sort'];	//999999
 
-		//循环获取亮点
-		for ($i = 0; $i < 6; $i++)
-		{
-			if(!empty($info['virtue'.($i+1)]))
-			{
-				$key	= 'virtue'.($i+1);
-				$virtue_arr	= $info[$key];
-				$data[$key]	= json_encode($virtue_arr);
-			}
-		}
+		$data['virtue']			= serialize( (array)$info['virtue'] );
+		$data['image_url']		= serialize( (array)$info['image_url'] );
+		$data['more_video']		= serialize( (array)$info['more_video'] );
+		$data['more_article']	= serialize( (array)$info['more_article'] );
 
 		if($id > 0)
 		{
@@ -348,6 +355,7 @@ class bike extends CI_Controller
 		$year_now	= date("Y");
 		$year_end	= $year_now+1;
 		$year_arr	= range($year_start, $year_end);
+		$year_arr	= array_reverse($year_arr);
 		return array_combine($year_arr, $year_arr);
 	}
 

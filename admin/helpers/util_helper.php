@@ -162,11 +162,15 @@ function imageUrl($image_path, $size = '225', $url = '')
 	$file_path_size	= $file_path_info['dirname'].DS.$size.'_'.$file_path_info['basename'];
 	$url	= $url ? $url : PUBURL;
 
-	if(is_file(PUBPATH.$file_path_size))
+	if( strpos($image_path, 'http://') !== FALSE )
+	{
+		return $image_path;
+	}
+	if( is_file(PUBPATH.$file_path_size) )
 	{
 		return $url.$file_path_size;
 	}
-	else if(is_file(PUBPATH.$image_path))
+	else if( is_file(PUBPATH.$image_path) )
 	{
 		return $url.$image_path;
 	}
