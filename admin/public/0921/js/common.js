@@ -153,7 +153,7 @@ function fileCheck(obj, file_type)
 	var msg	= '';
 	var file_ext_arr		= new Array('pdf', 'image');
 	file_ext_arr['pdf']		= ['.pdf'];
-	file_ext_arr['image']	= ['.jpg', '.png', '.gif'];
+	file_ext_arr['image']	= ['.jpg', '.jpeg','.png','.gif'];
 
 	if(!id || !obj)
 	{
@@ -200,7 +200,7 @@ function ajaxfileupload(obj)
 	// 上传图片的状态显示 其实只是在上传中显示‘菊花’图片，结束后将其隐藏
 	jQuery("#file_error_"+elementname).ajaxStart(function(){
 		jQuery(this).html('<img src="/admin/public/0921/images/loaders/loader2.gif?1013" />');
-		jQuery('#upload_'+elementname).val('上传中……');
+		//jQuery('#upload_'+elementname).val('上传中……');
 	}).ajaxComplete(function(){
 		jQuery(this).hide();
 	});
@@ -233,7 +233,8 @@ function ajaxfileupload(obj)
 			},
 			error: function (data, status, e)
 			{
-				alert(e);
+console.log(data, status, e);
+				jAlert(data+"\n 请重新上传，图片是否太大，网络是否不好？");
 			}
 		}
 	)

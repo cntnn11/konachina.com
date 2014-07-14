@@ -5,7 +5,7 @@ class bike_model extends CI_Model
 	const PRODUCT_TABLE			= 'qy_bike';
 	const PRODUCTCATE_TABLE		= 'qy_product_cate';
 	const PRODUCTIMAGES_TABLE	= 'qy_product_images';
-	const VIDEO_INDEXURL_TABLE	= 'qy_video_indexurl';
+	const VIDEO_INDEXURL_TABLE	= 'qy_video_indexurl';	// 废弃不用，包括所属方法
 	const IMAGES_TABLE			= 'qy_images';
 	const BIKENEWSCATE_TABLE	= 'bike_news_cate';
 	const BIKENEWS_TABLE		= 'bike_news';
@@ -21,7 +21,7 @@ class bike_model extends CI_Model
 	/**
 	 *	@desc 获取车型分类列表
 	*/
-	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'asc')
+	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'desc')
 	{
 		$this->table	= self::PRODUCTCATE_TABLE;
 		return $this->orderby(array('createdate'=>$sort))->limit($offset, $limit)->getall('*', $where);
@@ -223,7 +223,7 @@ class bike_model extends CI_Model
 	function getNewsList($where = array(), $like = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::BIKENEWS_TABLE;
-		return $this->limit($offset, $limit)->like($like)->orderby(array('sortnum'=>'asc','createdate'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->like($like)->orderby(array('sortnum'=>'desc','id'=>'desc'))->getall('*', $where);
 	}
 	function getNewsTotal($where = array(), $like = array())
 	{
@@ -267,7 +267,12 @@ class bike_model extends CI_Model
 	function getShopList($where = array(), $like = array(), $offset = 0, $limit = 25)
 	{
 		$this->table	= self::BIKESHOP_TABLE;
-		return $this->limit($offset, $limit)->like($like)->orderby(array('sort'=>'asc','createdate'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->like($like)->orderby(array('sort'=>'desc','createdate'=>'desc'))->getall('*', $where);
+	}
+	function getShopTotal($where = array(), $like = array(), $offset = 0, $limit = 25)
+	{
+		$this->table	= self::BIKESHOP_TABLE;
+		return $this->like($like)->countTable($where);
 	}
 	function getShopInfoById($id = 0, $field = '*')
 	{
@@ -283,7 +288,7 @@ class bike_model extends CI_Model
 		if(is_array($data) && !empty($data) && intval($id) > 0)
 		{
 			$this->table	= self::BIKESHOP_TABLE;
-			return $this->update($data, array('id'=>$id));
+			return $this->update( $data, array('id'=>$id) );
 		}
 		return FALSE;
 	}

@@ -1,0 +1,176 @@
+{%include file="0921/header.html"%}
+<body class="withvernav">
+
+<div class="bodywrapper">
+	<!-- 头部管理员信息 -->
+	{%include file="0921/top_header.html"%}
+	<!-- 头部横排导航条 -->
+	{%include file="0921/nav_header.html"%}
+	<!-- 左侧导航列表 -->
+	{%include file="0921/left_menu.html"%}
+	
+	<!-- 右侧内容区 -->
+	<div class="centercontent">
+		<ul class="breadcrumbs">
+			<li><a>52BIKE</a></li>
+			<li>视频管理</li>
+		</ul>
+		<div class="pageheader notab">
+			<ul class="hornav">
+				<li class="current"><a href="{%$smarty.const.BASEURL%}video/videoLists">视频列表</a></li>
+				<li><a href="javascript:void(0);" onclick="editViedoInfo(0);">添加视频</a></li>
+			</ul>
+		</div>
+		<div id="contentwrapper" class="contentwrapper widgetpage">
+			<form action="{%$smarty.const.BASEURL%}video/videoLists" method="get">
+				<i>状态：</i>
+				<select class="uniformselect" name='flag' id='flag'>
+					<option value=''>全部</option>
+					{%html_options options=$flag_arr selected=$get.flag%}
+				</select>
+
+				<button class="radius3">点击查询</button>
+			</form>
+			<table cellpadding="0" cellspacing="0" border="0" class="margintop20 stdtable stdtablecb">
+				<colgroup>
+					<col class="con0" style="width: 4%" />
+					<col class="con1" />
+					<col class="con0" />
+					<col class="con1" />
+					<col class="con0" />
+				</colgroup>
+				<thead>
+					<tr>
+						<td colspan="8">
+							<span class="floatright">{%$page%}</span>
+						</td>
+					</tr>
+					<tr>
+						<th class="head0 nosort" style="width: 4%;"><input type="checkbox" class="checkall" /></th>
+						<th class="head0">标题</th>
+						<th class="head1">视频链接</th>
+						<th class="head0">排序</th>
+						<th class="head1">更新时间</th>
+						<th class="head0">操作</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td colspan="8">
+							<span class="floatright">{%$page%}</span>
+						</td>
+					</tr>
+				</tfoot>
+				<tbody>
+				<!-- 列表数据循环主体 -->
+				{%foreach item=row from=$lists%}
+					<tr class="editTr{%$row.id%}">
+						<td>
+							<input  id="{%$row.id%}" name="sel_id[]" type="checkbox" value="{%$row.id%}" />
+							<input type="hidden" name="width" value="{%$row.width%}" />
+							<input type="hidden" name="height" value="{%$row.height%}" />
+							<input type="hidden" name="sort" value="{%$row.sort%}" />
+							<input type="hidden" name="title" value="{%$row.title%}" />
+							<input type="hidden" name="video_url" value="{%$row.video_url%}" />
+						</td>
+						<td>{%$row.title%}</td>
+						<td>{%$row.video_url%}</td>
+						<td>{%$row.sort%}</td>
+						<td>{%$row.updatedate%}</td>
+						<td>
+							 <a href="javascript:void('');" onclick="editViedoInfo('{%$row.id%}', []);" title="Edit">编辑</a>&nbsp;
+							 <select id="changeFlag" onchange="changeFlagAjax(this)" url='{%$smarty.const.BASEURL%}video/ajaxChangeFlagVideoLists' aid='{%$row.id%}' old="{%$row.flag%}">
+								{%html_options options=$flag_arr selected=$row.flag%}
+							</select>
+							<img class="flagtip{%$row.id%}" src="" style="display:none;" />
+						</td>
+					</tr>
+				{%foreachelse%}
+					<tr>
+						<td colspan="8" class="aligncenter">赶快添加点内容进来！</td>
+					</tr>
+				{%/foreach%}
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {  
+	jQuery('input:checkbox, select.uniformselect, input:file').uniform();
+});
+
+var video_default	= [];
+	video_default	= {%$video_info%};
+function editViedoInfo(id, info)
+{
+	if( typeof(info) == 'undefined' )
+	{
+		var info	= video_default;
+	}
+	else
+	{
+		jQuery('.editTr'+id+' input').each(function(){
+			info[jQuery(this).attr('name')]	= jQuery(this).val();
+		});
+	}
+
+	html	= '<div id="contentwrapper" class="contentwrapper widgetpage updateImage" >';
+		html	+= '<form class="diaform">';
+			html	+= '<p><label>视频标题：</label><span class="field"><input class="xmediuminput" type="text" name="title" id="video_title" value="'+info.title+'" /></span></p>';
+			html	+= '<p><label>视频链接：</label><span class="field"><input class="xmediuminput" type="text" name="video_url" id="video_url" value="'+info.video_url+'" /></span></p>';
+			html	+= '<p><label>自定义展示：</label><span class="field"><input class="xmediuminput" type="text" name="width" id="video_width" value="'+info.width+'" /></span></p>';
+			html	+= '<p><label>自定义展示：</label><span class="field"><input class="xmediuminput" type="text" name="height" id="video_height" value="'+info.height+'" /></span></p>';
+			html	+= '<p><label>排序：</label><span class="field"><input class="xmediuminput" type="text" name="sort" id="video_sort" value="'+info.sort+'" /></span></p>';
+		html	+= '</form>';
+	html	+= '</div>';
+
+	jDialog(html, '编辑视频', function(){
+		var title	= jQuery('#video_title').val();
+		var url		= jQuery('#video_url').val();
+		var width	= jQuery('#video_width').val();
+		var height	= jQuery('#video_height').val();
+		var sort	= jQuery('#video_sort').val();
+		var suburl	= '{%$smarty.const.BASEURL%}video/ajaxDoEditVideo?'+Math.random();
+		
+		jQuery('form[.diaform] input').each(function(){
+			info[jQuery(this).attr('name')]	= jQuery(this).val();
+		});
+
+		if(title.length >0 && url.length > 0)
+		{
+			jQuery.ajax({
+				type:'POST',
+				url: suburl,
+				data:'&id='+id+'&title='+title+'&url='+url+'&width='+width+'&height='+height+'&sort='+sort,
+				dataType:'json',
+				async: false,
+				success:function(msg){
+					if(msg.status == 'OK')
+					{
+						window.location.href=window.location.href;
+					}
+					else
+					{
+						jAlert(msg.data, '提交失败！', function(){
+							editViedoInfo(id, info);
+							jQuery("#popup_ok").removeAttr('stop');
+						});
+					}
+				}
+			});
+		}
+		else
+		{
+			jAlert('标题和链接是必填项目！', '提示', function(){
+				editViedoInfo(id, info);
+				jQuery("#popup_ok").removeAttr('stop');
+			});
+		}
+	});
+}
+
+</script>
+</body>

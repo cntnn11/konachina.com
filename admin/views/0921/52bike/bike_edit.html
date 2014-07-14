@@ -24,9 +24,17 @@
 		<div id="contentwrapper" class="contentwrapper widgetpage">
 			<form class="stdform" action="{%$smarty.const.BASEURL%}bike/doEditBikeInfo" method="post">
 				<p>
+					<label>标签：</label>
+					<span class="field">
+					{%foreach item=row key=k from=$bike_tag%}
+						<input type="radio" name="info[tag_id]" value="{%$row['id']%}" {%if $info['tag_id'] == $row['id']%}checked="checked"{%/if%} >&nbsp;{%$row['title']%}&nbsp;&nbsp;&nbsp;
+                    {%/foreach%}
+                    </span>
+				</p>
+				<p>
 					<label>归属产品类别：</label>
 					<span class="field">
-						<select name="type" class="uniformselect">
+						<select name="info[type]" class="uniformselect">
 							{%html_options options=$cate_type selected=$info.type%}
 						</select>
 					</span>
@@ -34,8 +42,8 @@
 				<p>
 					<label>车型年代：</label>
 					<span class="field">
-						<select name="year" class="uniformselect">
-							{%html_options options=$year_conf selected=$info.year%}
+						<select name="info[year]" class="uniformselect">
+							{%html_options options=$year_conf selected=$info['year']%}
 						</select>
 					</span>
 				</p>
@@ -64,59 +72,103 @@
 					</span>
 				</p>
 				<p>
+					<label>关联视频：</label>
+					{%foreach item=video from=$info['more_video']%}
+					<span class="field video" num="0">
+						<input class="xxxsmallinput" type="text" name="" value="">
+						<select name="info[more_video][]">
+							<option values=''>--请选择--</option>
+							{%foreach item=sel from=$video_data%}
+								<option value="{%$sel['id']%}" {%if $video==$sel['id']%}selected="selected"{%/if%} >{%$sel['title']%}</option>
+							{%/foreach%}
+						</select>
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="video" search_id="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="video" value="-" />
+					</span>
+					{%foreachelse%}
+					<span class="field video" num="0">
+						<input class="xxxsmallinput" type="text" name="" value="">
+						<select name="info[more_video][]">
+							<option values=''>--请选择--</option>
+							{%foreach item=sel from=$video_data%}
+								<option value="{%$sel['id']%}" >{%$sel['title']%}</option>
+							{%/foreach%}
+						</select>
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="video" search="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="video" value="-" />
+					</span>
+					{%/foreach%}
+				</p>
+				<p>
+					<label>关联新闻：</label>
+					{%foreach item=article from=$info['more_article']%}
+					<span class="field art" num="0">
+						<input class="xxxsmallinput" type="text" name="" value="" />
+						<select name="info[more_article][]">
+							<option value="">--请选择--</option>
+							{%foreach item=sel from=$art_data%}
+								<option value="{%$sel['id']%}" {%if $article==$sel['id']%}selected="selected"{%/if%} >{%$sel['title']%}</option>
+							{%/foreach%}
+						</select>
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="art" search_id="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="art" value="-" />
+					</span>
+					{%foreachelse%}
+					<span class="field art" num="0">
+						<input class="xxxsmallinput" type="text" name="" value="" />
+						<select name="info[more_article][]">
+							<option value="">--请选择--</option>
+							{%foreach item=sel from=$art_data%}
+								<option value="{%$sel['id']%}" >{%$sel['title']%}</option>
+							{%/foreach%}
+						</select>
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="art" search="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="art" value="-" />
+					</span>
+					{%/foreach%}
+				</p>
+				<p>
 					<label>上传图片：</label>
-					<span class="field">
+					{%foreach item=image from=$info['image_url']%}
+					<span class="field image" num="0">
 						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
 						<font id="file_error_fileToUpload"></font>
-						<br/>
-						<br/><input class="smallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image_url%}" />
-						<br/><small>TIP:宽度440px，高度：300px;</small>
-						<br/>
-						<img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$image%}" />
+						<br/><small>TIP:宽度650px;</small>
+						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} />
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
 					</span>
+					{%foreachelse%}
+					<span class="field image" num="0">
+						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload"></font>
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
+						<br/><small>TIP:宽度650px;</small>
+						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+					</span>
+					{%/foreach%}
 				</p>
+
 				<p>
-					<label>优点一：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue1][tit]" id="virtue1_tit" value="{%$info.virtue1.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue1][desc]" id="virtue1_desc" value="{%$info.virtue1.desc%}" />
+					<label>车型亮点：</label>
+					{%foreach item=value from=$info['virtue']%}
+					<span class="field virtue" num="0">
+						<input class="smallinput" type="text" name="info[virtue][]" value="{%$value%}" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="virtue" search_id="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="virtue" value="-" />
 					</span>
-				</p>
-				<p>
-					<label>优点二：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue2][tit]" id="virtue2_tit" value="{%$info.virtue2.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue2][desc]" id="virtue2_desc" value="{%$info.virtue2.desc%}" />
+					{%foreachelse%}
+					<span class="field virtue" num="0">
+						<input class="smallinput" type="text" name="info[virtue][]" value="{%$info['virtue']['desc']%}" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="virtue" search="" auto_id="" value="+" />
+						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="virtue" value="-" />
 					</span>
+					{%/foreach%}
 				</p>
-				<p>
-					<label>优点三：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue3][tit]" id="virtue3_tit" value="{%$info.virtue3.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue3][desc]" id="virtue3_desc" value="{%$info.virtue3.desc%}" />
-					</span>
-				</p>
-				<p>
-					<label>优点四：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue4][tit]" id="virtue4_tit" value="{%$info.virtue4.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue4][desc]" id="virtue4_desc" value="{%$info.virtue4.desc%}" />
-					</span>
-				</p>
-				<p>
-					<label>优点五：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue5][tit]" id="virtue5_tit" value="{%$info.virtue5.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue5][desc]" id="virtue5_desc" value="{%$info.virtue5.desc%}" />
-					</span>
-				</p>
-				<p>
-					<label>优点六：</label>
-					<span class="field">
-						<input class="xxxsmallinput" type="text" name="info[virtue6][tit]" id="virtue5_tit" value="{%$info.virtue6.tit%}" /> - 
-						<input class="xmediuminput" type="text" name="info[virtue6][desc]" id="virtue5_desc" value="{%$info.virtue6.desc%}" />
-					</span>
-				</p>
+
 				<p>
 					<label>排序：</label>
 					<span class="field">
@@ -136,10 +188,151 @@
 		</div>
 	</div>
 </div>
+<div style="display:none;" id="hide_video">
+	<span class="field video" num="0">
+		<input class="xxxsmallinput" type="text" name="" value="">
+		<select name="info[more_video][]">
+			<option values=''>--请选择--</option>
+			{%foreach item=sel from=$video_data%}
+				<option value="{%$sel['id']%}" >{%$sel['title']%}</option>
+			{%/foreach%}
+		</select>
+		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="video" search="" auto_id="" value="+" />
+		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="video" value="-" />
+	</span>
+</div>
+<div style="display:none;" id="hide_art">
+	<span class="field art" num="0">
+		<input class="xxxsmallinput" type="text" name="" value="" />
+		<select name="info[more_article][]">
+			<option value="">--请选择--</option>
+			{%foreach item=sel from=$art_data%}
+				<option value="{%$sel['id']%}" >{%$sel['title']%}</option>
+			{%/foreach%}
+		</select>
+		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="art" search="" auto_id="" value="+" />
+		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="art" value="-" />
+	</span>
+</div>
+<div style="display:none;" id="hide_virtue">
+	<span class="field virtue" num="0">
+		<input class="smallinput" type="text" name="info[virtue][]" value="{%$info['virtue']['desc']%}" />
+		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="virtue" search="" auto_id="" value="+" />
+		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="virtue" value="-" />
+	</span>
+</div>
+<div style="display:none;" id="hide_image">
+	<span class="field image" num="0">
+		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+		<font id="file_error_fileToUpload"></font>
+		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
+		<br/><small>TIP:宽度650px;</small>
+		<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
+		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+	</span>
+</div>
 <script type="text/javascript">
 jQuery(document).ready(function() {  
 	jQuery('select.uniformselect, input:file').uniform();
 });
+jQuery(function(){
+	var video_data	= [];
+		video_data	= {%$video_data_json%};
+	var art_data	= [];
+		art_data	= {%$art_data_json%};
+
+	jQuery('.video').find('input').live('keyup', function(){
+		getSelData( jQuery(this), video_data );
+	});
+
+	jQuery('.art').find('input').live('keyup', function(){
+		getSelData( jQuery(this), art_data );
+	});
+
+	function getSelData( obj, data )
+	{
+		if( obj )
+		{
+			var value	= obj.val();
+			if( data )
+			{
+				var html	= new Array();
+				for(var id in data)
+				{
+					if( value && data[id]['title'].indexOf( value ) >= 0 )
+					{
+						html.push( {'id':data[id]['id'], 'title':data[id]['title']} );
+					}
+				}
+				if( html )
+				{
+					genSelHtml(obj, html );
+					return true;
+				}
+			}
+		}
+		else
+		{
+			jAlert('出错了！');
+		}
+	}
+
+	function genSelHtml(obj, msg )
+	{
+		var result = new Array();
+		if(msg.length <= 0)
+		{
+			result[0]	= '<option value="0" selected="selected">--请选择--</option>';
+		} 
+		var i	= 0;
+		for(var id in msg)
+		{
+			var selected	= i<=0 ? 'selected="selected"' : '';
+			result.push('<option value="'+msg[id]['id']+'" '+selected+' >'+msg[id]['title']+'</option>');
+			i = 1;
+		}
+		obj.next().html( result.join("\n") );
+	}
+
+	jQuery('.addhtml').live('click', function(){
+		var obj			= jQuery(this);
+		var code		= obj.attr('code');
+		var search_id	= obj.attr('search_id');
+		var auto_id		= obj.attr('auto_id');
+		addHtml(obj, code, search_id, auto_id);
+	});
+
+	/**
+	 *	@desc 制作增加html或删除html的效果，预增加html文本使用固定ID，放在隐藏div框中
+	*/
+	function addHtml(obj, code, search_id, auto_id)
+	{
+		var html	= jQuery('#hide_'+code).html();
+		var i		= obj.parent('span').parent('p').children('span').length;
+			html	= html.replace('num="0"', 'num="'+i+'"');
+			if( search_id )
+			{
+				var reg	= new RegExp(search_id, 'g');
+				html	= html.replace(reg, search_id+''+i);
+			}
+
+			obj.parent('span').after( html );
+	}
+
+	jQuery('.delHtml').live('click', function(){
+		delHtml( jQuery(this) );
+	});
+	function delHtml(obj)
+	{
+		var span_num	= obj.parent('span').parent('p').children('span').length;
+		if( span_num - 1 > 0 )
+		{
+			obj.parent('span').remove();
+		}
+	}
+})
+
 </script>
 </body>
 </html>

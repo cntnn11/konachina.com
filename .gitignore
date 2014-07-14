@@ -4,6 +4,8 @@
 .*.swp
 .*.swo
 .buildpath
+index.php
+admin.php
 
 other/*
 public/upload/*
@@ -11,9 +13,13 @@ public/upload/*
 client/config/database.php
 client/config/config.php
 client/config/constants.php
+client/views/cache/*
+client/views/compile/*
 
 admin/config/database.php
 admin/config/config.php
 admin/config/constants.php
+admin/views/cache/*
+admin/views/compile/*
 
 

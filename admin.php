@@ -13,7 +13,7 @@ if (defined('ENVIRONMENT'))
 			error_reporting(E_ERROR | E_WARNING | E_PARSE);
 			break;
 		case 'production':
-			error_reporting(0);
+			//error_reporting(0);
 			break;
 		default:
 			exit('The application environment is not set correctly.');
@@ -58,6 +58,5 @@ define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 define('FCPATH', str_replace(SELF, '', __FILE__));
 //APPNAME 应用程序名 用于smarty配置
 define('APPNAME', $application_name);
-
 //加载控制器类
 require_once BASEPATH.'core'.DS.'CodeIgniter.php';

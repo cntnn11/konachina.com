@@ -17,19 +17,12 @@
 		</ul>
 		<div class="pageheader notab">
 			<ul class="hornav">
-				<li><a href="{%$smarty.const.BASEURL%}shop/newsList">经销商列表</a></li>
-				<li class="current"><a href="{%$smarty.const.BASEURL%}shop/newsEdit">添加/编辑经销商信息</a></li>
+				<li><a href="{%$smarty.const.BASEURL%}bike/shop">经销商列表</a></li>
+				<li class="current"><a href="{%$smarty.const.BASEURL%}bike/shopEdit">添加/编辑经销商信息</a></li>
 			</ul>
 		</div>
 		<div id="contentwrapper" class="contentwrapper widgetpage">
-			<form class="stdform" action="{%$smarty.const.BASEURL%}shop/doEditNewsInfo" method="post" enctype="multipart/form-data">
-				<p>
-					<label>所属城市：</label>
-					<span class="field">
-						{%getCitySelect($info.provice_id, $info.city_id, $info.town_id)%}
-						<br/><small id="tip_city"></small>
-					</span>
-				</p>
+			<form class="stdform" action="return false;" method="post" enctype="multipart/form-data">
 				<p>
 					<label>经销商名称：</label>
 					<span class="field">
@@ -37,17 +30,26 @@
 					</span>
 				</p>
 				<p>
-					<label>地址：</label>
+					<label>经销商地址：</label>
+					城市：<input class="xxxsmallinput" type="text" name="city_name" value="{%$info.city_name%}" />
+					邮编：<input class="xxxsmallinput" type="text" name="postcode" value="{%$info.postcode%}" />
+					<!-- <span class="field">
+						{%getCitySelect($info.provice_id, $info.city_id, $info.town_id)%}
+						<br/><small id="tip_city"></small>
+					</span> -->
+				</p>
+				<p>
+					<label>详细地址：</label>
 					<span class="field">
 						<input class="xsmallinput" type="text" name="address" id="address" value="{%$info.address%}" /><small id="tip_address"></small>
 					</span>
 				</p>
-				<p>
-					<label>别名：</label>
+				<!-- <p>
+					<label>英文详细地址名：</label>
 					<span class="field">
 						<input class="xsmallinput" type="text" name="address_en" id="address_en" value="{%$info.address_en%}" /><small id="tip_address_en"></small>
 					</span>
-				</p>
+				</p> -->
 				<p>
 					<label>联系人信息：</label>
 					<span class="field">
@@ -58,16 +60,20 @@
 					</span>
 				</p>
 				<p>
-					<label>店铺图片</label>
+					<label>店铺图片：</label>
+					<span class="field"><small>TIP:宽度200px，高度：140px;</small></span>
 					<span class="field">
-						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
+						<input class="xxxsmallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
+						<input class="xxxsmallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image%}" />
 						<font id="file_error_fileToUpload"></font>
-						<br/>
-						<br/><input class="smallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image%}" />
-						<br/><small>TIP:宽度180px，高度：125px;</small>
-						<br/>
-						<img id="file_view_fileToUpload" src="{%imageUrl({%$info.image%})%}" {%if $info.image eq ''%}style="display:none;"{%/if%} />
+						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image%})%}" width="200px" height="140px" {%if $info.image eq ''%}style="display:none;"{%/if%} />
 					</span>
+					<!-- <span class="field">
+						<input class="xxxsmallinput" type="file" name="fileToUpload1" id="fileToUpload1" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
+						<input class="xxxsmallinput" type="text" name="upload_fileToUpload1" id="upload_fileToUpload1" value="{%$info.image%}" />
+						<font id="file_error_fileToUpload1"></font>
+						<br/><img id="file_view_fileToUpload1" src="{%imageUrl({%$info.image%})%}" width="200px" height="140px" {%if $info.image eq ''%}style="display:none;"{%/if%} />
+					</span> -->
 				</p>
 				<p>
 					<label>排序：</label>
@@ -79,7 +85,7 @@
 				<p class="stdformbutton">
 					<input type="hidden" name="id" value="{%$info.id%}" />
 					<input type="hidden" name="get_params" value="{%$get_params%}" />
-					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bike/doEditNewsInfo');" value="提 交" />
+					<input type="button" class="stdbtn btn_orange" onclick="submitform('{%$smarty.const.BASEURL%}bike/doEditShopInfo');" value="提 交" />
 					&nbsp;&nbsp;
 					<input type="button" class="stdbtn" onclick="button_location('{%$smarty.const.BASEURL%}bike/shop?{%urlDeCodeForSmarty($get_params)%}')" value="返 回" />
 				</p>

@@ -34,6 +34,10 @@ class other extends CI_Controller
 			'financeCateEdit'	=> '收支分类编辑',
 			'bikeEdit'		=> '单车信息编辑',
 			'bikenwesEdit'	=> '单车新闻信息编辑',
+
+			'teamEdit'		=> '车手信息编辑',
+
+			'shopEdit'		=> '经销商信息编辑',
 		);
 		if(isset($arr[$tip_type]) && !empty($arr[$tip_type]))
 		{
@@ -57,7 +61,7 @@ class other extends CI_Controller
 	{
 		$folder			= _pv('folder', 'other');
 		$elementname	= _pv('elementname', 'fileToUpload');
-		$size	= _pv('size', 0);
+		$size			= _pv('size', 0);
 
 		//PUBPATH.
 		$file_upload_path	= UPFILEDIR.$folder.'/';
@@ -65,6 +69,7 @@ class other extends CI_Controller
 		{
 			mkdir(PUBPATH.$file_upload_path);
 		}
+
 		$upload_config['upload_path']	= PUBPATH.$file_upload_path;
 		$upload_config['allowed_types']	= 'gif|jpg|png|jpeg';
 		$upload_config['encrypt_name']	= true;

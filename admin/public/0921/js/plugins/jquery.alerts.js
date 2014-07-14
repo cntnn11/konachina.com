@@ -111,9 +111,13 @@
 			//$("#popup_message").html( $("#popup_message").text().replace(/\n/g, '<br />') );
 			$("#popup_message").html( $("#popup_message").text() );
 			
-			$("#popup_container").css({
+			/*$("#popup_container").css({
 				minWidth: $("#popup_container").outerWidth(),
 				maxWidth: $("#popup_container").outerWidth()
+			});*/
+			$("#popup_container").css({
+				minWidth: '650px',
+				maxWidth: '650px'
 			});
 			
 			$.alerts._reposition();
@@ -126,7 +130,7 @@
 						$.alerts._hide();
 					});
 					$("#popup_ok").click( function(){
-						$("#popup_ok").attr("disabled", "disabled");
+						$("#popup_ok").attr("stop", "1");
 						callback(true);
 					});
 				break;

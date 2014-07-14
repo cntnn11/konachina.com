@@ -38,5 +38,9 @@ $config['month_cn']	= array(
 	10	=> '十一',
 	11	=> '十二',
 );
+$config['bike_tag']	= array(
+	1	=> array('id'=>1, 'title'=>'山地车', 'en'=>'mountain'),
+	2	=> array('id'=>2, 'title'=>'公路车', 'en'=>'road'),
+);
 /* End of file config.php */
 /* Location: ./application/config/config.php */
