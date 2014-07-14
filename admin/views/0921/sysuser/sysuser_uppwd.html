@@ -8,7 +8,7 @@
 	{%include file="0921/nav_header.html"%}
 	<!-- 左侧导航列表 -->
 	{%include file="0921/left_menu.html"%}
-	
+
 	<!-- 右侧内容区 -->
 	<div class="centercontent">
 		<ul class="breadcrumbs">
@@ -35,8 +35,9 @@
 					<span class="field"><input class="smallinput" type="password" name="renpwd" id="renpwd" /></span>
 				</p>
 				<p class="stdformbutton">
-					<input type="button" class="stdbtn" name="checksub" onclick="checkupd()"  value="修改" />
-					<!-- onclick="checksub('{%$smarty.const.BASEURL%}sysuser/uppwd');" -->
+					<a class="stdbtn" href="javascript:void(0);" id="checksub" url="{%$smarty.const.BASEURL%}sysuser/ajaxDoUpdpwd">修改</a>
+					<!-- <input type="button" class="stdbtn" name="sub" onclick='checksub("{%$smarty.const.BASEURL%}sysuser/uppwd");'  value="修改" /> -->
+					<!-- <input type="button" class="stdbtn" name="sub" onclick="checkupd()"  value="修改" /> -->
 				</p>
 			</form>
 		</div>
@@ -57,42 +58,43 @@ jQuery(function(){
 			renpwd: "两次输入密码必须一致",
 		}
 	});
-})
-function checkupd()
-{
-	jQuery('#upwd_form').valid();
-}
-/*function checksub(action)
-{
-	var p	= jQuery('#pwd').val();
-	var np	= jQuery('#npwd').val();
-	var yp	= jQuery('#repwd').val();
-	if(p != '')
-	{
-		if(np == yp && np != '' && yp != '')
+
+	jQuery('#checksub').click(function(){
+		var url	= jQuery(this).attr('url');
+		var p	= jQuery('#pwd').val();
+		var np	= jQuery('#npwd').val();
+		var yp	= jQuery('#renpwd').val();
+		if(p != '')
 		{
-			jQuery.ajax({
-				type:'POST',
-				url:url,
-				data:'&id='+id+'&flag='+val+'&old='+old,
-				dataType:'json',
-				async: false,
-				success:function(msg){
-					if(msg.status == 'OK')
-					{
-						jQuery('.flagtip'+id).hide();
+			if(np == yp && np != '' && yp != '')
+			{
+				jQuery.ajax({
+					type:'POST',
+					url:url,
+					data:'&new='+np+'&pwd='+p,
+					dataType:'json',
+					async: false,
+					success:function(msg){
+						alert(msg.data);
 					}
-				}
-			});
-			//ajaxDoUpdpwd
+				});
+				//ajaxDoUpdpwd
+			}
+			else
+			{
+				alert('新密码设置错误');
+			}
 		}
-	}
-	else
+		else
+		{
+			alert('新密码设置错误');
+		}
+	});
+
+	function checkupd()
 	{
-		alert('新密码设置错误');
-		
+		jQuery('#upwd_form').valid();
 	}
-	return false;
-}*/
+})
 </script>
 </body>
