@@ -128,9 +128,9 @@ function funAddPrefix($array, $pre = '')
 /*
  *	@DESC 自行车详情页面
 */
-function bikesUrl($bike_id = 0)
+function bikesUrl($bike_slug = 0)
 {
-	return site_url("/detail/{$bike_id}.html");
+	return site_url("/bikes/{$bike_slug}.html");
 }
 /*
  *	@DESC 新闻链接
