@@ -10,12 +10,14 @@ admin.php
 other/*
 public/upload/*
 
+client/config/*
 client/config/database.php
 client/config/config.php
 client/config/constants.php
 client/views/cache/*
 client/views/compile/*
 
+admin/config/*
 admin/config/database.php
 admin/config/config.php
 admin/config/constants.php

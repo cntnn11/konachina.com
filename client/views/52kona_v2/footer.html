@@ -1,0 +1,11 @@
+<div style="display: none;">
+<!-- JS加载代码 -->
+{%if $js_arr%}
+{%foreach item=row key=k from=$js_arr%}
+<script type="text/javascript" src="{%$smarty.const.PUBURL%}script/{%$row%}"></script>
+{%/foreach%}
+{%/if%}
+<!-- 统计一类的代码 -->
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!--! start of #container -->
+{%include file="52kona_v2/header.html"%}
+
+	<!-- Main Content -->
+	<div id="main" role="main">
+		<div class="content">
+			<div class="search-bike">
+				<div class="search-bike-title">
+					<h1>KONA车系</h1>
+				</div>
+				<div class="search-bike-desc">
+					<div class="search-desc-font">车系年代：</div>
+					<div class="search-desc-attr">
+						{%foreach item=$row from=$bike_year key=year%}
+							<a href="bikes.html?skey={%$year%}-{%$search.tag_id%}-{%$search.type%}" {%if $year eq $search.year %}class="search-active" {%/if%} > {%$year%}年</a>
+						{%/foreach%}
+					</div>
+				</div>
+
+				<div class="search-bike-desc">
+					<div class="search-desc-font">车系标签：</div>
+					<div class="search-desc-attr">
+						<a href="bikes.html?skey={%$search.year%}-0-{%$search.type%}" {%if !$search.tag_id%}class="search-active"{%/if%} >全部</a>
+						{%foreach item=row from=$bike_tag%}
+							<a href="bikes.html?skey={%$search.year%}-{%$row.id%}-{%$search.type%}" {%if $row.id eq $search.tag_id %}class="search-active" {%/if%} >{%$row['title']%}</a>
+						{%/foreach%}
+					</div>
+				</div>
+				<div class="search-bike-desc">
+					<div class="search-desc-font">车系种类：</div>
+					<div class="search-desc-attr">
+						<a href="bikes.html?skey={%$search.year%}-{%$search.tag_id%}-0" {%if !$search.type%}class="search-active"{%/if%}>全部</a>
+						{%foreach item=row from=$bike_type%}
+						<a href="bikes.html?skey={%$search.year%}-{%$search.tag_id%}-{%$row.id%}" {%if $row.id eq $search.type%}class="search-active"{%/if%}>{%$row['title']%}</a>
+						{%/foreach%}
+					</div>
+				</div>
+			</div>
+
+			<div class="bike">
+				{%foreach item=bike key=type from=$bike_lists%}
+				<div class="bike-type">
+					<div class="bike-type-header">
+						<strong>{%$bike_type[$type]['title']%}</strong>
+					</div>
+					<div class="bike-type-lists">
+						<!-- bike list start -->
+						{%foreach item=info from=$bike%}
+						<div class="bike-detail">
+							<a href="{%bikesUrl($info.id)%}" title="{%$info.name%}" >
+								<div class="bike-detail-img"><img src="{%imageUrl($info['image_url'][0], 150)%}" alt="{%$info['image_url'][0]%} {%$info.name%}" width="150" height="92" /></div>
+								<div class="bike-detail-name">{%$info.name%}</div>
+							</a>
+						</div>
+						{%/foreach%}
+						<!-- bike list end -->
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				{%foreachelse%}
+				<div class="bike-type">
+					<div class="bike-type-header">
+						<strong></strong>
+					</div>
+					<div class="bike-type-lists">
+						<p class="centerl">啊哦！没有找到你要的车型~</p>
+					</div>
+				</div>
+				{%/foreach%}
+
+				<div class="clear"></div>
+			</div>
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<!--! end of Main Content -->
+{%include file="52kona_v2/footer_nav.html"%}
+</div> <!--! end of #container -->
+{%include file="52kona_v2/footer.html"%}

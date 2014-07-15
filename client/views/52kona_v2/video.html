@@ -1,0 +1,26 @@
+<!--! start of #container -->
+{%include file="52kona_v2/header.html"%}
+
+	<!-- Main Content -->
+	<div id="main" role="main">
+		<div class="content">
+
+			{%foreach item=video from=$video_lists key=i%}
+				<div class="video-box mb10 {%if $i%3 neq 2 %}mr20{%/if%}">
+					<div class="video-play">
+						<embed src="{%$video.video_url%}" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+					</div>
+					<div class="video-tit">{%$video.title%}--{%$i%}</div>
+				</div>
+			{%foreachelse%}
+				<p>还没有视频哦~</p>
+			{%/foreach%}
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<!--! end of Main Content -->
+
+{%include file="52kona_v2/footer_nav.html"%}
+</div> <!--! end of #container -->
+{%include file="52kona_v2/footer.html"%}

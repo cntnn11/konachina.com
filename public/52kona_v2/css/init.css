@@ -1,0 +1,112 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+body, button, input, select, textarea { font-family: sans-serif, "微软雅黑"; color: #222; }
+::-moz-selection { background: #a43e3e; color: #fff; text-shadow: none; }
+::selection { background: #a43e3e; color: #fff; text-shadow: none; }
+/* 链接样式 */
+a { color: #00e; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+*:focus { outline: none !important; }
+a:hover, a:active { outline: 0; }
+
+
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+/* 声明等宽字体 */
+pre, code, kbd, samp { font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 1em; }
+/* 在浏览器中提高可读性 */
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 85%; }
+/* 位置 */
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+/* 列表 */
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+/*
+ * 1. 在IE7中提高图片缩放质量
+ * 2. 删除容器的图像和图像边界之间的差距
+ */
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+/* 隐藏IE9下的溢出 */
+svg:not(:root) { overflow: hidden; }
+
+figure { margin: 0; }
+
+01061286007
+13716961567
+
+/* 表单 */
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; }
+
+/*
+ * 1. 使所有浏览器支持正确字体？
+ * 2. 在ff3/4，s5当中移除外边距
+ * 3. 统一定义将所有浏览器的垂直排列
+ */
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; *overflow: visible; }
+/* 引入内间距”table“避免在IE6 / 7的重叠和空白问题 */
+table button, table input { *overflow: auto; }
+/* 给点击表单元素显示光标 */
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
+/* 保证盒子尺寸&外观一尺 */
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+/* 删除在FF3 / 4内填充和边框：h5bp.com/l */
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+/* textarea元素，移除掉IE6/7/8/9默认的滚动条，并只允许进行垂直调整 */
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+/* 统一背景色？ */
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+/***** 表格 *****/
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+/* h字体重定义 */
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Arvo', serif;
+	color: black;
+	line-height: normal;
+	margin: 0 0 15px 0;
+	font-weight: normal;
+}
+h1 {
+	font-size: 28px;
+}
+h2 {
+	font-size: 24px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 12px;
+}
+

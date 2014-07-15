@@ -1,0 +1,45 @@
+/*** 车型检索 ***/
+.content .search-bike
+{ border: 1px solid #979797; }
+.search-bike .search-bike-title
+{ padding-left: 10px; border-bottom: 1px solid #979797; border-top: 1px solid #979797; background: #000000; }
+.search-bike-title h1
+{ color: #FFFFFF; }
+.search-bike-title span
+{ font-weight: bold; color: #000000; }
+
+.search-bike .search-bike-desc
+{ line-height: 24px; padding-left: 10px; border-bottom: 1px solid #979797; font-size: 14px; }
+.search-bike-desc .search-desc-font
+{ float: left; }
+.search-bike-desc .search-desc-attr
+{ margin-left: 10px; }
+.search-desc-attr a.search-active
+{ color: #000000; font-weight: bold; }
+
+
+/*** 车型列表 ***/
+.content .bike
+{ margin-top: 20px; }
+.bike .bike-type
+{ width: 958px; margin-bottom: 10px; line-height: 30px; border: 1px solid #979797; display: inline-block; }
+.bike-type .bike-type-header
+{ padding-left: 10px; color: #FFFFFF; background: #0A794A; font-size: 1.5em; }
+.bike-type .bike-type-lists
+{ padding-left: 20px; background: #FFFFFF; }
+
+.bike-type-lists .bike-detail 
+{ width: 160px; margin: 10px; padding: 1px; padding-top: 5px; float: left; text-align: center; border: 1px solid #979797; }
+.bike-detail:hover
+{ background: #0A794A; }
+.bike-detail:hover a
+{ color: #FFFFFF; }
+.bike-detail .bike-detail-img
+{ width: 150px; height: 100px; margin: 0 auto; vertical-align: middle; }
+.bike-detail .bike-detail-name
+{ overflow: hidden; line-height: 20px; }
+
+
+
+
+

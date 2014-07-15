@@ -8,6 +8,9 @@ class main_model extends CI_Model
 	const IMAGES_TABLE			= 'qy_images';
 	const BIKENEWSCATE_TABLE	= 'bike_news_cate';
 	const BIKENEWS_TABLE		= 'bike_news';
+	const RECOMMEND_TABLE		= 'recommend';
+	const VIDEO_TABLE			= 'qy_video';
+	const BIKESHOP_TABLE		= 'bike_shop';
 
 	/**
 	 *	@desc 获取车型分类列表
@@ -15,7 +18,7 @@ class main_model extends CI_Model
 	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'asc')
 	{
 		$this->table	= self::PRODUCTCATE_TABLE;
-		return $this->limit($offset, $limit)->orderby(array('createdate'=>'asc', 'sort'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->orderby(array('sort'=>'desc', 'id'=>'desc'))->getall('*', $where);
 	}
 	/**
 	 *	@DESC 获取产品类型的分类配置数组
@@ -26,7 +29,8 @@ class main_model extends CI_Model
 		$cate_list	= $this->getProductCateList();
 		foreach ($cate_list as $row)
 		{
-			$cate_arr[$row['id']]	= $row['model_name'];
+			$cate_arr[$row['id']]['id']		= $row['id'];
+			$cate_arr[$row['id']]['title']	= $row['model_name'];
 		}
 		return $cate_arr;
 	}
@@ -47,12 +51,14 @@ class main_model extends CI_Model
 	function getProductList($where = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::PRODUCT_TABLE;
-		return $this->limit($offset, $limit)->orderby(array('createdate'=>'asc','year'=>'desc','sort'=>'desc'))->getall('*', $where);
+		$data	= $this->limit($offset, $limit)->orderby(array('createdate'=>'asc','year'=>'desc','sort'=>'desc'))->getall('*', $where);
+		return $data;
 	}
 	function getProductTotal($where = array())
 	{
 		$this->table	= self::PRODUCT_TABLE;
-		return $this->countTable($where);
+		$data	= $this->countTable($where);
+		return $data;
 	}
 
 	/**
@@ -63,6 +69,11 @@ class main_model extends CI_Model
 	{
 		$this->table	= self::PRODUCT_TABLE;
 		return $this->getone('*', array('id'=>$prod_id));
+	}
+	function getProductInfoFromName($prod_id = 0)
+	{
+		$this->table	= self::PRODUCT_TABLE;
+		return $this->getone('*', array('name'=>$prod_id));
 	}
 
 	/**
@@ -147,5 +158,68 @@ class main_model extends CI_Model
 		return $data;
 	}
 	
+
+	/**
+	 *	@desc 获取首页推荐位置的广告图
+	 *	@author cntnn11
+	 *	@date 2014-07-10
+	*/
+	function getRecommend( $location = 0, $limit = 5 )
+	{
+		$data	= FALSE;
+		if( $location )
+		{
+			$this->table		= self::RECOMMEND_TABLE;
+			$where['location']	= $location;
+			$data				= $this->limit($offset, $limit)->orderby(array('sort'=>'desc', 'id'=>'desc'))->getall('*', $where);
+		}
+		return $data;
+	}
+
+	/**
+	 *	@DESC 获取视频数据
+	 *	@author cntnn11
+	 *	@date 2014-07-11
+	*/
+	function getVideoList($where = array(), $offset = 0, $limit = 0)
+	{
+		$this->table	= self::VIDEO_TABLE;
+		return $this->limit($offset, $limit)->orderby(array('id'=>'desc'))->getall('*', $where);
+	}
+	function getVideoTotal($where = array())
+	{
+		$this->table	= self::VIDEO_TABLE;
+		return $this->countTable($where);
+	}
+
+	/**
+	 *	@DESC 获取视频数据
+	 *	@author cntnn11
+	 *	@date 2014-07-11
+	*/
+	function getAgentList($where = array(), $offset = 0, $limit = 0)
+	{
+		$this->table	= self::BIKESHOP_TABLE;
+		return $this->limit($offset, $limit)->orderby(array('id'=>'desc'))->getall('*', $where);
+	}
+	function getAgentTotal($where = array())
+	{
+		$this->table	= self::BIKESHOP_TABLE;
+		return $this->countTable($where);
+	}
+
+	/**
+	 *	@DESC 初始化52kona_v2版的数据
+	*/
+	function updateV2Data($id, $data)
+	{
+		$result = FALSE;
+		if($id)
+		{
+			$result	= $this->update($data, array('id'=>$id));
+		}
+		return $result;
+	}
+
 }
 ?>
