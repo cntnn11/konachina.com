@@ -19,7 +19,7 @@
 					<div class="bike-block-header">
 						<ul class="bike-block-tab">
 							<li class="tab_btn tab_current" tabname="info">介绍</li>
-							<li class="tab_btn" tabname="conf">配置</li>
+							{%if $bikes_info['bike_conf']%}<li class="tab_btn" tabname="conf">配置</li>{%/if%}
 							{%if $bikes_info['image_url'] %}<li class="tab_btn" tabname="img">图片</li>{%/if%}
 							{%if $bikes_info['more_video'] %}<li class="tab_btn" tabname="video">视频</li>{%/if%}
 							{%if $bikes_info['more_article'] %}<li class="tab_btn" tabname="news">新闻</li>{%/if%}
@@ -31,11 +31,13 @@
 							<p>{%$bikes_info['desc']%}</p>
 						</div>
 
+						{%if $bikes_info['bike_conf']%}
 						<div class="bike-conf tab_content hidden" tabname="conf">
 							<!-- 配置表格开始 -->
 							<table id="specstable"><tbody><tr><td class="label">Frame Material</td><td class="data">Kona 6061 Aluminum Butted 153mm Travel</td></tr><tr class="altercolor"><td class="label">Sizes</td><td class="data">S, M, L, XL</td></tr><tr><td class="label">Rear Shock</td><td class="data">RockShox Monarch Plus RC3</td></tr><tr class="altercolor"><td class="label">Fork</td><td class="data">RockShox Pike RCT3 Solo Air 160mm QR15 Tapered</td></tr><tr><td class="label">Crankarms</td><td class="data">SRAM X9</td></tr><tr class="altercolor"><td class="label">Chainrings</td><td class="data">22/36/Guard</td></tr><tr><td class="label">B/B</td><td class="data">SRAM Press Fit 92</td></tr><tr class="altercolor"><td class="label">Pedals</td><td class="data">n/a</td></tr><tr><td class="label">Chain</td><td class="data">KMX X10</td></tr><tr class="altercolor"><td class="label">Freewheel</td><td class="data">SRAM XG1070 11-36t  10 spd</td></tr><tr><td class="label">Chainguide</td><td class="data">n/a</td></tr><tr class="altercolor"><td class="label">F/D</td><td class="data">SRAM X7 Direct Mount</td></tr><tr><td class="label">R/D</td><td class="data">SRAM XO Type 2</td></tr><tr class="altercolor"><td class="label">Shifters</td><td class="data">SRAM X9</td></tr><tr><td class="label">Brake Calipers</td><td class="data">Shimano XT</td></tr><tr class="altercolor"><td class="label">Front Brake Rotor</td><td class="data">Shimano XT 203mm (centerlock)</td></tr><tr><td class="label">Rear Brake Rotor</td><td class="data">Shimano XT 180mm (centerlock)</td></tr><tr class="altercolor"><td class="label">Brake Levers</td><td class="data">Shimano XT</td></tr><tr><td class="label">Headset</td><td class="data">FSA Orbit 1.5 ZS No.57</td></tr><tr class="altercolor"><td class="label">Handlebar</td><td class="data">RaceFace Atlas FR</td></tr><tr><td class="label">Stem</td><td class="data">Kona 40mm</td></tr><tr class="altercolor"><td class="label">Seatpost</td><td class="data">KS Lev Integra</td></tr><tr><td class="label">Seat Clamp</td><td class="data">Kona Clamp</td></tr><tr class="altercolor"><td class="label">Grips</td><td class="data">Kona S-LOG</td></tr><tr><td class="label">Saddle</td><td class="data">WTB Volt Team</td></tr><tr class="altercolor"><td class="label">Front Hub</td><td class="data">Shimano XT QR15</td></tr><tr><td class="label">Rear Hub</td><td class="data">Shimano XT 142x12mm</td></tr><tr class="altercolor"><td class="label">Spokes</td><td class="data">Sandvik Stainless 14g</td></tr><tr><td class="label">Rims</td><td class="data">WTB Frequency Team i25 TCS</td></tr><tr class="altercolor"><td class="label">Front Tire</td><td class="data">Maxxis High Roller II 27.5x2.3" EXO 3C</td></tr><tr><td class="label">Rear Tire</td><td class="data">Maxxis High Roller II 27.5x2.3" EXO 3C</td></tr><tr class="altercolor"><td class="label">Paint Color</td><td class="data">Matt Lime &amp; Black</td></tr><tr><td class="label">Extras</td><td class="data">n/a</td></tr></tbody></table>
 							<!-- 配置结束 -->
 						</div>
+						{%/if%}
 						{%if $bikes_info['image_url'] %}
 						<div class="bike-image tab_content hidden" tabname="img">
 							<div class="focus">
