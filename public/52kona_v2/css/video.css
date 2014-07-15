@@ -1,0 +1,6 @@
+.content .video-box
+{ display: inline-block; }
+.video-box .video-play
+{  }
+.video-box .video-tit
+{ margin: 0px; padding: 0px; text-align: center; color: #585858; font-weight: bold; line-height: 200%; font-size: 1.5em; }

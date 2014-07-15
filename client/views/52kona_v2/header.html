@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>konachina - kona中国官网</title>
+	<meta name="keywords" content="kona,konachina,52bike,kona中国" >
+	<meta name="description" content="konachina 来自美国的kona车">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="icon" href="{%$smarty.const.PUBURL%}images/common/kona_logo.ico" type="image/x-icon" />
+	<html xmlns:wb="http://open.weibo.com/wb">
+	<!-- CSS: implied media=all -->
+	<link rel="stylesheet" type="text/css" href="{%$smarty.const.PUBURL%}css/init.css" />
+	<link rel="stylesheet" type="text/css" href="{%$smarty.const.PUBURL%}css/style.css" />
+
+	{%if $css_arr%}
+	{%foreach item=row key=k from=$css_arr%}
+	<link rel="stylesheet" type="text/css" href="{%$smarty.const.PUBURL%}css/{%$row%}" />
+	{%/foreach%}
+	{%/if%}
+
+	<!-- end CSS-->
+	<script type="text/javascript" src="{%$smarty.const.PUBURL%}script/jquery_1.7.2.min.js"></script>
+</head>
+
+<body>
+<div id="container">
+	<!-- Header -->
+	<header>
+	<!-- Header Top Area -->
+	<div id="headerTop">
+		<div class="headerInner">
+			<!-- Company Logo -->
+			<a href="{%$smarty.const.WEBURL%}index.html">
+				<img src="{%$smarty.const.PUBURL%}images/common/kona_logo_text.png" alt="KonaChina" />
+			</a>
+			<!-- 头部导航 -->
+			<ul>
+				<li><a href="http://shop35011395.taobao.com/" target="_blank">在线商城</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}bikes.html" {%if $action eq 'bikes' %} class="current" {%/if%}>车系</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}news.html" {%if $action eq 'news' %} class="current" {%/if%}>新闻</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}gallery.html" {%if $action eq 'gallery' %} class="current" {%/if%}>图片墙</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}video.html" {%if $action eq 'video' %} class="current" {%/if%}>精彩视频</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}team.html" {%if $action eq 'team' %} class="current" {%/if%}>团队荣誉</a></li>
+				<li><a href="{%$smarty.const.WEBURL%}agent.html" {%if $action eq 'agent' %} class="current" {%/if%}>经销商</a></li>
+			</ul>
+			<!-- End 头部导航 -->
+		</div>
+	</div>
+	</header>

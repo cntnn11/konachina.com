@@ -1,0 +1,78 @@
+.team-header
+{ background: #0052A5; padding: 10px; color: #FFFFFF; border: #000000 1px solid; }
+.team-header h3
+{ margin: 0px; font-weight: bold; }
+
+/* 团队车手列表盒子 */
+.content .team-box
+{ display: inline-block; margin-top: 20px; }
+	.team-box a
+	{ display: inline-block; padding: 20px; padding-bottom: 5px; border: 1px solid #000000; color: #0052A5; font-weight: bold; }
+	.team-box a:hover
+	{ background: #0052A5; color: #FFFFFF; border: 1px solid #FFFFFF; }
+	.team-box .team-img img
+	{ border: 1px solid #CCCCCC; width: 260px; }
+	.team-box .team-name
+	{ font-size: 1.5em; text-align: center; line-height: 30px; }
+
+.driver-box
+{ display: inline-block; padding-top: 20px; }
+	.driver-box .driver-img
+	{ width: 260px; text-align: center; float: left; margin-right: 20px; }
+
+	.driver-box .driver-info
+	{  }
+		.driver-info h1
+		{ margin: 0px; }
+		.driver-info p
+		{ line-height: 200%; }
+
+	/* tab切换选项卡 */
+	.driver-box .driver-detail
+	{ display: inline-block; background: #E5EDF6; }
+		.driver-tab-header
+		{ color: #FFF; background: #0052A5; font-size: 1.5em; }
+		.driver-tab-header ul.tab-nav
+		{ width: 960px; padding-left: 10px; }
+		.driver-tab-header ul.tab-nav li
+		{ padding-left: 15px; padding-right: 15px; display: inline-block; line-height: 150%; cursor: pointer; }
+		.driver-tab-header ul.tab-nav li.tab_current
+		{ background: #E5EDF6; border-left: 1px solid #FFFFFF; border-right: 1px solid #FFFFFF; color: #0052A5; }
+
+		/* tab切换卡内容 */
+		.driver-box .driver-detail .driver-tab-body
+		{ display: inline-block; padding: 10px; text-align: left; }
+		
+		/* tab选项卡图片 */
+		.driver-tab-bdoy .driver-tab-img
+		{ display: inline-block; }
+			.driver-tab-img ul
+			{ margin: 0px; display: inline-block; }
+			.driver-tab-img ul li
+			{ float: left; margin-left: 10px; margin-bottom: 10px; }
+
+		/* tab选项卡视频 */
+		.driver-tab-body .driver-video
+		{ padding: 10px; }
+			.driver-video .video-box
+			{ float: left; }
+			.video-box .video-play
+			{ display: inline-block; }
+			.video-box .video-tit
+			{ margin: 0px; padding: 0px; text-align: center; color: #585858; font-weight: bold; line-height: 200%; font-size: 1.5em; }
+
+		/* tab选项卡新闻 */
+		.driver-tab-body .driver-news
+		{ display: inline-block; }
+			.driver-news .driver-news-block
+			{ margin: 0px; line-height: 24px; }
+				.driver-news-block li
+				{ width: 100%; float: left; border-bottom: 1px dashed #0A794A; }
+				.driver-news-block li a
+				{ color: #585858; }
+				.driver-news-block li a:hover
+				{ color: #0A794A; font-weight: bold; }
+				.driver-news-block li div.driver-news-date
+				{ float: right; }
+
+

@@ -1,0 +1,56 @@
+
+/* 分页样式 */
+#main .pagination {
+	text-align: center;
+	position: relative;
+	padding: 11px 0 7px 0;
+	min-height: 1px;
+	margin: 0 0 30px 0;
+}
+.ie7 #main .pagination {
+	padding: 11px 0;
+}
+#main .pagination ul {
+	color: #a5a5a5;
+	margin: 0 auto;
+	display: inline-block;
+}
+.ie7 #main .pagination ul {
+	display: inline-block;
+	zoom: 1;
+	display: inline;
+}
+#main .pagination li {
+	background: none;
+	padding: 0;
+	float: left;
+	width: 21px;
+	height: 21px;
+	vertical-align: top;
+	margin: 0 6px;
+}
+#main .pagination .paginationPrev {
+	margin-right: 40px;
+}
+#main .pagination .paginationNext {
+	margin-left: 40px;
+}
+#main .pagination li a {
+	display: block;
+	width: 100%;
+	color: #585858;
+
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+.ie9 #main .pagination li a {
+	padding-top: 1px;
+	margin-top: -1px;
+}
+#main .pagination li .currentPage, #main .pagination li a:hover {
+	color: white;
+	background-color: black;
+}

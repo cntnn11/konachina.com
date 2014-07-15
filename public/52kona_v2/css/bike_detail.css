@@ -1,0 +1,117 @@
+/***内容块***/
+.content-left .bike-block
+{ width: 100%; margin-bottom: 10px; line-height: 30px; border: 1px solid #979797; display: inline-block; padding: 0px; }
+	/** 自行车内容块 绿色导航 **/
+	.bike-block .bike-block-header
+	{ padding-left: 10px; color: #FFF; background: #0A794A; font-size: 1.5em; }
+		/** 自行车内容块 绿色导航 普通文字 **/
+		.bike-block-header .bike-block-header-tit
+		{ margin: 0px; padding: 0px; }
+			.bike-block-header-tit strong
+			{ font-weight: bold; }
+		/** 自行车内容块 绿色导航 多标签白色边框 **/
+		.bike-block-header ul.bike-block-tab
+		{ margin: 0px; padding: 0px; }
+		ul.bike-block-tab li
+		{ width: 50px; text-align: center; display: inline-block; padding: 0px; cursor: pointer; }
+			ul.bike-block-tab li:hover, ul.bike-block-tab li.tab_current
+			{ width: 48px; background-color: #C8D6B4; color: #585858; border-right: 1px #FFFFFF solid; border-left: 1px #FFFFFF solid; }
+
+
+	/** 自行车内容块 内容区 **/
+	.bike-block .bike-block-body
+	{  }
+		/** 自行车内容块 内容区 车型大图展示 **/
+		.bike-block-body a#detail_image
+		{ margin: 10px; cursor: pointer; }
+
+		/** 自行车内容块 内容区 车子介绍 **/
+		.bike-block-body .bike-info
+		{ padding: 10px; text-indent: 2em; }
+
+		/** 自行车内容块 内容区 图片 **/
+		.bike-block-body .bike-image
+		{ padding: 10px; }
+			/* 懒人图库 搜集整理 www.lanrentuku.com */
+			.bike-image .focus{width:100%; height:auto;margin:0 auto;}
+			.focusbox{ position:relative;}
+			.focusimg{border:1px solid #CCCCCC; width:610px; height:376px; position:relative; overflow:hidden;-webkit-perspective: 610px;}
+			.fimglist{ position:relative; -moz-perspective: 1300px;}
+			.fimglist img{display:block; width:610px; height:376px; cursor:pointer;}
+			.fimglist li{width:610px; height:376px; float:left;-webkit-transform-origin:50% 100%;transform-origin:50% 100%;}
+			.fimglist li.onpre{-webkit-animation:onpre .5s ease-in-out;animation:onpre .5s ease-in-out;opacity:0;-webkit-transform:scale(0.8,0.8);transform:scale(0.8,0.8);}
+			@-webkit-keyframes onpre{
+				0%{opacity:1;-webkit-transform:rotateY(0deg);}
+				100%{opacity:0;-webkit-transform:rotateY(90deg)}
+			}
+			@keyframes onpre{
+				0%{opacity:1;transform:rotateY(0deg);}
+				100%{opacity:0;transform:rotateY(90deg)}
+			}
+			.focustool{width:620px; overflow:scroll; padding:5px 0 10px; margin:0 auto; position:relative;}
+			.ftoollist{ width: 610px; display: inline-block; position:relative;}
+			.ftoollist img{display:block; width:150px; height:85px; margin-bottom:3px;}
+			.ftoollist a{ display:block; width:150px; padding:4px 0 4px 4px; position:relative;-webkit-transition:all .3s linear;transition:all .3s linear;}
+			.ftoollist li{ width: 152px; float:left; cursor:pointer; -webkit-transition:all .3s linear; transition:all .3s linear;}
+			.ftoollist .imgname{line-height:25px; text-align:center; color:#AA1C1C; font-family:\5FAE\8F6F\96C5\9ED1; font-weight:400; font-size:18px; height:25px; overflow:hidden; cursor:pointer;}
+			.ftoollist .imgshortcat{line-height:20px; text-align:center; color:#7D7D7D; font-size:12px; height:20px; overflow:hidden; cursor:pointer;}
+			.ftoollist a:hover{background-color:#0A794A; padding:4px; margin-right:-4px; z-index:100; top:-5px;}
+			.ftoollist a:hover .imgname{color:#FFFFFF;}
+			.ftoollist a:hover .imgshortcat{color:#FFF;}
+			.ftoollist .on a{background-color:#0A794A; padding:4px; margin-right:-4px; z-index:100; top:-5px;}
+			.ftoollist .on .imgname{color:#FFFFFF;}
+			.ftoollist .on .imgshortcat{color:#FFF;}
+
+		/** 自行车内容块 内容区 视频 **/
+		.bike-block-body .bike-video
+		{ padding: 10px; }
+			.bike-video .video-box
+			{  float: left; }
+			.video-box .video-play
+			{ display: inline-block; }
+			.video-box .video-tit
+			{ margin: 0px; padding: 0px; text-align: center; color: #585858; font-weight: bold; line-height: 200%; font-size: 1.5em; }
+
+		/** 自行车内容块 内容区 新闻 **/
+		.bike-block-body .bike-news
+		{ padding: 10px; display: inline-block; }
+			.bike-news .bike-news-block
+			{ margin: 0px; line-height: 24px; }
+				.bike-news-block li
+				{ width: 620px; float: left; border-bottom: 1px dashed #0A794A; }
+				.bike-news-block li a
+				{ color: #585858; }
+				.bike-news-block li a:hover
+				{ color: #0A794A; font-weight: bold; }
+				.bike-news-block li div.bike-news-date
+				{ float: right; }
+
+/***右边栏内容块***/
+.content-sidebar .sidebar-block
+{ width: 100%; margin-bottom: 30px; line-height: 30px; border: 1px solid #979797; display: inline-block; padding: 0px; }
+.content-sidebar .noBorder
+{ border: none; }
+	/** 通用侧边栏块状头部 **/
+	.sidebar-block .sidebar-header
+	{ padding-left: 10px; color: #FFF; background: #0A794A; font-size: 1.5em; }
+		.sidebar-header .sidebar-header-tit
+		{ margin: 0px; padding: 0px; }
+	/** 通用侧边栏块状内容区 **/
+	.sidebar-block .sidebar-body
+	{  }
+		.sidebar-body ul li
+		{ border-bottom: 1px #585858 dashed; }
+		/** 相关车型配置 **/
+		.sidebar-body .same-bike
+		{ text-align: center; }
+		.same-bike .bike-detail
+		{ width: 230px; margin: 20px auto auto 30px; padding: 1px; padding-top: 5px; float: left; text-align: center; border: 1px solid #979797; }
+		.bike-detail:hover
+		{ background: #0A794A; }
+		.bike-detail:hover a
+		{ color: #FFFFFF; }
+		.bike-detail .bike-detail-img
+		{ width: 220px; height: auto; margin: 0 auto; vertical-align: middle; }
+		.bike-detail .bike-detail-name
+		{ overflow: hidden; line-height: 20px; }
+

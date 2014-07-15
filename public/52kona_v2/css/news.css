@@ -1,0 +1,76 @@
+.content-left .news-box
+{ display: inline-block; margin-bottom: 20px; position: relative; border-bottom: 1px dashed #CCCCCC; }
+
+	/* 列表日期栏 */
+	.news-box .news-date
+	{ width: 50px; position: absolute; left: -50px; top: 20px; text-align: center; }
+		.news-date .news-date-month
+		{  }
+		.news-date .news-date-days
+		{ font-size: 2em; }
+
+	/* 新闻框 */
+	.news-box .news-content
+	{ padding: 10px; }
+		/* 文章标题 */
+		.news-content .news-content-header
+		{ border-left: 3px solid #000000; margin: 10px 0px 10px 0px; padding-left: 10px; }
+			.news-content .news-content-header-tit a
+			{ font-size: 21px; padding-top: 5px; line-height: 30px; }
+			.news-content .news-content-header-tit a:hover
+			{ text-decoration: underline; }
+			.news-content .news-content-header-cate a
+			{ color: #585858; }
+			.news-content .news-content-header-cate a:hover
+			{ color: #000000; text-decoration: underline; }
+
+		/* 文章内容 */
+		.news-content .news-content-body
+		{ display: inline-block; }
+			.news-content-body .news-body-focus
+			{ width: 620px; height: auto; text-align: center; }
+			.news-content-body p.article
+			{ padding-left: 10px; padding-right: 10px; text-indent: 2em; line-height: 180%; }
+			.news-content-body .news-content-share
+			{ width: 600px; margin-top: 10px; margin-bottom: 10px; padding: 10px; background: #F0F0F0; border: 1px solid #E0E0E0; display: inline-block; }
+			.news-content-body .news-body-article
+			{ margin-top: 10px; padding-left: 10px; padding-right: 10px; line-height: 180%; }
+				.news-body-article p, .news-body-article a
+				{ margin: 0px; color: #585858;  }
+
+
+/* 新闻右侧列表盒子框 */
+.content-sidebar .news-sidebar-box
+{ display: inline-block; padding-bottom: 20px; }
+	/* 右侧盒子头部标题区 */
+	.news-sidebar-box .news-sidebar-header
+	{ border-left: 3px solid #000000; padding-left: 10px; margin-bottom: 10px; }
+	.news-sidebar-box .news-sidebar-header span
+	{ font-size: 16px; line-height: 180%; }
+
+	.news-sidebar-box .news-sidebar-body
+	{ display: inline-block; }
+		/* 右侧盒子内容区 */
+		.news-sidebar-box .news-sidebar-body ul.news-sidebar-last
+		{ padding-left: 10px; }
+			.news-sidebar-body ul.news-sidebar-last li
+			{ width: 100%; float: left; line-height: 200%; font-size: 1.15em; border-bottom: 1px dashed #CCCCCC; }
+
+		/* 右侧盒子的推荐车型 */
+		.news-sidebar-body .sidebar-bike
+		{ padding-left: 10px; }
+		.sidebar-bike
+		{ text-align: center; }
+		.sidebar-bike .bike-detail
+		{ width: 230px; margin: 20px auto auto 30px; padding: 1px; padding-top: 5px; float: left; text-align: center; border: 1px solid #979797; }
+		.bike-detail:hover
+		{ background: #0A794A; }
+		.bike-detail:hover a
+		{ color: #FFFFFF; }
+		.bike-detail .bike-detail-img
+		{ width: 220px; height: auto; margin: 0 auto; vertical-align: middle; }
+		.bike-detail .bike-detail-name
+		{ overflow: hidden; line-height: 20px; }
+
+
+/*.content-sidebar .news-box*/

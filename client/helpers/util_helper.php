@@ -55,9 +55,9 @@ function bikeListUrl($year = 0)
 {
 	return site_url("/bikes/".$year);
 }
-function bikesUrl($bike_id = 0)
+function bikesUrl($bike_slug = 0)
 {
-	return site_url("/detail/{$bike_id}.html");
+	return site_url("/bikes/{$bike_slug}.html");
 }
 function newsUrl($news_id = 0)
 {
@@ -86,13 +86,17 @@ function imageUrl($image_path, $size = '225', $url = '')
 {
 	$file_path_info	= pathinfo($image_path);
 	$file_path_size	= $file_path_info['dirname'].DS.$size.'_'.$file_path_info['basename'];
-	$url	= $url ? $url : PUBURL;
-
-	if(is_file(PUBPATH.$file_path_size))
+//var_array( PUBURL );
+	$url	= $url ? $url : UPLOADURL;
+	if( strpos($image_path, 'http://') !== FALSE )
+	{
+		return $image_path;
+	}
+	if( is_file(PUBPATH.$file_path_size) )
 	{
 		return $url.$file_path_size;
 	}
-	else if(is_file(PUBPATH.$image_path))
+	else if( is_file(PUBPATH.$image_path) )
 	{
 		return $url.$image_path;
 	}
@@ -126,24 +130,25 @@ function pageWeb($url, $total, $offset = 0, $limit = 15, $uri = 3)
 	$config['num_links']			= 10;	//当前页的左右两边显示几个页码
 	$config['uri_segment']			= (int)$uri;	//URI参数的位置
 
+	$config['first_link']			= '«';
 	$config['full_tag_open']		= '<ul>';
 	$config['full_tag_close']		= '</ul>';
-	$config['first_link']			= FALSE;
 	$config['first_tag_open']		= '<li>';
 	$config['first_tag_close']		= '</li>';
-	$config['last_link']			= FALSE;
+	$config['last_link']			= '»';
 	$config['last_tag_open']		= '<li>';
 	$config['last_tag_close']		= '</li>';
 	$config['prev_link']			= ' &lt';
-	$config['prev_tag_open']		= '<li>';
+	$config['prev_tag_open']		= '<li class="paginationPrev">';
 	$config['prev_tag_close']		= '</li>';
 	$config['next_link']			= '&gt; ';
-	$config['next_tag_open']		= '<li>';
+	$config['next_tag_open']		= '<li class="paginationNext">';
 	$config['next_tag_close']		= '</li>';
 	$config['num_tag_open']			= '<li>';
 	$config['num_tag_close']		= '</li>';
-	$config['cur_tag_open']			= '<li class="thisclass">'; //当前页码使用的标签
-	$config['cur_tag_close']		= '</li>';
+	$config['cur_tag_open']			= '<li><a class="currentPage">'; //当前页码使用的标签
+	$config['cur_tag_close']		= '</a></li>';
+	$config['use_page_numbers']		= TRUE;
 
 	$CI->pagination->initialize($config);
 	$re	= $CI->pagination->create_links();

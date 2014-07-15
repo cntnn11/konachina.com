@@ -1,0 +1,133 @@
+<!--! start of #container -->
+{%include file="52kona_v2/header.html"%}
+
+	<!-- Main Content -->
+	<div id="main" role="main">
+		<div class="content">
+			<div class="content-left">
+				<!-- 单车照片 -->
+				<div class="bike-block">
+					<div class="bike-block-header">
+						<div class="bike-block-header-tit">{%$bikes_info['bike_type']['title']%} <strong>{%$bikes_info['name']%}</strong></div>
+					</div>
+					<div class="bike-block-body">
+						<a id="detail_image"><img src="{%imageUrl($bikes_info['index_img'], 650)%}" width="620px" alt="{%$bikes_info['index_img']%}"></a>
+					</div>
+				</div>
+				<!-- 单车详情 -->
+				<div class="bike-block bgC8D6B4">
+					<div class="bike-block-header">
+						<ul class="bike-block-tab">
+							<li class="tab_btn tab_current" tabname="info">介绍</li>
+							<li class="tab_btn" tabname="conf">配置</li>
+							{%if $bikes_info['image_url'] %}<li class="tab_btn" tabname="img">图片</li>{%/if%}
+							{%if $bikes_info['more_video'] %}<li class="tab_btn" tabname="video">视频</li>{%/if%}
+							{%if $bikes_info['more_article'] %}<li class="tab_btn" tabname="news">新闻</li>{%/if%}
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="bike-block-body" id="tab_div">
+						<div class="bike-info tab_content" tabname="info">
+							<p>{%$bikes_info['desc']%}</p>
+						</div>
+
+						<div class="bike-conf tab_content hidden" tabname="conf">
+							<!-- 配置表格开始 -->
+							<table id="specstable"><tbody><tr><td class="label">Frame Material</td><td class="data">Kona 6061 Aluminum Butted 153mm Travel</td></tr><tr class="altercolor"><td class="label">Sizes</td><td class="data">S, M, L, XL</td></tr><tr><td class="label">Rear Shock</td><td class="data">RockShox Monarch Plus RC3</td></tr><tr class="altercolor"><td class="label">Fork</td><td class="data">RockShox Pike RCT3 Solo Air 160mm QR15 Tapered</td></tr><tr><td class="label">Crankarms</td><td class="data">SRAM X9</td></tr><tr class="altercolor"><td class="label">Chainrings</td><td class="data">22/36/Guard</td></tr><tr><td class="label">B/B</td><td class="data">SRAM Press Fit 92</td></tr><tr class="altercolor"><td class="label">Pedals</td><td class="data">n/a</td></tr><tr><td class="label">Chain</td><td class="data">KMX X10</td></tr><tr class="altercolor"><td class="label">Freewheel</td><td class="data">SRAM XG1070 11-36t  10 spd</td></tr><tr><td class="label">Chainguide</td><td class="data">n/a</td></tr><tr class="altercolor"><td class="label">F/D</td><td class="data">SRAM X7 Direct Mount</td></tr><tr><td class="label">R/D</td><td class="data">SRAM XO Type 2</td></tr><tr class="altercolor"><td class="label">Shifters</td><td class="data">SRAM X9</td></tr><tr><td class="label">Brake Calipers</td><td class="data">Shimano XT</td></tr><tr class="altercolor"><td class="label">Front Brake Rotor</td><td class="data">Shimano XT 203mm (centerlock)</td></tr><tr><td class="label">Rear Brake Rotor</td><td class="data">Shimano XT 180mm (centerlock)</td></tr><tr class="altercolor"><td class="label">Brake Levers</td><td class="data">Shimano XT</td></tr><tr><td class="label">Headset</td><td class="data">FSA Orbit 1.5 ZS No.57</td></tr><tr class="altercolor"><td class="label">Handlebar</td><td class="data">RaceFace Atlas FR</td></tr><tr><td class="label">Stem</td><td class="data">Kona 40mm</td></tr><tr class="altercolor"><td class="label">Seatpost</td><td class="data">KS Lev Integra</td></tr><tr><td class="label">Seat Clamp</td><td class="data">Kona Clamp</td></tr><tr class="altercolor"><td class="label">Grips</td><td class="data">Kona S-LOG</td></tr><tr><td class="label">Saddle</td><td class="data">WTB Volt Team</td></tr><tr class="altercolor"><td class="label">Front Hub</td><td class="data">Shimano XT QR15</td></tr><tr><td class="label">Rear Hub</td><td class="data">Shimano XT 142x12mm</td></tr><tr class="altercolor"><td class="label">Spokes</td><td class="data">Sandvik Stainless 14g</td></tr><tr><td class="label">Rims</td><td class="data">WTB Frequency Team i25 TCS</td></tr><tr class="altercolor"><td class="label">Front Tire</td><td class="data">Maxxis High Roller II 27.5x2.3" EXO 3C</td></tr><tr><td class="label">Rear Tire</td><td class="data">Maxxis High Roller II 27.5x2.3" EXO 3C</td></tr><tr class="altercolor"><td class="label">Paint Color</td><td class="data">Matt Lime &amp; Black</td></tr><tr><td class="label">Extras</td><td class="data">n/a</td></tr></tbody></table>
+							<!-- 配置结束 -->
+						</div>
+						{%if $bikes_info['image_url'] %}
+						<div class="bike-image tab_content hidden" tabname="img">
+							<div class="focus">
+								<div class="focusbox">
+									<div class="focusimg">
+										<ul class="fimglist clearfix">
+											{%foreach item=row from=$bikes_info['image_url']%}
+											<li><a href="#"><img src="{%imageUrl($row, 650)%}" width="610px" title="车架"></a></li>
+											{%/foreach%}
+										</ul>
+									</div>
+
+									<div class="focustool">
+										<ul class="ftoollist clearfix"><!--通过控制该ul的left值来实现列表的左右移动，增量为931px-->
+											{%foreach item=row from=$bikes_info['image_url']%}
+											<li class="on"><a href="http://www.lanrentuku.com/"><img src="{%imageUrl($row, 150)%}"><div class="imgname">**</div></a></li>
+											{%/foreach%}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						{%/if%}
+						{%if $bikes_info['more_video'] %}
+						<div class="bike-video tab_content hidden" tabname="video">
+							<!-- tab视频列表 开始 -->
+							{%foreach item=row from=$bikes_info['more_video'] key=i%}
+							<div class="video-box mb10 {%if $i%2 eq 0%}mr20{%/if%}">
+								<div class="video-play">
+									<embed src="{%$row['video_url']%}" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+								</div>
+								<div class="video-tit">{%$row['title']%}</div>
+							</div>
+							{%/foreach%}
+							<div class="clear"></div>
+						</div>
+						{%/if%}
+						{%if $bikes_info['more_article'] %}
+						<div class="bike-news tab_content hidden" tabname="news">
+							<ul class="bike-news-block">
+								{%foreach item=row from=$bikes_info['more_article'] key=i%}
+								<li><a href="{%newsUrl($row['id'])%}">{%$i+1%}. {%$row['title']%}<div class="bike-news-date">{%$row['createdate']%}</div></a></li>
+								{%/foreach%}
+							</ul>
+						</div>
+						{%/if%}
+					</div>
+				</div>
+			</div>
+
+			{%if $bikes_info['virtue']%}
+			<div class="content-sidebar">
+				<div class="sidebar-block noBorder">
+					<div class="sidebar-header">
+						<div class="sidebar-header-tit">亮点配置</div>
+					</div>
+					<div class="sidebar-body">
+						<ul class="sidebar-body-list">
+							{%foreach item=row from=$bikes_info['virtue']%}
+								<li>{%$row%}</li>
+							{%/foreach%}
+						</ul>
+					</div>
+				</div>
+				{%/if%}
+
+				{%if $other_bikes%}
+				<div class="sidebar-block noBorder">
+					<div class="sidebar-header">
+						<div class="sidebar-header-tit">相关车型</div>
+					</div>
+					<div class="sidebar-body">
+						<div class="same-bike">
+							{%foreach item=other from=$other_bikes%}
+							<div class="bike-detail">
+								<a href="{%bikesUrl($other['id'])%}" >
+									<div class="bike-detail-img"><img src="{%imageUrl($other['image_url'][0], 220)%}" width="220" /></div>
+									<div class="bike-detail-name">{%$other['name']%}</div>
+								</a>
+							</div>
+							{%/foreach%}
+						</div>
+					</div>
+				</div>
+				{%/if%}
+
+			</div>
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<!--! end of Main Content -->
+{%include file="52kona_v2/footer_nav.html"%}
+</div> <!--! end of #container -->
+{%include file="52kona_v2/footer.html"%}

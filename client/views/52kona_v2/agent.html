@@ -1,0 +1,32 @@
+<!--! start of #container -->
+{%include file="52kona_v2/header.html"%}
+
+	<!-- Main Content -->
+	<div id="main" role="main">
+		<div class="content">
+			<!-- 经销商列表 开始 -->
+			{%foreach item=agent from=$agent_lists key=i%}
+			<div class="agent-box">
+				<div class="agent-img"><img src="{%imageUrl($agent.image, 200)%}" width="200" alt='{%$agent.shop_name%}'></div>
+				<div class="agent-info">
+					<h3 class="agent-info-tit">{%$agent.shop_name%}</h3>
+					<p class="agent-info-address">
+						{%$agent.city_name%}，{%$agent.postcode%}<br/>{%$agent.address%}
+					</p>
+					<p class="agent-info-conn">
+						TEL : {%$agent.tel%}<br/>
+						PHONE : {%$agent.mobile%}<br/>
+						QQ : {%$agent.qq%}
+					</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			{%/foreach%}
+			<!-- 经销商列表 结束 -->
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+{%include file="52kona_v2/footer_nav.html"%}
+</div> <!--! end of #container -->
+{%include file="52kona_v2/footer.html"%}
