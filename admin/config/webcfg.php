@@ -19,6 +19,7 @@ $config['file_size']	= array(
 	'bike'	=> array('150*92', '220*0', '620*0'),
 	'photo'	=> array('225*152', '800*0'),
 	'ueditor'	=> array('100*0', '600*0'),
+	'team'	=> array('260*0', '225*0'),
 );
 $config['news_focus_type']	= array(
 	0	=> '没有',

@@ -1,45 +1,5 @@
-<!DOCTYPE html>
-<!-- saved from url=(0048)http://templates.66themes.net/innotech/news.html -->
-<html class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" lang="en"><!--<![endif]-->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>konachina - kona中国官网</title>
-<meta name="keywords" content="kona,konachina,52bike,kona中国" >
-<meta name="description" content="konachina 来自美国的kona车">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<!-- CSS: implied media=all -->
-<link rel="stylesheet" href="./css/style.css">
-<link rel="stylesheet" href="./css/team.css">
-<!-- end CSS-->
-<script type="text/javascript" src="./script/jquery_1.7.2.min.js"></script>
-<script type="text/javascript" src="./script/common.js"></script>
-</head>
-
-<body>
-<!-- Page Container -->
-<div id="container">
-	<!-- Header -->
-	<header>
-	<!-- Header Top Area -->
-	<div id="headerTop">
-		<div class="headerInner">
-			<!-- Company Logo -->
-			<a href="./index.html">
-				<img src="images/kona_logo_text.png" alt="KonaChina" />
-			</a>
-			<!-- 头部导航 -->
-			<ul>
-				<li><a href="http://shop35011395.taobao.com/" target="_blank">商城</a></li>
-				<li><a href="./bikes.html">车系</a></li>
-				<li><a href="./news.html">新闻</a></li>
-				<li><a href="./gallery.html">图片墙</a></li>
-				<li><a href="./video.html">精彩视频</a></li>
-				<li><a href="./team.html" class="current">团队荣誉</a></li>
-				<li><a href="./agent.html">经销商</a></li>
-			</ul>
-			<!-- End 头部导航 -->
-		</div>
-	</div>
+<!--! start of #container -->
+{%include file="52kona_v2/header.html"%}
 
 	<!-- Main Content -->
 	<div id="main" role="main">
@@ -48,11 +8,11 @@
 
 			<div class="driver-box">
 				<div class="driver-img">
-					<img src="./images/team/riderlink_Andrew_Crimmins.jpg" width="260px" />
+					<img src="{%imageUrl($row['index_img'], 260)%}" width="260px" alt="{%$driver_info['name']%}" />
 				</div>
 				<div class="driver-info">
-					<h1>薛威豪</h1>
-					<p>Recently signed 16-year-old downhill phenom Andrew Crimmins joins the Kona Team with big goals and large aspirations. From Bredbo, New South Wales, Australia the 2013 U17 Australian National Series winner, Australian National Champion, and 16-18 Crankworx Canadian Open winner is looking forward to stepping up to the next level, racing the Junior World Cup circuit in 2014. Look for Crimmins to be a top contender for a spot on the 2014 Australian Junior Worlds Team to race the World Champs in Norway.</p>
+					<h1>{%$driver_info['name']%}</h1>
+					<p>{%strip_tags($driver_info['desc'])%} 介绍啊卡萨丁发；卡死立刻就撒旦法离开就阿斯顿看来房间爱思考了地方；了卡萨丁；老师；拉开发；蓝山咖啡；凉快ASF；卢卡斯地方。阿里发生了进口地方爱上了肯定就发生的名称迷惘了就卡死了看见对方爱上看见了罚款了吉萨法克就算了 if</p>
 				</div>
 			</div>
 
@@ -60,86 +20,49 @@
 				<div class="driver-detail" id="tab_div">
 					<div class="driver-tab-header">
 						<ul class="tab-nav">
-							<li class="tab_btn tab_current" tabname="img">图片</li>
-							<li class="tab_btn" tabname="video">视频</li>
-							<li class="tab_btn" tabname="news">新闻</li>
+							{%if $driver_info['more_image'] %}<li class="tab_btn tab_current" tabname="img">图片</li>{%/if%}
+							{%if $driver_info['more_video'] %}<li class="tab_btn" tabname="video">视频</li>{%/if%}
+							{%if $driver_info['more_article'] %}<li class="tab_btn" tabname="news">新闻</li>{%/if%}
 						</ul>
 					</div>
+					{%if $driver_info['more_image'] %}
 					<div class="driver-tab-body" id="tab_div">
 						<div class="driver-tab-img tab_content" tabname="img">
 							<ul id="img">
+								{%foreach item=row from=$driver_info['more_image']%}
 								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_129e04253937dc752b13a86b911ff64f.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_129e04253937dc752b13a86b911ff64f.jpg" width="225px" height="152px" alt="" ></a>
+									<a class='gallerylist' href="{%imageUrl($row)%}" title=""><img src="{%imageUrl($row, 225)%}" width="225px" height="152px" ></a>
 								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_ef9e680c719925ae377d41d4dcf8f091.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_ef9e680c719925ae377d41d4dcf8f091.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_52f270bfee306b1d214c44556e9f8645.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_52f270bfee306b1d214c44556e9f8645.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_38e0716f379c6929ab14164a9f3dc5bc.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_38e0716f379c6929ab14164a9f3dc5bc.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_36af0eae7a740b4636434a060aec64df.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_36af0eae7a740b4636434a060aec64df.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_879c7ef44bb23a83674275350f4d0f94.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_879c7ef44bb23a83674275350f4d0f94.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_81d99facc908c937c99ea79605016e2d.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_81d99facc908c937c99ea79605016e2d.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
-								<li>
-									<a class='gallerylist' href="http://www.konachina.com/public/upload/photo/800_a9fab107b1910b53d5f2f7450cee29e2.jpg" title=""><img src="http://www.konachina.com/public/upload/photo/225_a9fab107b1910b53d5f2f7450cee29e2.jpg" width="225px" height="152px" alt="" ></a>
-								</li>
+								{%/foreach%}
 							</ul>
 						</div>
+						{%/if%}
 
+						{%if $driver_info['more_video'] %}
 						<div class="driver-video tab_content hidden" tabname="video">
 							<!-- tab视频列表 开始 -->
-							<div class="video-box mb10 mr15">
+							{%foreach item=row from=$driver_info['more_video'] key=i%}
+							<div class="video-box mb10  {%if $i%2 eq 0%}mr15{%/if%}">
 								<div class="video-play">
-									<embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+									<embed src="{%$row['video_url']%}" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
 								</div>
-								<div class="video-tit">视频名称1</div>
+								<div class="video-tit">{%$row['title']%}</div>
 							</div>
-							<div class="video-box mb10 mr15">
-								<div class="video-play">
-									<embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-								</div>
-								<div class="video-tit">视频名称2</div>
-							</div>
-							<!-- tab视频列表 结束 -->
-							<div class="video-box mb10">
-								<div class="video-play">
-									<embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-								</div>
-								<div class="video-tit">视频名称3</div>
-							</div>
-							<div class="video-box mb10 mr15">
-								<div class="video-play">
-									<embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
-								</div>
-								<div class="video-tit">视频名称4</div>
-							</div>
-
+							{%/foreach%}
 							<div class="clear"></div>
 						</div>
+						{%/if%}
 
+						{%if $driver_info['more_article'] %}
 						<div class="driver-news tab_content hidden" tabname="news">
 							<ul class="driver-news-block">
-								<li><a href="./news_info.html">1. 这是很好的车<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">2. 这是非常好的车<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">3. 这是一篇测评<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">4. 这是一篇获奖新闻<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">5. 这是一篇媒体评价新闻<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">7. 这是一个车手的新闻<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">8. 这是一个车手的新闻<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">9. 这是一个车手的新闻<div class="driver-news-date">2014-04-27</div></a></li>
-								<li><a href="./news_info.html">10. 这是一个车手的新闻<div class="driver-news-date">2014-04-27</div></a></li>
+								{%foreach item=row from=$driver_info['more_article'] key=i%}
+								<li><a href="{%newsUrl($row['id'])%}" >{%$i+1%}. {%$row['title']%}<div class="driver-news-date">{%$row['createdate']%}</div></a></li>
+								{%/foreach%}
 								<div class="clear"></div>
 							</ul>
 						</div>
+						{%/if%}
 					</div>
 				</div>
 			</div>
@@ -148,88 +71,11 @@
 	</div>
 	<div class="clearfix"></div>
 	<!--! end of Main Content -->
-
-	<!-- Footer -->
-	<footer>
-	<div id="footerInner">
-		<!-- One Fourth Column Row -->
-		<div class="row">
-			<!-- 关于kona -->
-			<div class="column oneFourth">
-			<h3>关于KONA</h3>
-				<p>kona是个好车子，尤其14款的，世界大神的第一辆车！</p>
-				<a href="./index.html"><img src="http://www.konachina.com/public/img/logo.png" alt="KONA BIKE"></a>
-			</div>
-			<!-- End 关于kona -->
-
-			<!-- 成绩 -->
-			<div class="column oneFourth">
-				<h3>车队成绩</h3>
-				<ul class="footerNav">
-					<li><a href="">成都DH赛 kona包揽前X</a></li>
-					<li><a href="">云南赛到 小豪夺冠</a></li>
-					<li><a href="">长沙黑麋峰比赛夺得名次</a></li>
-				</ul>
-			</div>
-			<!-- End 成绩 -->
-
-			<!-- 车型评测 -->
-			<div class="column oneFourth">
-			<h3>车型评测</h3>
-				<ul class="footerNav">
-					<li><a href="./news/detail.html">2014款 process测评</a></li>
-					<li><a href="./news/detail.html">2014款 OPERATOR测评</a></li>
-					<li><a href="./news/detail.html">2014款 OPERATOR国外测评</a></li>
-					<li><a href="./news/detail.html">2014款 HEI HEI SUPREME pb测评</a></li>
-				</ul>
-			</div>
-			<!-- End 车型评测 -->
-
-			<!-- Contact -->
-			<div class="column oneFourth last">
-				<h3>联系我们</h3>
-				<dl class="contactInfo">
-					<dt>地址</dt>
-					<dd>北京东直门内大街2-8号</dd>
-					<dt>手机</dt>
-					<dd>+86 130-0107-7266 </dd>
-					<dt>座机</dt>
-					<dd>+010 8407-4520</dd>
-					<dt>E-mail</dt>
-					<dd><a href="mailto:geoff_lv@52bike.com">geoff_lv@52bike.com</a></dd>
-				</dl>
-				<div class="clearfix">&nbsp;</div>
-				<div id="mapCanvas"><img src="http://www.konachina.com/public/img/52bike_logo.png" width="224px" /></div>
-			</div>
-			<!-- End Contact -->
-			<div class="clearfix"></div>
-		</div>
-	</div>
-
-	<!-- Footer Bottom -->
-	<div id="footerBottom">
-		<div id="footerBottomInner">
-			<p class="disclaimer">
-				<a href="http://shop35011395.taobao.com/" >商城</a>&nbsp;&nbsp;
-				<a href="./bikes.html">车型</a>&nbsp;&nbsp;
-				<a href="./news.html">新闻</a>&nbsp;&nbsp;
-				<a href="./gallery.html">图片墙</a>&nbsp;&nbsp;
-				<a href="./video.html">精彩视频</a>&nbsp;&nbsp;
-				<a href="./team.html">团队荣誉</a>&nbsp;&nbsp;
-				<a href="./shop.html">经销商</a>&nbsp;&nbsp;
-			</p>
-			<p class="disclaimer">© Copyright 2014 备案号：234353534</p>
-			<div class="clearfix"></div>
-		</div>
-	</div>
-	</footer>
-	<!-- end of Footer -->
+{%include file="52kona_v2/footer_nav.html"%}
 </div> <!--! end of #container -->
-<script type="text/javascript" src="./script/jquery.colorbox.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$(".gallerylist").colorbox({rel:'gallerylist', transition:"fade", initialWidth:'800'});
 })
 </script>
-</body>
-</html>
+{%include file="52kona_v2/footer.html"%}

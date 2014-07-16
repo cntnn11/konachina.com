@@ -11,6 +11,7 @@ class main_model extends CI_Model
 	const RECOMMEND_TABLE		= 'recommend';
 	const VIDEO_TABLE			= 'qy_video';
 	const BIKESHOP_TABLE		= 'bike_shop';
+	const TEAM_TABLE			= 'qy_team';
 
 	/**
 	 *	@desc 获取车型分类列表
@@ -191,6 +192,11 @@ class main_model extends CI_Model
 		$this->table	= self::VIDEO_TABLE;
 		return $this->countTable($where);
 	}
+	function getViedoFromId($id = 0)
+	{
+		$this->table	= self::VIDEO_TABLE;
+		return $this->getone('*', array('id'=>$id));
+	}
 
 	/**
 	 *	@DESC 获取视频数据
@@ -219,6 +225,36 @@ class main_model extends CI_Model
 			$result	= $this->update($data, array('id'=>$id));
 		}
 		return $result;
+	}
+
+	/**
+	 *	@DESC 获取车手的列表
+	*/
+	function getTeamList($where = array(), $offset = 0, $limit = 0)
+	{
+		$this->table	= self::TEAM_TABLE;
+		$data	= $this->limit($offset, $limit)->orderby(array('sort'=>'desc', 'id'=>'desc'))->getall('*', $where);
+		return $data;
+	}
+	function getTeamTotal($where = array())
+	{
+		$this->table	= self::TEAM_TABLE;
+		$data	= $this->countTable($where);
+		return $data;
+	}
+	/**
+	 *	@DESC 获取产品的详细数据
+	 *		只接受一个ID做为参数
+	*/
+	function getTeamInfoFromId($id = 0)
+	{
+		$this->table	= self::TEAM_TABLE;
+		return $this->getone('*', array('id'=>$id));
+	}
+	function getTeamInfoFromName($name = 0)
+	{
+		$this->table	= self::TEAM_TABLE;
+		return $this->getone('*', array('name'=>$name));
 	}
 
 }

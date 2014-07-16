@@ -59,6 +59,10 @@ function bikesUrl($bike_slug = 0)
 {
 	return site_url("/bikes/{$bike_slug}.html");
 }
+function teamUrl( $slug = '' )
+{
+	return site_url("/team/".$slug);
+}
 function newsUrl($news_id = 0)
 {
 	return site_url("/article/{$news_id}.html");

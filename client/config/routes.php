@@ -30,9 +30,10 @@ $route['video(/:num)?(.html)?']		= '52kona_v2/video/index$1';
 $route['agent(/:num)?(.html)?']		= '52kona_v2/agent/index$1';
 $route['(bikes|bikes.html)']		= '52kona_v2/bikes/index';
 $route['bikes(/\w*)?(.html)?']		= '52kona_v2/bikes/show$1';
+$route['(team|team.html)']			= '52kona_v2/team/index';
+$route['team(/\w*)?(.html)?']		= '52kona_v2/team/show$1';
 
 
-$route['detail/([0-9]+)?.(:any)']	= '52kona_v2/bike/detail/$0';
 $route['news.html']					= '52kona_v2/bike/news';
 $route['news(/[0-9]+)?']			= '52kona_v2/bike/news$1';
 
