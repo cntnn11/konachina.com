@@ -32,10 +32,13 @@ $route['(bikes|bikes.html)']		= '52kona_v2/bikes/index';
 $route['bikes(/\w*)?(.html)?']		= '52kona_v2/bikes/show$1';
 $route['(team|team.html)']			= '52kona_v2/team/index';
 $route['team(/\w*)?(.html)?']		= '52kona_v2/team/show$1';
+$route['news/article(/\w*)?(.html)?']	= '52kona_v2/news/show$1';
+$route['news(/.*)?(.html)?']		= '52kona_v2/news/index$1$2';
+$route['news.html']					= '52kona_v2/news/index';
 
+//$route['(news(/:num)?|news(/:num)?.html)']	= '52kona_v2/news/index/$1';
+//$route['news/category/([0-9]+)?(/[0-9]+)?']	= '52kona/bike/news/category/$1$2';
 
-$route['news.html']					= '52kona_v2/bike/news';
-$route['news(/[0-9]+)?']			= '52kona_v2/bike/news$1';
 
 $route['contact.html']				= '52kona_v2/bike/contact';
 $route['dealers.html']				= '52kona_v2/bike/dealers';

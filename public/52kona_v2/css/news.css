@@ -1,5 +1,5 @@
 .content-left .news-box
-{ display: inline-block; margin-bottom: 20px; position: relative; border-bottom: 1px dashed #CCCCCC; }
+{ display: inline-block; margin-bottom: 20px; position: relative; }
 
 	/* 列表日期栏 */
 	.news-box .news-date
@@ -11,7 +11,7 @@
 
 	/* 新闻框 */
 	.news-box .news-content
-	{ padding: 10px; }
+	{ width: 640px; padding: 10px; }
 		/* 文章标题 */
 		.news-content .news-content-header
 		{ border-left: 3px solid #000000; margin: 10px 0px 10px 0px; padding-left: 10px; }
@@ -54,7 +54,7 @@
 		.news-sidebar-box .news-sidebar-body ul.news-sidebar-last
 		{ padding-left: 10px; }
 			.news-sidebar-body ul.news-sidebar-last li
-			{ width: 100%; float: left; line-height: 200%; font-size: 1.15em; border-bottom: 1px dashed #CCCCCC; }
+			{ width: 100%; float: left; line-height: 200%; font-size: 1.15em; border-bottom: 1px dashed #CCCCCC; list-style: inside; }
 
 		/* 右侧盒子的推荐车型 */
 		.news-sidebar-body .sidebar-bike

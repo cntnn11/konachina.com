@@ -65,20 +65,11 @@ function teamUrl( $slug = '' )
 }
 function newsUrl($news_id = 0)
 {
-	return site_url("/article/{$news_id}.html");
+	return site_url("/news/article/{$news_id}.html");
 }
-function newsCateUrl($cate_id = 0, $offset = 0)
+function newsCateUrl($cate_id = 0)
 {
-	$url	= '/news';
-	if($cate_id)
-	{
-		$url	.= '/category/'.$cate_id;
-	}
-	if($offset)
-	{
-		$url	.= '/'.$offset;
-	}
-	return site_url($url);
+	return site_url('/news/category/'.$cate_id);
 }
 /**
  *	@DESC 获取图片的url访问路径 前后台需同步更新
