@@ -173,6 +173,7 @@ function fileCheck(obj, file_type)
 			msg	= "该文件类型不允许上传。请上传 "+file_ext_arr[file_type].join(',')+"格式文件，当前文件类型为 "+ext;
 		}
 	}
+
 	if(msg != "")
 	{
 		jQuery('#file_error_'+id).css("color","red").html(msg);
@@ -192,7 +193,6 @@ function fileCheck(obj, file_type)
 */
 function ajaxfileupload(obj)
 {
-
 	var url	= jQuery(obj).attr('url');
 	var elementname	= jQuery(obj).attr('id');
 	var folder		= jQuery(obj).attr('folder');
@@ -204,40 +204,36 @@ function ajaxfileupload(obj)
 	}).ajaxComplete(function(){
 		jQuery(this).hide();
 	});
-
 	// 上传主体程序
-	jQuery.ajaxFileUpload
-	(
+	jQuery.ajaxFileUpload({
+		url:url+'?'+Math.random(),
+		secureuri:false,
+		fileElementId:elementname,
+		dataType: 'json',
+		data:{folder:folder, elementname:elementname, size:size},
+		success: function (data, status)
 		{
-			url:url+'?'+Math.random(),
-			secureuri:false,
-			fileElementId:elementname,
-			dataType: 'json',
-			data:{folder:folder, elementname:elementname, size:size},
-			success: function (data, status)
+			if(typeof(data) != 'undefined')
 			{
-				if(typeof(data) != 'undefined')
+				if(data.status == 'OK')
 				{
-					if(data.status == 'OK')
-					{
-						jQuery('#upload_'+elementname).val(data.data.file_path);
-						jQuery('#file_view_'+elementname).attr('src', data.data.url_path);
-						jQuery('#file_view_'+elementname).show();
-					}
-					else
-					{
-						jQuery('#upload_'+elementname).val('');
-						jQuery('#file_error_'+elementname).css("color","red").html(data.data);
-					}
+					jQuery('#upload_'+elementname).val(data.data.file_path);
+					jQuery('#file_view_'+elementname).attr('src', data.data.url_path);
+					jQuery('#file_view_'+elementname).show();
 				}
-			},
-			error: function (data, status, e)
-			{
-console.log(data, status, e);
-				jAlert(data+"\n 请重新上传，图片是否太大，网络是否不好？");
+				else
+				{
+					jQuery('#upload_'+elementname).val('');
+					jQuery('#file_error_'+elementname).css("color","red").html(data.data);
+				}
 			}
+			//return true;
+		},
+		error: function (data, status, e)
+		{
+console.log('ERROR ', data, status, e);
+			alert(data+"\n 请重新上传，图片是否太大，网络是否不好？");
 		}
-	)
-	
+	});
 	return false;
 }

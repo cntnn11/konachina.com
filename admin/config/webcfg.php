@@ -20,6 +20,8 @@ $config['file_size']	= array(
 	'photo'	=> array('225*152', '800*0'),
 	'ueditor'	=> array('100*0', '600*0'),
 	'team'	=> array('260*0', '225*0'),
+	'recommend'	=> array('220*0'),
+
 );
 $config['news_focus_type']	= array(
 	0	=> '没有',

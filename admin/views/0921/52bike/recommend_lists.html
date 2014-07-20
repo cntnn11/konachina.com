@@ -118,14 +118,24 @@ function editRecommendInfo(id, info)
 			info[jQuery(this).attr('name')]	= jQuery(this).val();
 		});
 	}
-
 	html	= '<div id="contentwrapper" class="contentwrapper widgetpage updateImage" >';
 		html	+= '<form class="diaform">';
+			/*html	+= '<p><label>推荐位置：</label>';
+				html	+= '<span class="field">';
+					html	+= '<select id="location" name="location">';
+						html	+= '<option value="1" '+(info.location==1 ? "selected=selected" : "")+'>首页推荐位</option>';
+						html	+= '<option values"2" '+(info.location==2 ? "selected=selected" : "")+'>文章详情页推荐位</option>';
+					html	+= '</select>';
+				html	+= '</span>';
+			html	+= '</p>';*/
 			html	+= '<p><label>标题：</label><span class="field"><input class="xmediuminput" type="text" name="title" id="title" value="'+info.title+'" /></span></p>';
 			html	+= '<p><label>跳转链接：</label><span class="field"><input class="xmediuminput" type="text" name="link_url" id="link_url" value="'+info.link_url+'" /></span></p>';
 
 			html	+= '<p><label>上传图片：</label>';
-				html	+= '<span class="field"><input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="recommend" onchange="fileCheck(this, \'image\')" /><font id="file_error_fileToUpload"></font></span>';
+				html	+= '<span class="field">';
+					html	+= '<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="recommend" size="220" onchange="fileCheck(this, \'image\')" /><font id="file_error_fileToUpload"></font>';
+					html	+= '<br/><small>TIP:宽度220px;</small>';
+				html	+= '</span>';
 			html	+= '</p>';
 			html	+= '<p><label>图片地址：</label><span class="field"><input disabled class="mediuminput" type="text" name="image_url" id="upload_fileToUpload" value="'+info.image_url+'" /></span></p>';
 
@@ -137,7 +147,7 @@ function editRecommendInfo(id, info)
 
 	jDialog(html, '编辑内容', function(){
 		var title		= jQuery('#title').val();
-		var location	= 1;
+		var location	= jQuery('#location').val();
 		var link_url	= jQuery('#link_url').val();
 		var image_url	= jQuery('#upload_fileToUpload').val();
 		var start_date	= jQuery('#start_date').val();
@@ -154,7 +164,7 @@ function editRecommendInfo(id, info)
 			jQuery.ajax({
 				type:'POST',
 				url: suburl,
-				data:'&id='+id+'&title='+title+'&location=1&link_url='+link_url+'&image_url='+image_url+'&start_date='+start_date+'&end_date='+end_date+'&sort='+sort,
+				data:'&id='+id+'&title='+title+'&location='+location+'&link_url='+link_url+'&image_url='+image_url+'&start_date='+start_date+'&end_date='+end_date+'&sort='+sort,
 				dataType:'json',
 				async: false,
 				success:function(msg){

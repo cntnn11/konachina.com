@@ -25,7 +25,6 @@ jQuery.extend({
     },
     createUploadForm: function(id, fileElementId, data)
 	{
-		//create form	
 		var formId = 'jUploadForm' + id;
 		var fileId = 'jUploadFile' + id;
 		var form = jQuery('<form  action="" method="POST" name="' + formId + '" id="' + formId + '" enctype="multipart/form-data"></form>');	
@@ -34,16 +33,15 @@ jQuery.extend({
 			for(var i in data)
 			{
 				jQuery('<input type="hidden" name="' + i + '" value="' + data[i] + '" />').appendTo(form);
-			}			
-		}		
+			}
+		}
 		var oldElement = jQuery('#' + fileElementId);
-		var newElement = jQuery(oldElement).clone();
+		//var newElement = jQuery(oldElement).clone();	// 此处的clone方法会导致递归死循环出现。具体原因未知 to do
+		var newElement	= jQuery( oldElement );
 		jQuery(oldElement).attr('id', fileId);
 		jQuery(oldElement).before(newElement);
 		jQuery(oldElement).appendTo(form);
 
-
-		
 		//set attributes
 		jQuery(form).css('position', 'absolute');
 		jQuery(form).css('top', '-1200px');
@@ -55,8 +53,9 @@ jQuery.extend({
     ajaxFileUpload: function(s) {
         // TODO introduce global settings, allowing the client to modify them for all requests, not only timeout		
         s = jQuery.extend({}, jQuery.ajaxSettings, s);
-        var id = new Date().getTime()        
+		var id = new Date().getTime();
 		var form = jQuery.createUploadForm(id, s.fileElementId, (typeof(s.data)=='undefined'?false:s.data));
+
 		var io = jQuery.createUploadIframe(id, s.secureuri);
 		var frameId = 'jUploadFrame' + id;
 		var formId = 'jUploadForm' + id;		
@@ -129,19 +128,18 @@ jQuery.extend({
                     s.complete(xml, status);
 
                 jQuery(io).unbind()
-
-                setTimeout(function()
-									{	try 
-										{
-											jQuery(io).remove();
-											jQuery(form).remove();	
-											
-										} catch(e) 
-										{
-											jQuery.handleError(s, xml, null, e);
-										}									
-
-									}, 100)
+				setTimeout(function()
+				{
+					try 
+					{
+						jQuery(io).remove();
+						jQuery(form).remove();
+					}
+					catch(e) 
+					{
+						jQuery.handleError(s, xml, null, e);
+					}
+				}, 100)
 
                 xml = null
 
