@@ -123,13 +123,14 @@ function editRecommendInfo(id, info)
 			html	+= '<p><label>推荐位置：</label>';
 				html	+= '<span class="field">';
 					html	+= '<select id="location" name="location">';
-						html	+= '<option value="1" '+(info.location==1 ? "selected=selected" : "")+'>首页推荐位</option>';
-						html	+= '<option values"2" '+(info.location==2 ? "selected=selected" : "")+'>文章详情页推荐位</option>';
+						html	+= '<option value="1" '+(info.location=='1' ? 'selected=selected' : '')+'>首页推荐位</option>';
+						html	+= '<option value="2" '+(info.location=='2' ? 'selected=selected' : '')+'>文章详情页推荐位</option>';
 					html	+= '</select>';
 				html	+= '</span>';
 			html	+= '</p>';
 			html	+= '<p><label>标题：</label><span class="field"><input class="xmediuminput" type="text" name="title" id="title" value="'+info.title+'" /></span></p>';
-			html	+= '<p><label>跳转链接：</label><span class="field"><input class="xmediuminput" type="text" name="link_url" id="link_url" value="'+info.link_url+'" /></span></p>';
+			html	+= '<p><label>跳转链接：</label><span class="field"><input class="xmediuminput" type="text" name="link_url" id="link_url" value="'+info.link_url+'" /></span>';
+			html	+= '</p>';
 
 			html	+= '<p><label>上传图片：</label>';
 				html	+= '<span class="field">';

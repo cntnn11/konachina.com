@@ -15,7 +15,7 @@ class recommend extends CI_Controller
 		$where = $search = array();
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 		$reInfo = $where = $search = $totalArr = $count = array();
-		$limit			= 2;
+		$limit			= 20;
 		$offset			= isset($_GET['per_page']) ? $_GET['per_page'] : 0;
 		$get_params		= '&per_page='.$offset;
 
@@ -43,8 +43,9 @@ class recommend extends CI_Controller
 		$data['title']		= _pv('title', '');
 		$data['image_url']	= _pv('image_url', '');
 		$data['link_url']	= _pv('link_url', '');
+		$data['link_url']	= strpos($data['link_url'], 'http://')!==FALSE ? $data['link_url'] : 'http://'.$data['link_url'];
 		$data['start_date']	= _pv('start_date', 0);
-		$data['end_date']		= _pv('end_date', 0);
+		$data['end_date']	= _pv('end_date', 0);
 		$data['sort']		= _pv('sort', 0);
 		$data['updatedate']	= date('Y-m-d H:i:s');
 

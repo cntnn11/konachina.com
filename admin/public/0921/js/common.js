@@ -231,8 +231,8 @@ function ajaxfileupload(obj)
 		},
 		error: function (data, status, e)
 		{
-console.log('ERROR ', data, status, e);
-			alert(data+"\n 请重新上传，图片是否太大，网络是否不好？");
+console.log(typeof(data.responseText), data.responseText);
+			alert("错误！\n "+data.responseText);
 		}
 	});
 	return false;
