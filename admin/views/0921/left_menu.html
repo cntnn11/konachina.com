@@ -3,7 +3,7 @@
 		<li {%if $admin['c']=='bike'||$admin['c']=='bikenews'||$admin['c']=='video'||$admin['c']=='recommend'||$admin['c']=='team'%}class="current"{%/if%}><a href="#52bike" class="52bike">52BIKE</a>
 			<span class="arrow"></span>
 			<ul id="52bike" {%if $admin['controller'] == 'bike'%}style="display:block;"{%/if%} >
-				<li {%if $admin['c']=='recommend'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}recommend">首页推荐位管理</a></li>
+				<li {%if $admin['c']=='recommend'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}recommend">推荐位管理</a></li>
 				<li {%if $admin['a']=='bikeList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bike/bikeList">车型管理</a></li>
 				<li {%if $admin['c']=='team'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}team/index">车手团队</a></li>
 				<li {%if $admin['a']=='newsList'%}class="current"{%/if%}><a href="{%$smarty.const.BASEURL%}bikenews/newsList">新闻管理</a></li>
