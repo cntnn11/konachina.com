@@ -21,12 +21,16 @@
 						<div class="news-content-body">
 							<p class="article">{%$row.content%}</p>
 							{%if $row['focus_type'] == 1%}
-							<div class="news-body-focus"><img src="http://ww4.sinaimg.cn/bmiddle/8117f22ejw1ehttn3u7wej213f0n3gzs.jpg" width="620" alt="w:620;h:auto" /></div>
+							<div class="news-body-focus"><img src="{%$row['focus']%}" width="620" alt="w:620;h:auto" /></div>
 							{%elseif $row['focus_type'] == 2%}
-							<div class="news-body-focus"><embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="620" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
+							<div class="news-body-focus"><embed src="{%$row['focus']%}" allowFullScreen="true" quality="high" width="620" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
 							{%/if%}
 						</div>
 					</div>
+				</div>
+				{%foreachelse%}
+				<div class="news-box">
+					<p>当前分类下还没有内容哦~ <br/>要记得继续关注哦，我们会不定时更新的</p>
 				</div>
 				{%/foreach%}
 				<!-- 文章列表 结束 -->
@@ -73,7 +77,7 @@
 				</div>
 				{%/if%}
 
-				{%if $ad_bikes %}
+				{%if $adv_bike%}
 				<div class="news-sidebar-box">
 					<div class="news-sidebar-header">
 						<span>推荐车型</span>
@@ -81,19 +85,14 @@
 
 					<div class="news-sidebar-body">
 						<div class="sidebar-bike">
+							{%foreach item=row from=$adv_bike%}
 							<div class="bike-detail">
-								<a href="./detail.html" >
-									<div class="bike-detail-img"><img src="http://www.konachina.com/public/upload/bike/440_3de5e846836e29cc8d6817d7f69ea87d.jpg" width="220" /></div>
-									<div class="bike-detail-name">ENTOURAGE</div>
+								<a href="{%$row['link_url']%}" >
+									<div class="bike-detail-img"><img src="{%imageUrl($row['image_url'], 220)%}" width="220" /></div>
+									<div class="bike-detail-name">{%$row['title']%}</div>
 								</a>
 							</div>
-
-							<div class="bike-detail">
-								<a href="./detail.html" >
-									<div class="bike-detail-img"><img src="http://www.konachina.com/public/upload/bike/440_3de5e846836e29cc8d6817d7f69ea87d.jpg" width="220" /></div>
-									<div class="bike-detail-name">ENTOURAGE</div>
-								</a>
-							</div>
+							{%/foreach%}
 						</div>
 					</div>
 				</div>

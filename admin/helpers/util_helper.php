@@ -216,7 +216,6 @@ function getfiles( $path , &$files = array() )
 
 function thumbImage($folder = 'other', $file_info = array())
 {
-	echo 'goon?';
 	GLOBAL $CI;
 	$size_arr	= $CI->config->item('file_size');
 

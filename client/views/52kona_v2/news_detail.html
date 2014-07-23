@@ -13,7 +13,7 @@
 					</div>
 					<div class="news-content">
 						<div class="news-content-header">
-							<div class="news-content-header-tit"><a href="./archives.html" >{%$news_info['title']%}</a></div>
+							<div class="news-content-header-tit"><a >{%$news_info['title']%}</a></div>
 							<div class="news-content-header-cate">分类：<a href="{%newsCateUrl($news_info['cate_id'])%}">{%$news_cate[$news_info['cate_id']]['name']%}</a></div>
 						</div>
 						<div class="news-content-body">
@@ -28,9 +28,9 @@
 								</div>
 							</div>
 							{%if $news_info['focus_type'] == 1%}
-							<div class="news-body-focus"><img src="http://ww4.sinaimg.cn/bmiddle/8117f22ejw1ehttn3u7wej213f0n3gzs.jpg" width="620" alt="w:620;h:auto" /></div>
+							<div class="news-body-focus"><img src="{%$news_info['focus']%}" width="620" alt="w:620;h:auto" /></div>
 							{%elseif $news_info['focus_type'] == 2%}
-							<div class="news-body-focus"><embed src="http://player.youku.com/player.php/sid/XMzk3MTExNzUy/v.swf" allowFullScreen="true" quality="high" width="620" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
+							<div class="news-body-focus"><embed src="{%$news_info['focus']%}" allowFullScreen="true" quality="high" width="620" height="390" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
 							{%/if%}
 							<div class="news-body-article">
 								{%$news_info['content']%}
@@ -76,6 +76,7 @@
 				</div>
 				{%/if%}
 
+				{%if $adv_bike%}
 				<div class="news-sidebar-box">
 					<div class="news-sidebar-header">
 						<span>推荐车型</span>
@@ -83,22 +84,18 @@
 
 					<div class="news-sidebar-body">
 						<div class="sidebar-bike">
+							{%foreach item=row from=$adv_bike%}
 							<div class="bike-detail">
-								<a href="./detail.html" >
-									<div class="bike-detail-img"><img src="http://www.konachina.com/public/upload/bike/440_3de5e846836e29cc8d6817d7f69ea87d.jpg" width="220" /></div>
-									<div class="bike-detail-name">ENTOURAGE</div>
+								<a href="{%$row['link_url']%}" >
+									<div class="bike-detail-img"><img src="{%imageUrl($row['image_url'], 220)%}" width="220" /></div>
+									<div class="bike-detail-name">{%$row['title']%}</div>
 								</a>
 							</div>
-
-							<div class="bike-detail">
-								<a href="./detail.html" >
-									<div class="bike-detail-img"><img src="http://www.konachina.com/public/upload/bike/440_3de5e846836e29cc8d6817d7f69ea87d.jpg" width="220" /></div>
-									<div class="bike-detail-name">ENTOURAGE</div>
-								</a>
-							</div>
+							{%/foreach%}
 						</div>
 					</div>
 				</div>
+				{%/if%}
 
 			</div>
 		</div>

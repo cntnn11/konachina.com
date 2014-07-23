@@ -53,6 +53,10 @@ class news extends CI_Controller
 		$news_last				= $this->main->getNewsList($where_last, array(), $offset, 11);
 		$this->news_last		= $news_last;
 
+		// 推荐车型
+		$adv_bike				= $this->main->getRecommend(2);
+		$this->adv_bike			= $adv_bike;
+
 		$this->news_cate		= $this->_getCateConf();
 		$this->news_lists		= $lists;
 		$this->news_total		= $news_total;
@@ -86,6 +90,10 @@ class news extends CI_Controller
 		$where_other['cate_id']	= $news_info['cate_id'];
 		$news_other				= $this->main->getNewsList($where_other, 0, 11);
 		$this->news_other		= $news_other;
+
+		// 推荐车型
+		$adv_bike				= $this->main->getRecommend(2);
+		$this->adv_bike			= $adv_bike;
 
 		$this->title			= $news_info['name']."_KONA新闻_KonaChina.com";
 		$this->keywords			= "KonaChina.com,kona中国,52bike乐骑士";
