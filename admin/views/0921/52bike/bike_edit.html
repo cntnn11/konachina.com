@@ -136,8 +136,8 @@
 						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
 						<font id="file_error_fileToUpload"></font>
 						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$image%}" />
-						<br/><small>TIP:宽度650px;</small>
-						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} />
+						<br/><small>TIP:宽度620px;</small>
+						<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} />
 						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
 						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
 					</span>
@@ -146,8 +146,8 @@
 						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
 						<font id="file_error_fileToUpload"></font>
 						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
-						<br/><small>TIP:宽度650px;</small>
-						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+						<br/><small>TIP:宽度620px;</small>
+						<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
 						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
 						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
 					</span>
@@ -228,8 +228,8 @@
 		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
 		<font id="file_error_fileToUpload"></font>
 		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
-		<br/><small>TIP:宽度650px;</small>
-		<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
+		<br/><small>TIP:宽度620px;</small>
+		<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
 		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
 		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
 	</span>

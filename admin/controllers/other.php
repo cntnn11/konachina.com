@@ -129,7 +129,15 @@ class other extends CI_Controller
 			{
 				continue;
 			}
-			$thumb_config['new_image']	= $file_info['file_path'].$width.'_'.$file_info['raw_name'].$file_info['file_ext'];
+			if( $folder == 'bike' )
+			{
+				$thumb_config['new_image']	= $file_info['file_path'].$file_info['raw_name'].'_'.$width.'.'.$file_info['file_ext'];
+			}
+			else
+			{
+				$thumb_config['new_image']	= $file_info['file_path'].$width.'_'.$file_info['raw_name'].$file_info['file_ext'];
+			}
+
 			$thumb_config['width']		= $width;
 			if($height > 0)
 			{

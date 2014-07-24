@@ -48,7 +48,7 @@
 						{%foreach item=info from=$bike%}
 						<div class="bike-detail">
 							<a href="{%bikesUrl($info.id)%}" title="{%$info.name%}" >
-								<div class="bike-detail-img"><img src="{%imageUrl($info['image_url'][0], 150)%}" alt="{%$info['image_url'][0]%} {%$info.name%}" width="150" height="92" /></div>
+								<div class="bike-detail-img"><img src="{%imageUrlNew($info['image_url'][0], 150)%}" alt="{%$info['image_url'][0]%} {%$info.name%}" width="150" height="92" /></div>
 								<div class="bike-detail-name">{%$info.name%}</div>
 							</a>
 						</div>

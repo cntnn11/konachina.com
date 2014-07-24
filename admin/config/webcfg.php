@@ -16,7 +16,7 @@ $config['de_attr']	= array(
 );
 
 $config['file_size']	= array(
-	'bike'	=> array('150*92', '220*0', '620*0'),
+	'bike'	=> array('150*92', '220*130', '620*0'),
 	'photo'	=> array('225*152', '800*0'),
 	'ueditor'	=> array('100*0', '600*0'),
 	'team'	=> array('260*260', '225*150'),

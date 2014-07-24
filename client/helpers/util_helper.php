@@ -100,6 +100,29 @@ function imageUrl($image_path, $size = '225', $url = '')
 		return $url.'img/'.$size.'_noimg.gif';
 	}
 }
+function imageUrlNew($image_path, $size = '225', $url = '')
+{
+	$file_path_info	= pathinfo($image_path);
+	$file_path_size	= $file_path_info['dirname'].DS.$file_path_info['filename'].'_'.$size.'.'.$file_path_info['extension'];
+//var_array( PUBURL );
+	$url	= $url ? $url : UPLOADURL;
+	if( strpos($image_path, 'http://') !== FALSE )
+	{
+		return $image_path;
+	}
+	if( is_file(PUBPATH.$file_path_size) )
+	{
+		return $url.$file_path_size;
+	}
+	else if( is_file(PUBPATH.$image_path) )
+	{
+		return $url.$image_path;
+	}
+	else
+	{
+		return $url.'img/'.$size.'_noimg.gif';
+	}
+}
 /**
  *	@DESC 获取年份配置，从2012年开始
  *	@author cntnn11

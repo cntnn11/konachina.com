@@ -60,7 +60,7 @@
 					</td>
 					<tr>
 						<th class="head0" style="width: 4%;"><input class="check-all" type="checkbox" id="checkall" /></th>
-						<th class="head1">[年代][类别]名称</th>
+						<th class="head1">[ID][年代][类别]名称</th>
 						<th class="head0">价格</th>
 						<th class="head1">简述</th>
 						<th class="head1">创建时间</th>
@@ -83,7 +83,7 @@
 				<tr>
 					<td><input name="sel_id[]" type="checkbox" value="{%$row.id%}" /></td>
 					<td>
-						[<font>{%$row.year%}</font>][<font>{%$cate_type[$row.type]%}</font>]<b><a href="{%bikesUrl($row.id)%}" target="_blank" alt="{%$row.name%}">{%$row.name%}</a></b>
+						[{%$row['id']%}][<font>{%$row.year%}</font>][<font>{%$cate_type[$row.type]%}</font>]<b><a href="{%bikesUrl($row.id)%}" target="_blank" alt="{%$row.name%}">{%$row.name%}</a></b>
 					</td>
 					<td>{%$row.price%}￥</td>
 					<td>{%$row.desc%}</td>
