@@ -15,7 +15,7 @@ class video extends CI_Controller
 		$where = $search = array();
 		parse_str($_SERVER['QUERY_STRING'], $_GET);
 		$reInfo = $where = $search = $totalArr = $count = array();
-		$limit			= 2;
+		$limit			= 20;
 		$offset			= isset($_GET['per_page']) ? $_GET['per_page'] : 0;
 		$get_params		= '&per_page='.$offset;
 
