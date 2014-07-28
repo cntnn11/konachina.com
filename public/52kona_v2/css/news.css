@@ -54,7 +54,7 @@
 		.news-sidebar-box .news-sidebar-body ul.news-sidebar-last
 		{ padding-left: 10px; }
 			.news-sidebar-body ul.news-sidebar-last li
-			{ width: 100%; float: left; line-height: 200%; font-size: 1.15em; border-bottom: 1px dashed #CCCCCC; list-style: inside; }
+			{ width: 280px; float: left; line-height: 200%; font-size: 1.15em; border-bottom: 1px dashed #CCCCCC; list-style: inside; }
 
 		/* 右侧盒子的推荐车型 */
 		.news-sidebar-body .sidebar-bike
