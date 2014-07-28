@@ -15,10 +15,10 @@ class agent extends CI_Controller
 		$offset					= $page_num > 0 ? ($page_num-1)*$limit : 0;
 		$this->load->model('main_model', 'main');
 		$where['flag >=']		= 1;
-		$agent_lists			= $this->main->getAgentList($where, $offset, $limit);
+		$agent_lists			= $this->main->getAgentList($where);
 		$agent_total			= $this->main->getAgentTotal($where);
 		$this->agent_lists		= $agent_lists;
-		$this->page				= pageWeb(WEBURL.'agent', $agent_total, $offset, $limit, 2);
+		//$this->page				= pageWeb(WEBURL.'agent', $agent_total, $offset, $limit, 2);
 
 		$this->title			= "经销商_KonaChina.com";
 		$this->keywords			= "KonaChina.com,kona中国,52bike乐骑士";
