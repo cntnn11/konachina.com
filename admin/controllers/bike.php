@@ -445,7 +445,7 @@ class bike extends CI_Controller
 
 		if($id > 0)
 		{
-			$rs	= $this->bike->updateShopInfoById( array('id'=>$id), $data );
+			$rs	= $this->bike->updateShopInfoById( $id, $data );
 		}
 		else
 		{
