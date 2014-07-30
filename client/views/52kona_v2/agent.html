@@ -10,14 +10,15 @@
 				<div class="agent-img"><img src="{%imageUrl($agent.image, 200)%}" width="200" alt='{%$agent.shop_name%}'></div>
 				<div class="agent-info">
 					<h3 class="agent-info-tit">{%$agent.shop_name%}</h3>
-					<p class="agent-info-address">
-						{%$agent.city_name%}，{%$agent.postcode%}<br/>{%$agent.address%}
-					</p>
-					<p class="agent-info-conn">
-						TEL : {%$agent.tel%}<br/>
-						PHONE : {%$agent.mobile%}<br/>
-						QQ : {%$agent.qq%}
-					</p>
+					<div class="agent-info-address">
+						{%$agent.city_name%} {%if $agent.postcode %}，{%$agent.postcode%}{%/if%}
+						<br/>{%$agent['address']%}
+					</div>
+					<div class="agent-info-conn">
+						{%if $agent['tel'] %}TEL : {%$agent['tel']%}<br/>{%/if%}
+						{%if $agent['mobile'] %}PHONE : {%$agent['mobile']%}<br/>{%/if%}
+						{%if $agent['qq'] %}QQ : {%$agent['qq']%}{%/if%}
+					</div>
 				</div>
 				<div class="clear"></div>
 			</div>

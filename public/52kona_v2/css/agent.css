@@ -1,17 +1,17 @@
 .content .agent-box
 { width: 455px; display: inline-block; margin: 10px; border: 1px solid #000; }
 	.agent-box .agent-img
-	{ margin: 0px; padding: 10px; text-align: center; float: left; }
+	{ width: 200px; height: 200px; margin: 0px; padding: 10px; text-align: center; float: left; }
 	.agent-box .agent-img img
 	{ width: 200px; margin: 0px; padding: 0px; }
 
 	.agent-box .agent-info
-	{  }
+	{ width: 220px; float: right; padding-right: 10px; }
 		.agent-info h3.agent-info-tit
 		{ color: #000000; font-weight: bold; font-size: 1.5em; margin-top: 10px; }
-		.agent-info p.agent-info-address
-		{ line-height: 150%; }
-		.agent-info p.agent-info-conn
+		.agent-info div.agent-info-address
+		{ padding-right: 10px; line-height: 150%; }
+		.agent-info div.agent-info-conn
 		{ line-height: 150%; }
 
 
