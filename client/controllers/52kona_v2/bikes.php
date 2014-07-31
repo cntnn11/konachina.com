@@ -1,5 +1,5 @@
 <?php
-class bikes extends Kona_Controller
+class bikes extends CI_Controller
 {
 	public $bike_tag	= array(
 		1	=> array('id'=>1, 'title'=>'山地车', 'en'=>'mountain'),
