@@ -76,10 +76,10 @@ class team extends CI_Controller
 		$id						= _pv('id');
 		$info					= _pv('info');
 		$get_params				= _pv('get_params');
-		$data['name']			= $info['name'];
-		$data['desc']			= $info['desc'];
-		$data['info']			= $info['info'];
-		$data['bike_ids']		= $info['bike_ids'];
+		$data['name']			= (string)$info['name'];
+		$data['desc']			= (string)$info['desc'];
+		$data['info']			= (string)$info['info'];
+		$data['bike_ids']		= (string)$info['bike_ids'];
 		$data['sort']			= (int)$info['sort'];	//999999
 
 		$data['more_image']		= serialize( (array)$info['more_image'] );
