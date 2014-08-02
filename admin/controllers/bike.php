@@ -386,6 +386,13 @@ class bike extends CI_Controller
 			$where['flag']			= $_GET['flag'];
 			$get_params				.= '&flag='.$_GET['flag'];
 		}
+		else
+		{
+			$_GET['flag']			= 1;
+			$where['flag']			= $_GET['flag'];
+			$get_params				.= '&flag='.$_GET['flag'];
+		}
+
 		if($_GET['shopname'])
 		{
 			$like['shop_name']			= $_GET['shopname'];
