@@ -65,30 +65,59 @@ class team extends CI_Controller
 		$video_list					= $this->_getVideoConf();
 
 		$driver_info['desc']		= nl2br($driver_info['desc']);
-		$driver_info['more_image']	= unserialize($driver_info['more_image']);
-		$driver_info['index_img']	= $driver_info['more_image'][0];	// 取第一张作为大图展示
-		unset($driver_info['more_image'][0]);
 		
-		$driver_info['more_video']	= unserialize($driver_info['more_video']);
-		if( $driver_info['more_video'] && is_array($driver_info['more_video']) )
+		$more_image					= unserialize($driver_info['more_image']);
+		if( $more_image && is_array($more_image) )
 		{
-			foreach ($driver_info['more_video'] as $key => $video_id)
+			foreach ($more_image as $key => $image_url)
 			{
-				$driver_info['more_video'][$key]	= $this->main->getViedoFromId( $video_id );
+				if( $image_url )
+				{
+					$more_image[$key]	= strpos($image_url, 'http://')!== FALSE ? $image_url : imageUrl($row['index_img'], 260);
+				}
+				else
+				{
+					unset($more_image[$key]);
+				}
+			}
+			$driver_info['index_img']	= $more_image[0];	// 取第一张作为大图展示
+			$driver_info['image']		= $more_image;
+			$class['image']['class']	= 'tab_current';
+			$class['image']['show']		= '';
+		}
+
+		$more_video		= unserialize($driver_info['more_video']);
+		if( $more_video && is_array($more_video) )
+		{
+			foreach ($more_video as $key => $video_id)
+			{
+				$video_info	= $this->main->getViedoFromId( $video_id );
+				if( $video_info )
+				{
+					$driver_info['video'][$key]	= $video_info;
+					$class['video']['class']	= $class['image'] ? '' : 'tab_current';
+					$class['video']['show']		= $class['image'] ? 'hidden' : '';
+				}
 			}
 		}
 		
-		$driver_info['more_article']	= unserialize($driver_info['more_article']);
-		if( $driver_info['more_article'] && is_array($driver_info['more_article']) )
+		$more_article	= unserialize($driver_info['more_article']);
+		if( $more_article && is_array($more_article) )
 		{
-			foreach ($driver_info['more_article'] as $key => $article_id)
+			foreach ($more_article as $key => $article_id)
 			{
 				$article	= $this->main->getNewsInfoById( $article_id );
-				$article['createdate']				= date( 'Y-m-d', strtotime($article['createdate']) );
-				$driver_info['more_article'][$key]	= $article;
+				if( $article )
+				{
+					$article['createdate']					= date( 'Y-m-d', strtotime($article['createdate']) );
+					$driver_info['article'][$key]		= $article;
+					$class['article']['class']			= $class['image']||$class['video'] ? '' : 'tab_current';
+					$class['article']['show']			= $class['image']||$class['video'] ? 'hidden' : '';
+				}
 			}
 		}
 
+		$this->class			= $class;
 		$this->driver_info		= $driver_info;
 		$this->title			= $driver_info['name']."_KONA中国车队车手_KonaChina.com";
 		$this->keywords			= "KonaChina.com,kona中国,52bike乐骑士";

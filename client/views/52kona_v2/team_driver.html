@@ -7,41 +7,44 @@
 			<div class="team-header"><h3>KONACHINA 中国车队</h3></div>
 
 			<div class=" opacE5EDF6-90 p20 driver-box">
+				{%if $driver_info['index_img']%}
 				<div class="driver-img">
-					<img src="{%imageUrl($row['index_img'], 260)%}" width="260px" alt="{%$driver_info['name']%}" />
+					<img src="{%$driver_info['index_img']%}" width="260px" alt="{%$driver_info['name']%}" />
 				</div>
+				{%/if%}
 				<div class="driver-info">
 					<h1>{%$driver_info['name']%}</h1>
 					<p>{%strip_tags($driver_info['desc'])%} 介绍啊卡萨丁发；卡死立刻就撒旦法离开就阿斯顿看来房间爱思考了地方；了卡萨丁；老师；拉开发；蓝山咖啡；凉快ASF；卢卡斯地方。阿里发生了进口地方爱上了肯定就发生的名称迷惘了就卡死了看见对方爱上看见了罚款了吉萨法克就算了 if</p>
 				</div>
 			</div>
 
+			{%if $driver_info['image']||$driver_info['article']||$driver_info['video'] %}
 			<div class="mt20 driver-box">
 				<div class="driver-detail" id="tab_div">
 					<div class="driver-tab-header">
 						<ul class="tab-nav">
-							{%if $driver_info['more_image'] %}<li class="tab_btn tab_current" tabname="img">图片</li>{%/if%}
-							{%if $driver_info['more_video'] %}<li class="tab_btn" tabname="video">视频</li>{%/if%}
-							{%if $driver_info['more_article'] %}<li class="tab_btn" tabname="news">新闻</li>{%/if%}
+							{%if $driver_info['image'] %}<li class="tab_btn {%$class['image']['class']%}" tabname="img">图片</li>{%/if%}
+							{%if $driver_info['video'] %}<li class="tab_btn {%$class['video']['class']%}" tabname="video">视频</li>{%/if%}
+							{%if $driver_info['article'] %}<li class="tab_btn {%$class['article']['class']%}" tabname="news">新闻</li>{%/if%}
 						</ul>
 					</div>
-					{%if $driver_info['more_image'] %}
+					{%if $driver_info['image'] %}
 					<div class="driver-tab-body" id="tab_div">
-						<div class="driver-tab-img tab_content" tabname="img">
+						<div class="driver-tab-img tab_content {%$class['image']['class']%} {%$class['video']['show']%}" tabname="img">
 							<ul id="img">
-								{%foreach item=row from=$driver_info['more_image']%}
+								{%foreach item=row from=$driver_info['image']%}
 								<li>
-									<a class='gallerylist' href="{%imageUrl($row)%}" title=""><img src="{%imageUrl($row, 225)%}" width="225px" height="152px" ></a>
+									<a class='gallerylist' href="{%imageUrl($row)%}" title=""><img src="{%$row%}" width="225px" height="152px" ></a>
 								</li>
 								{%/foreach%}
 							</ul>
 						</div>
 						{%/if%}
 
-						{%if $driver_info['more_video'] %}
-						<div class="driver-video tab_content hidden" tabname="video">
+						{%if $driver_info['video'] %}
+						<div class="driver-video tab_content {%$class['video']['show']%}" tabname="video">
 							<!-- tab视频列表 开始 -->
-							{%foreach item=row from=$driver_info['more_video'] key=i%}
+							{%foreach item=row from=$driver_info['video'] key=i%}
 							<div class="video-box mb10  {%if $i%2 eq 0%}mr15{%/if%}">
 								<div class="video-play">
 									<embed src="{%$row['video_url']%}" allowFullScreen="true" quality="high" width="300" height="300" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
@@ -53,10 +56,10 @@
 						</div>
 						{%/if%}
 
-						{%if $driver_info['more_article'] %}
-						<div class="driver-news tab_content hidden" tabname="news">
+						{%if $driver_info['article'] %}
+						<div class="driver-news tab_content {%$class['article']['show']%}" tabname="news">
 							<ul class="driver-news-block">
-								{%foreach item=row from=$driver_info['more_article'] key=i%}
+								{%foreach item=row from=$driver_info['article'] key=i%}
 								<li><a href="{%newsUrl($row['id'])%}" >{%$i+1%}. {%$row['title']%}<div class="driver-news-date">{%$row['createdate']%}</div></a></li>
 								{%/foreach%}
 								<div class="clear"></div>
@@ -66,6 +69,7 @@
 					</div>
 				</div>
 			</div>
+			{%/if%}
 
 		</div>
 	</div>
