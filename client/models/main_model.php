@@ -19,7 +19,7 @@ class main_model extends CI_Model
 	function getProductCateList($where = array(), $offset = 0, $limit = 0, $sort = 'asc')
 	{
 		$this->table	= self::PRODUCTCATE_TABLE;
-		return $this->limit($offset, $limit)->orderby(array('sort'=>'desc', 'id'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->orderby(array('sort'=>'desc', 'id'=>'asc'))->getall('*', $where);
 	}
 	/**
 	 *	@DESC 获取产品类型的分类配置数组
@@ -52,7 +52,7 @@ class main_model extends CI_Model
 	function getProductList($where = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::PRODUCT_TABLE;
-		$data	= $this->limit($offset, $limit)->orderby(array('createdate'=>'asc','year'=>'desc','sort'=>'desc'))->getall('*', $where);
+		$data	= $this->limit($offset, $limit)->orderby(array('year'=>'desc','sort'=>'desc'))->getall('*', $where);
 		return $data;
 	}
 	function getProductTotal($where = array())
@@ -206,7 +206,7 @@ class main_model extends CI_Model
 	function getAgentList($where = array(), $offset = 0, $limit = 0)
 	{
 		$this->table	= self::BIKESHOP_TABLE;
-		return $this->limit($offset, $limit)->orderby(array('id'=>'desc'))->getall('*', $where);
+		return $this->limit($offset, $limit)->getall('*', $where);
 	}
 	function getAgentTotal($where = array())
 	{

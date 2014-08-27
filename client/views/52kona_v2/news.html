@@ -3,13 +3,13 @@
 
 	<!-- Main Content -->
 	<div id="main" role="main">
-		<div class="content">
-			<div class="content-left">
+		<div class="bgFFF bradius5 content">
+			<div class=" content-left">
 
 				<!-- 文章列表 开始 -->
 				{%foreach item=row from=$news_lists%}
 				<div class="news-box">
-					<div class="news-date">
+					<div class="opacFFF90 bradius5 news-date">
 						<div class="news-date-month">{%$row.month%}</div>
 						<div class="news-date-days">{%$row.day%}</div>
 					</div>
@@ -46,7 +46,7 @@
 
 				<!-- 新闻右侧栏盒子 开始 -->
 				{%if $news_cate %}
-				<div class="news-sidebar-box">
+				<div class="mt20 news-sidebar-box">
 					<div class="news-sidebar-header">
 						<span>新闻类别</span>
 					</div>
@@ -63,7 +63,7 @@
 				<!-- 新闻右侧栏盒子 结束 -->
 
 				{%if $news_last %}
-				<div class="news-sidebar-box">
+				<div class="mt20 news-sidebar-box">
 					<div class="news-sidebar-header">
 						<span>近期新闻</span>
 					</div>
@@ -78,7 +78,7 @@
 				{%/if%}
 
 				{%if $adv_bike%}
-				<div class="news-sidebar-box">
+				<div class="mt20 news-sidebar-box">
 					<div class="news-sidebar-header">
 						<span>推荐车型</span>
 					</div>

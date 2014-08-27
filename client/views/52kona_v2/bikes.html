@@ -4,7 +4,7 @@
 	<!-- Main Content -->
 	<div id="main" role="main">
 		<div class="content">
-			<div class="search-bike">
+			<div class="search-bike opacFFF90">
 				<div class="search-bike-title">
 					<h1>KONA车系</h1>
 				</div>
@@ -39,7 +39,7 @@
 
 			<div class="bike">
 				{%foreach item=bike key=type from=$bike_lists%}
-				<div class="bike-type">
+				<div class="bike-type opacFFF90">
 					<div class="bike-type-header">
 						<strong>{%$bike_type[$type]['title']%}</strong>
 					</div>
@@ -59,7 +59,7 @@
 					<div class="clear"></div>
 				</div>
 				{%foreachelse%}
-				<div class="bike-type">
+				<div class="nobike bike-type">
 					<div class="bike-type-header">
 						<strong></strong>
 					</div>

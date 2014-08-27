@@ -5,17 +5,17 @@
 	<div id="main" role="main">
 		<div class="content">
 
-			<div class="gallery-box">
+			<div class=" gallery-box">
 				<ul id="img">
 					{%foreach item=images from=$gallery_lists%}
-					<li>
+					<li class="">
 						<a class='gallerylist' href="{%imageUrl($images.image_url, 800)%}" title="{%$images.title%}"><img src="{%imageUrl($images.image_url, 225)%}" width="225px" height="152px" alt="{%$images.title%}" ></a>
 					</li>
 					{%/foreach%}
 				</ul>
 			</div>
 
-			<div class="pagination">
+			<div class="opacFFF90 bradius5 pagination">
 				{%$page%}
 				<div class="clearfix"></div>
 			</div>
@@ -29,6 +29,11 @@
 {%include file="52kona_v2/footer.html"%}
 <script type="text/javascript">
 $(function(){
+	$(".gallery-box ul li").hover(function(){
+		$(this).siblings("li").find("img").css({"opacity":"0.5", "background-color":"#000"});
+	},function(){
+		$(this).siblings("li").find("img").css({"opacity":"1", "background-color":"#000"});
+	});
 	$(".gallerylist").colorbox({rel:'gallerylist', transition:"fade", initialWidth:'800'});
 })
 </script>

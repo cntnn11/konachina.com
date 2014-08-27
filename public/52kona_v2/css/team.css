@@ -7,21 +7,21 @@
 .content .team-box
 { display: inline-block; margin-top: 20px; }
 	.team-box a
-	{ display: inline-block; padding: 20px; padding-bottom: 5px; border: 1px solid #000000; color: #0052A5; font-weight: bold; }
+	{ display: inline-block; padding: 20px; padding-bottom: 5px; color: #0052A5; font-weight: bold; }
 	.team-box a:hover
-	{ background: #0052A5; color: #FFFFFF; border: 1px solid #FFFFFF; }
+	{ background: #0052A5; color: #FFFFFF; border: 1px solid #FFFFFF; border-radius: 5px; }
 	.team-box .team-img img
 	{ border: 1px solid #CCCCCC; width: 260px; }
 	.team-box .team-name
 	{ font-size: 1.5em; text-align: center; line-height: 30px; }
 
 .driver-box
-{ display: inline-block; padding-top: 20px; }
+{ display: inline-block; }
 	.driver-box .driver-img
 	{ width: 260px; text-align: center; float: left; margin-right: 20px; }
 
 	.driver-box .driver-info
-	{ float: right; width: 680px; }
+	{  }
 		.driver-info h1
 		{ margin: 0px; }
 		.driver-info p

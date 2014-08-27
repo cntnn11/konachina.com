@@ -87,8 +87,10 @@
 				{ float: right; }
 
 /***右边栏内容块***/
+.content-sidebar
+{ border: none; }
 .content-sidebar .sidebar-block
-{ width: 100%; margin-bottom: 30px; line-height: 30px; border: 1px solid #979797; display: inline-block; padding: 0px; }
+{ width: 100%; margin-bottom: 30px; line-height: 30px; border: 1px solid #979797; display: inline-block; padding-bottom: 20px; }
 .content-sidebar .noBorder
 { border: none; }
 	/** 通用侧边栏块状头部 **/
@@ -100,7 +102,7 @@
 	.sidebar-block .sidebar-body
 	{  }
 		.sidebar-body ul li
-		{ border-bottom: 1px #585858 dashed; }
+		{ border-bottom: 1px #585858 dashed; padding: 0px 5px 0px 5px; }
 		/** 相关车型配置 **/
 		.sidebar-body .same-bike
 		{ text-align: center; }

@@ -87,7 +87,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
 
 #main a {
 	position: relative;
-	overflow: hidden;
+	/*overflow: hidden;*/
 }
 
 #main img.icon {
@@ -107,7 +107,12 @@ ul, li {
 
 /* 头部 */
 header
-{ margin: 0px; }
+{
+	margin: 0px;
+	width: 100%;
+	position: fixed;
+	z-index: 999;
+}
 .headerInner {
 	width: 969px;
 	margin: 0 auto;
@@ -359,29 +364,43 @@ footer #mapCanvas {
 	margin: 0 0 0 6px;
 }
 
+.web-bg
+{
+	position: fixed;
+	top: 56px;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+
 /* 中间内容区 */
 #main
 {
+	margin-top: 56px;
+	width: 100%;
 	text-align: center;
+	display: inline-block;
 }
 #main .content
 {
-	width: 960px;
+	width: 968px;
 	margin: 10px auto;
 	display: inline-block;
 	text-align: left;
+	 filter: alpha(opacity=100); -moz-opacity: 1; opacity: 1;
 }
 /* 中间内容左侧主体 */
 .content .content-left {
 	width: 640px;
 	float: left;
-	border: 1px #fff solid;
+	/*border: 1px #fff solid;*/
 }
 /* 中间内容右侧栏 */
 .content .content-sidebar {
 	width: 292px;
 	float: right;
-	border: 1px #fff solid;
+	/*border: 1px #fff solid;*/
 }
 
 /* 分页样式 */
@@ -514,6 +533,12 @@ footer #mapCanvas {
 }
 .bgC8D6B4
 { background-color: #C8D6B4; }
+.bg000
+{ background-color: #000; }
+.bgFFF
+{
+	background-color: #FFF;
+}
 .noBorder
 { border: none; }
 .mt10
@@ -536,5 +561,43 @@ footer #mapCanvas {
 { margin-bottom: 10px; }
 .mb20
 { margin-bottom: 20px; }
+.p20
+{ padding: 20px; }
+.pt20
+{ padding-top: 20px; }
+.pb20
+{ padding-bottom: 20px; }
+.opacFFF90
+{
+	background: #FFF;
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+}
+.opac00090
+{
+	background: #000;
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+}
+.opac00050
+{
+	background: #000;
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+}
+.opacE5EDF6-90
+{
+	background: #E5EDF6;
+	filter: alpha(opacity=90);
+	-moz-opacity: 0.9;
+	opacity: 0.9;
+}
 
+.bradius5
+{
+	border-radius: 5px;
+}
 

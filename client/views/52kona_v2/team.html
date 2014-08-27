@@ -6,7 +6,7 @@
 		<div class="content">
 			<div class="team-header"><h3>KONACHINA 中国车队</h3></div>
 			{%foreach item=row from=$team_lists key=i%}
-			<div class="team-box {%if $i%3 eq 2%}mr0{%else%}mr18{%/if%}">
+			<div class="opacFFF90 bradius5 team-box {%if $i%3 eq 2%}mr0{%else%}mr18{%/if%}">
 				<a href="{%teamUrl($row['id'])%}">
 				<div class="team-img">
 					<img src="{%imageUrl($row[0], 260)%}" width="260px" alt="{%$row['name']%}" />

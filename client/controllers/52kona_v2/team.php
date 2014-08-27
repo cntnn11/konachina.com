@@ -74,7 +74,7 @@ class team extends CI_Controller
 		{
 			foreach ($driver_info['more_video'] as $key => $video_id)
 			{
-				$driver_info['more_video'][$key]	= $this->main()->getViedoFromId( $video_id );
+				$driver_info['more_video'][$key]	= $this->main->getViedoFromId( $video_id );
 			}
 		}
 		

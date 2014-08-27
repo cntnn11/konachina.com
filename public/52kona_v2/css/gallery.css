@@ -1,6 +1,6 @@
 .content .gallery-box
 { display: inline-block; }
-.gallery-box ul
+.gallery-box > ul
 { margin: 0px; display: inline-block; }
-.gallery-box ul li
-{ float: left; margin-left: 10px; margin-bottom: 10px; }
+.gallery-box > ul > li
+{ float: left; margin-left: 10px; margin-bottom: 10px; border: 1px solid #FFF; }
