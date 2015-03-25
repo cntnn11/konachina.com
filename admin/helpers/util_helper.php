@@ -146,7 +146,7 @@ function newsUrl($news_id = 0)
 function error_logs($error_info, $error_type = '')
 {
 	$file_path	= "/tmp/";
-	$file_path	= "E:/www/ciapp/tmp/";
+	//$file_path	= "E:/www/ciapp/tmp/";
 	error_log(date("Y-m-d H:i:s")."\t".$error_info."\n", 3, $file_path.$error_type.'_error.log');
 }
 
