@@ -9,7 +9,7 @@
 			<div class="opacFFF90 bradius5 team-box {%if $i%3 eq 2%}mr0{%else%}mr18{%/if%}">
 				<a href="{%teamUrl($row['id'])%}">
 				<div class="team-img">
-					<img src="{%imageUrl($row[0], 260)%}" width="260px" alt="{%$row['name']%}" />
+					<img src="{%imageUrlNew($row['more_image'][0], 260)%}" width="260px" alt="{%$row['name']%}" />
 				</div>
 				<div class="team-name">{%$row['name']%}</div>
 				</a>
