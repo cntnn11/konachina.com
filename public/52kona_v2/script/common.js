@@ -1,9 +1,11 @@
 var bike	= {
 	init: function(){
-		jQuery('.tab_btn').click( bike.tabSwitch() );
+		jQuery('.tab_btn').click(function(){
+			bike.tabSwitch( jQuery(this) );
+		});
 	},
-	tabSwitch: function(){
-		var sel_obj	= jQuery('.tab_btn');
+	tabSwitch: function( obj ){
+		var sel_obj	= obj ? obj : jQuery('.tab_btn');
 		var tabname	= sel_obj.attr('tabname');
 		jQuery('#tab_div').find('.tab_content').each(function(){
 
@@ -32,6 +34,7 @@ var bike	= {
 jQuery(function(){
 
 	// 单车详情页面tab切换
+	bike.tabSwitch();
 	bike.init();
 	jQuery.noConflict();
 	jQuery(document).ready(function($){
