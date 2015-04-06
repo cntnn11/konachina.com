@@ -1,10 +1,12 @@
-jQuery(function(){
-
-	// 单车详情页面tab切换
-	jQuery('.tab_btn').click(function(){
-		var sel_obj	= jQuery(this);
+var bike	= {
+	init: function(){
+		jQuery('.tab_btn').click( bike.tabSwitch() );
+	},
+	tabSwitch: function(){
+		var sel_obj	= jQuery('.tab_btn');
 		var tabname	= sel_obj.attr('tabname');
 		jQuery('#tab_div').find('.tab_content').each(function(){
+
 			if( tabname == jQuery(this).attr('tabname') )
 			{
 				// 选中
@@ -24,8 +26,13 @@ jQuery(function(){
 				
 			}
 		});
-	});
+	}
+};
 
+jQuery(function(){
+
+	// 单车详情页面tab切换
+	bike.init();
 	jQuery.noConflict();
 	jQuery(document).ready(function($){
 		jQuery(".guidelist li").hover(

@@ -25,7 +25,7 @@
 		.driver-info h1
 		{ margin: 0px; }
 		.driver-info p
-		{ line-height: 200%; }
+		{ width: 928px; line-height: 200%; }
 
 	/* tab切换选项卡 */
 	.driver-box .driver-detail

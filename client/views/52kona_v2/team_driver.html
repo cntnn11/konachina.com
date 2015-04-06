@@ -14,13 +14,13 @@
 				{%/if%}
 				<div class="driver-info">
 					<h1>{%$driver_info['name']%}</h1>
-					<p>{%strip_tags($driver_info['desc'])%} 介绍啊卡萨丁发；卡死立刻就撒旦法离开就阿斯顿看来房间爱思考了地方；了卡萨丁；老师；拉开发；蓝山咖啡；凉快ASF；卢卡斯地方。阿里发生了进口地方爱上了肯定就发生的名称迷惘了就卡死了看见对方爱上看见了罚款了吉萨法克就算了 if</p>
+					<p>{%strip_tags($driver_info['desc'])%}</p>
 				</div>
 			</div>
 
 			{%if $driver_info['image']||$driver_info['article']||$driver_info['video'] %}
 			<div class="mt20 driver-box">
-				<div class="driver-detail" id="tab_div">
+				<div class="driver-detail">
 					<div class="driver-tab-header">
 						<ul class="tab-nav">
 							{%if $driver_info['image'] %}<li class="tab_btn {%$class['image']['class']%}" tabname="img">图片</li>{%/if%}
@@ -28,8 +28,8 @@
 							{%if $driver_info['article'] %}<li class="tab_btn {%$class['article']['class']%}" tabname="news">新闻</li>{%/if%}
 						</ul>
 					</div>
-					{%if $driver_info['image'] %}
 					<div class="driver-tab-body" id="tab_div">
+						{%if $driver_info['image'] %}
 						<div class="driver-tab-img tab_content {%$class['image']['class']%} {%$class['video']['show']%}" tabname="img">
 							<ul id="img">
 								{%foreach item=row from=$driver_info['image']%}

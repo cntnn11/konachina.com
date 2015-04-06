@@ -25,6 +25,7 @@ class team extends CI_Controller
 				$team_lists[]			= $value;
 			}
 		}
+
 		$_search['year']	= $where['year'];
 		$_search['tag_id']	= (int)$where['tag_id'];
 		$_search['type']	= (int)$where['type'];
@@ -71,14 +72,7 @@ class team extends CI_Controller
 		{
 			foreach ($more_image as $key => $image_url)
 			{
-				if( $image_url )
-				{
-					$more_image[$key]	= strpos($image_url, 'http://')!== FALSE ? $image_url : imageUrl($row['index_img'], 260);
-				}
-				else
-				{
-					unset($more_image[$key]);
-				}
+				$more_image[$key]	= strpos($image_url, 'http')!== FALSE ? $image_url : imageUrl($image_url, 260);
 			}
 			$driver_info['index_img']	= $more_image[0];	// 取第一张作为大图展示
 			$driver_info['image']		= $more_image;
