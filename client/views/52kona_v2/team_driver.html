@@ -7,14 +7,14 @@
 			<div class="team-header"><h3>KONACHINA 中国车队</h3></div>
 
 			<div class=" opacE5EDF6-90 p20 driver-box">
-				{%if $driver_info['index_img']%}
+				{%if false && $driver_info['index_img']%}
 				<div class="driver-img">
 					<img src="{%$driver_info['index_img']%}" width="260px" alt="{%$driver_info['name']%}" />
 				</div>
 				{%/if%}
 				<div class="driver-info">
 					<h1>{%$driver_info['name']%}</h1>
-					<p>{%strip_tags($driver_info['desc'])%}</p>
+					<p>{%$driver_info['desc']%}</p>
 				</div>
 			</div>
 
