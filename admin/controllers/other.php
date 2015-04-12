@@ -61,6 +61,7 @@ class other extends CI_Controller
 	{
 		$folder			= _pv('folder', 'other');
 		$elementname	= _pv('elementname', 'fileToUpload');
+		$elementname	= 'fileToUpload';
 		$size			= _pv('size', 0);
 
 		//PUBPATH.

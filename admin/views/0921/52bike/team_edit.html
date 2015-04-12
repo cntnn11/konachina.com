@@ -106,25 +106,25 @@
 				</p>
 				<p>
 					<label>车手图片：</label>
-					{%foreach item=image from=$info['more_image']%}
-					<span class="field image" num="0">
-						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
-						<font id="file_error_fileToUpload"></font>
-						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload" value="{%$image%}" />
+					{%foreach item=image from=$info['more_image'] key=k %}
+					<span class="field image" num="{%$k%}" style="border-bottom: 1px solid #c7c7c7;margin-bottom:5px;padding-bottom: 5px;">
+						<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload{$k}" value="+" />&nbsp;&nbsp;
+						<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload{%$k%}" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload{%$K%}"></font>
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload{%$k%}" value="{%$image%}" />
 						<br/><small>TIP:宽度650px;</small>
-						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} width="150px" height="150px" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+						<br/><img id="file_view_fileToUpload{%$k%}" src="{%imageUrl({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} width="75px" height="75px" />
 					</span>
 					{%foreachelse%}
-					<span class="field image" num="0">
-						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
-						<font id="file_error_fileToUpload"></font>
-						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload" value="{%$info.more_image%}" />
-						<br/><small>TIP:宽度650px;</small>cd
-						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.more_image%}, 150)%}" {%if $info.more_image eq ''%}style="display:none;"{%/if%} width="150px" height="150px" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+					<span class="field image" num="0" style="border-bottom: 1px solid #c7c7c7;margin-bottom:5px;padding-bottom: 5px;">
+						<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload0" value="+" />&nbsp;&nbsp;
+						<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload0" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload0"></font>
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload0" value="{%$info.more_image%}" />
+						<br/><small>TIP:宽度650px;</small>
+						<br/><img id="file_view_fileToUpload0" src="{%imageUrl({%$info.more_image%}, 150)%}" {%if $info.more_image eq ''%}style="display:none;"{%/if%} width="75px" height="75px" />
 					</span>
 					{%/foreach%}
 				</p>
@@ -148,7 +148,7 @@
 	</div>
 </div>
 <div style="display:none;" id="hide_video">
-	<span class="field video" num="0">
+	<span class="field video" num="$n">
 		<input class="xxxsmallinput" type="text" name="" value="">
 		<select name="info[more_video][]">
 			<option values=''>--请选择--</option>
@@ -161,7 +161,7 @@
 	</span>
 </div>
 <div style="display:none;" id="hide_art">
-	<span class="field art" num="0">
+	<span class="field art" num="$n">
 		<input class="xxxsmallinput" type="text" name="" value="" />
 		<select name="info[more_article][]">
 			<option value="">--请选择--</option>
@@ -174,14 +174,14 @@
 	</span>
 </div>
 <div style="display:none;" id="hide_image">
-	<span class="field image" num="0">
-		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
-		<font id="file_error_fileToUpload"></font>
-		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload" value="{%$info.more_image%}" />
+	<span class="field image" num="$n" style="border-bottom: 1px solid #c7c7c7;margin-bottom:5px;padding-bottom: 5px;">
+		<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload$n" value="+" />&nbsp;&nbsp;
+		<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload$n" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="team" size="150" onchange="fileCheck(this, 'image')" />
+		<font id="file_error_fileToUpload$n"></font>
+		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[more_image][]" id="upload_fileToUpload$n" value="" />
 		<br/><small>TIP:宽度650px;</small>cd
-		<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.more_image%}, 150)%}" {%if $info.more_image eq ''%}style="display:none;"{%/if%} width="150px" height="150px" />
-		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+		<br/><img id="file_view_fileToUpload$n" src="" style="display:none;" width="75px" height="75px" />
 	</span>
 </div>
 <script type="text/javascript">
@@ -267,12 +267,7 @@ jQuery(function(){
 	{
 		var html	= jQuery('#hide_'+code).html();
 		var i		= obj.parent('span').parent('p').children('span').length;
-			html	= html.replace('num="0"', 'num="'+i+'"');
-			if( search_id )
-			{
-				var reg	= new RegExp(search_id, 'g');
-				html	= html.replace(reg, search_id+''+i);
-			}
+			html	= html.replace( /\$n/ig, i );
 
 			obj.parent('span').after( html );
 	}

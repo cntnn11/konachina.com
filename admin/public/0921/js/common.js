@@ -160,11 +160,11 @@ function fileCheck(obj, file_type)
 		msg	= '程序未知错误！';
 		return false;
 	}
-	if(obj.value == '')
+	if( jQuery(obj).val() == '' )
 	{
 		msg	= "请选择一个文件进行上传";
 	}
-	else if(obj.value != '')
+	else if( obj.value != '' )
 	{
 		var ext = obj.value.substr(obj.value.lastIndexOf(".")).toLowerCase();
 		//判断文件类型是否允许上传
@@ -231,7 +231,7 @@ function ajaxfileupload(obj)
 		},
 		error: function (data, status, e)
 		{
-console.log(typeof(data.responseText), data.responseText);
+//console.log(typeof(data.responseText), data.responseText);
 			alert("错误！\n "+data.responseText);
 		}
 	});

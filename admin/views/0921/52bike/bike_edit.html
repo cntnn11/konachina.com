@@ -30,8 +30,8 @@
 					<span class="field">
 					{%foreach item=row key=k from=$bike_tag%}
 						<input type="radio" name="info[tag_id]" value="{%$row['id']%}" {%if $info['tag_id'] == $row['id']%}checked="checked"{%/if%} >&nbsp;{%$row['title']%}&nbsp;&nbsp;&nbsp;
-                    {%/foreach%}
-                    </span>
+					{%/foreach%}
+					</span>
 				</p>
 				<p>
 					<label>归属产品类别：</label>
@@ -131,25 +131,25 @@
 				</p>
 				<p>
 					<label>上传图片：</label>
-					{%foreach item=image from=$info['image_url']%}
+					{%foreach item=image from=$info['image_url'] key=k%}
 					<span class="field image" num="0">
-						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
-						<font id="file_error_fileToUpload"></font>
-						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$image%}" />
+						<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload{$k}" value="+" />&nbsp;&nbsp;
+						<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+						<input type="file" name="fileToUpload" id="fileToUpload{%$k%}" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload{%$k%}"></font>
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload{%$k%}" value="{%$image%}" />
 						<br/><small>TIP:宽度620px;</small>
-						<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} />
-						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+						<br/><img id="file_view_fileToUpload{%$k%}" src="{%imageUrlNew({%$image%}, 150)%}" {%if $image eq ''%}style="display:none;"{%/if%} />
 					</span>
 					{%foreachelse%}
 					<span class="field image" num="0">
-						<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
-						<font id="file_error_fileToUpload"></font>
-						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
+						<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload0" value="+" />&nbsp;&nbsp;
+						<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+						<input type="file" name="fileToUpload" id="fileToUpload0" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+						<font id="file_error_fileToUpload0"></font>
+						&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload0" value="{%$info.image_url%}" />
 						<br/><small>TIP:宽度620px;</small>
-						<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
-						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+						<br/><img id="file_view_fileToUpload0" src="{%imageUrlNew({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} width="75px" />
 					</span>
 					{%/foreach%}
 				</p>
@@ -158,7 +158,7 @@
 					<label>车型亮点：</label>
 					{%foreach item=value from=$info['virtue']%}
 					<span class="field virtue" num="0">
-						<input class="smallinput" type="text" name="info[virtue][]" value="{%$value%}" />
+						<input type="text" name="info[virtue][]" value="{%$value%}" />
 						&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="virtue" search_id="" auto_id="" value="+" />
 						&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="virtue" value="-" />
 					</span>
@@ -225,13 +225,13 @@
 </div>
 <div style="display:none;" id="hide_image">
 	<span class="field image" num="0">
-		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
-		<font id="file_error_fileToUpload"></font>
-		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload" value="{%$info.image_url%}" />
+		<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload$n" value="+" />&nbsp;&nbsp;
+		<input type="button" class="stdbtn delHtml" code="image" value="-" />&nbsp;&nbsp;
+		<input class="smallinput" type="file" name="fileToUpload" id="fileToUpload$n" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="bike" size="150" onchange="fileCheck(this, 'image')" />
+		<font id="file_error_fileToUpload$n"></font>
+		&nbsp;&nbsp;<input class="smallinput" type="text" name="info[image_url][]" id="upload_fileToUpload$n" value="" />
 		<br/><small>TIP:宽度620px;</small>
-		<br/><img id="file_view_fileToUpload" src="{%imageUrlNew({%$info.image_url%}, 150)%}" {%if $info.image_url eq ''%}style="display:none;"{%/if%} />
-		&nbsp;&nbsp;<input type="button" class="stdbtn addhtml" code="image" search_id="fileToUpload" value="+" />
-		&nbsp;&nbsp;<input type="button" class="stdbtn delHtml" code="image" value="-" />
+		<br/><img id="file_view_fileToUpload$n" src="{%imageUrlNew({%$info.image_url%}, 150)%}" style="display:none;" width="75px" />
 	</span>
 </div>
 <script type="text/javascript">
@@ -312,12 +312,7 @@ jQuery(function(){
 	{
 		var html	= jQuery('#hide_'+code).html();
 		var i		= obj.parent('span').parent('p').children('span').length;
-			html	= html.replace('num="0"', 'num="'+i+'"');
-			if( search_id )
-			{
-				var reg	= new RegExp(search_id, 'g');
-				html	= html.replace(reg, search_id+''+i);
-			}
+			html	= html.replace( /\$n/ig, i );
 
 			obj.parent('span').after( html );
 	}

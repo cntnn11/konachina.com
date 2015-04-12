@@ -66,7 +66,6 @@ class team extends CI_Controller
 		}
 		$this->art_data			= $art_data;
 		$this->art_data_json	= json_encode( (array)$art_data );
-
 		$this->js_arr			= array('plugins/jquery.dataTables.min.js', 'plugins/jquery.uniform.min.js', 'plugins/jquery.ajaxfileupload.js', 'ueditor/ueditor.all.js', 'ueditor/lang/zh-cn/zh-cn.js');
 		$this->display('0921/52bike/team_edit');
 	}
