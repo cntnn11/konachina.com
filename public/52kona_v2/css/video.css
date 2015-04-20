@@ -3,4 +3,4 @@
 .video-box .video-play
 {  }
 .video-box .video-tit
-{ margin: 0px; padding: 0px; text-align: center; color: #585858; font-weight: bold; line-height: 200%; font-size: 1.5em; }
+{ width: 300px; height: 36px; overflow: hidden; margin: 0px; padding: 0px; text-align: center; color: #585858; font-weight: bold; line-height: 36px; font-size: 1.25em; }
