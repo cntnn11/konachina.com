@@ -63,17 +63,11 @@
 					<label>店铺图片：</label>
 					<span class="field"><small>TIP:宽度200px，高度：140px;</small></span>
 					<span class="field">
-						<input class="xxxsmallinput" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
+						<input class="" type="file" name="fileToUpload" id="fileToUpload" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
 						<input class="xxxsmallinput" type="text" name="upload_fileToUpload" id="upload_fileToUpload" value="{%$info.image%}" />
 						<font id="file_error_fileToUpload"></font>
 						<br/><img id="file_view_fileToUpload" src="{%imageUrl({%$info.image%})%}" width="200px" height="140px" {%if $info.image eq ''%}style="display:none;"{%/if%} />
 					</span>
-					<!-- <span class="field">
-						<input class="xxxsmallinput" type="file" name="fileToUpload1" id="fileToUpload1" url="{%$smarty.const.BASEURL%}other/doImageUpload" folder="shop" size="" onchange="fileCheck(this, 'image')" />
-						<input class="xxxsmallinput" type="text" name="upload_fileToUpload1" id="upload_fileToUpload1" value="{%$info.image%}" />
-						<font id="file_error_fileToUpload1"></font>
-						<br/><img id="file_view_fileToUpload1" src="{%imageUrl({%$info.image%})%}" width="200px" height="140px" {%if $info.image eq ''%}style="display:none;"{%/if%} />
-					</span> -->
 				</p>
 				<p>
 					<label>排序：</label>
