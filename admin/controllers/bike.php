@@ -399,8 +399,8 @@ class bike extends CI_Controller
 			$get_params				.= '&shopname='.$_GET['shopname'];
 		}
 
-		$shop_total	= $this->bike->getShopTotal($where, $like);
-		if( $shop_total )
+		$total	= $this->bike->getShopTotal($where, $like);
+		if( $total )
 		{
 			$shop_lists		= $this->bike->getShopList($where, $like, $offset, $limit);
 			$this->page		= pageNew(BASEURL.'bike/shop/?'.$get_params, $total, $offset, $limit);
