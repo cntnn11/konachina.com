@@ -62,7 +62,7 @@ class bikes extends CI_Controller
 	{
 		list($year, $tag_id, $type)	= explode('-', $skey);
 		// 主推年代
-		$where['year']		= $year ? $year : 2014;
+		$where['year']		= $year ? $year : 2015;
 		if( $tag_id )
 		{
 			$where['tag_id']	= $tag_id;
