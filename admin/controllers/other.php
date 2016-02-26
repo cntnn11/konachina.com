@@ -72,7 +72,7 @@ class other extends CI_Controller
 		}
 
 		$upload_config['upload_path']	= PUBPATH.$file_upload_path;
-		$upload_config['allowed_types']	= 'gif|jpg|png|jpeg';
+		$upload_config['allowed_types']	= '*';
 		$upload_config['encrypt_name']	= true;
 		$upload_config['remove_spaces']	= true;
 		$this->load->library('upload');
